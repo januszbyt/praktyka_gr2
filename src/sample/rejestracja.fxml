@@ -10,13 +10,13 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="776.0" prefWidth="633.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Rejestracja">
+<AnchorPane prefHeight="776.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Rejestracja">
    <children>
-      <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="639.0" style="-fx-background-color: #ff8b35;">
+      <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
          <children>
-            <ImageView fitHeight="116.0" fitWidth="279.0" layoutX="180.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="rejestracja_logo" fitHeight="116.0" fitWidth="279.0" layoutX="180.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../image/logo.png" />
+                  <Image url="@../../image/logobiale.png" />
                </image>
             </ImageView>
          </children>
@@ -91,22 +91,22 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Button layoutX="23.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Zarejestruj">
+      <Button layoutX="23.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Zarejestruj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="23.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Wyczyść dane">
+      <Button layoutX="23.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Wyczyść dane" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="332.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Masz już konto?">
+      <Button layoutX="332.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Masz już konto?" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="332.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Zamknij">
+      <Button layoutX="332.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" text="Zamknij" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
