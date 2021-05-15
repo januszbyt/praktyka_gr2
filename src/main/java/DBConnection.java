@@ -21,7 +21,7 @@ public class DBConnection
         }
         catch (ClassNotFoundException e)
         {
-            System.err.println("Brak sterownika JDBC");
+            System.err.println("Brak sterownikow JDBC");
             e.printStackTrace();
         }
         try
