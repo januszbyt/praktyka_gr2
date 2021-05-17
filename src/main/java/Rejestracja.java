@@ -2,10 +2,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -27,11 +24,10 @@ public class Rejestracja implements Initializable {
     private PasswordField rejestracja_haslo,rejestracja_haslo2;
     @FXML
     private Button btn_zarejestruj,btn_mjk,btn_wyczysc,btn_zamknij;
-    @FXML
-    private Label rejestracja_haslo_alert,rejestracja_alert;
+
 
     // zmienna przechowywujaca informacje ktore pola nie spelniaja wymagan
-private String blad;
+private String blad="";
 
 
 
@@ -60,25 +56,30 @@ private String blad;
         rejestracja_haslo.setText("");
         rejestracja_haslo2.setText("");
         rejestracja_email.setText("");
+
     }
 
 //metoda zamykajaca aplikacje
     public void zamknijButton(ActionEvent actionEvent) {
         Platform.exit();
     }
+
 //metoda sprawdzajaca i dopisujaca do zmiennej pola ktore sa niepoprawne
 public void sprawdzRejestracja()
 {
+    //zmienna jest czyszczona
+    blad="\n";
+
     // pole imie
     if (rejestracja_imie.getLength()<3 || rejestracja_imie.getLength()>20)
     {
-     blad+="Imie ";
+     blad+="Imie \n";
     }
 
     // pole nazwisko
     if (rejestracja_nazwisko.getLength()<3 || rejestracja_nazwisko.getLength()>20)
     {
-        blad+="Nazwisko ";
+        blad+="Nazwisko \n";
     }
 
     // pole pesel
@@ -86,26 +87,27 @@ public void sprawdzRejestracja()
 
    /* if (rejestracja_imie.getLength()<3 || rejestracja_imie.getLength()>20)
     {
-        blad+="pesel ";
+        blad+="pesel \n";
     }
 */
     // pole login
     if (rejestracja_login.getLength()<5 || rejestracja_login.getLength()>20)
     {
-        blad+="Login ";
+        blad+="Login \n";
     }
 
     // pole haslo
     if (rejestracja_haslo.getLength()<5 || rejestracja_haslo.getLength()>20 ||
         rejestracja_haslo2.getLength()<5 || rejestracja_haslo2.getLength()>20)
     {
-        blad+="Haslo ";
+        blad+="Haslo \n";
 
-        //sprawdzenie czy hasla sa identyczne
-        if(rejestracja_haslo.getText()!=rejestracja_haslo2.getText())
-        {
-            rejestracja_haslo_alert.setText("Hasla sa niepoprawne !");
-        }
+    }
+    //sprawdzenie czy hasla sa identyczne
+    if(!rejestracja_haslo.getText().equals(rejestracja_haslo2.getText()))
+    {
+
+        blad+= "Hasla nie sa identyczne \n";
     }
 
     // pole email
@@ -113,10 +115,37 @@ public void sprawdzRejestracja()
     TUTAJ BEDZIE VALIDATOR
     if (rejestracja_pesel.getLength()<3 || rejestracja_pesel.getLength()>20)
     {
-        blad+="Email ";
+        blad+="Email \n";
     }
 */
 
 }
 
+public void komunikat()
+{
+    if(blad.isBlank())
+    {//SUKCES
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Rejestracja zakończona sukcesem!");
+
+        sukces.showAndWait();
+    }
+    else
+    {//PORAZKA
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Rejestracja zakonczaona niepowodzeniem. Popraw nastepujace pola: "+blad );
+
+        porazka.showAndWait();
+    }
+
+}
+    public void zarejestrujButton(ActionEvent actionEvent) {
+        sprawdzRejestracja();
+        komunikat();
+
+    }
 }

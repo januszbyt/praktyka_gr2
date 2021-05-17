@@ -90,7 +90,7 @@
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Button fx:id="btn_zarejestruj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zarejestruj" textFill="WHITE">
+        <Button fx:id="btn_zarejestruj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" onAction="#zarejestrujButton" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zarejestruj" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -110,15 +110,5 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Label fx:id="rejestracja_haslo_alert" layoutX="319.0" layoutY="463.0" prefHeight="27.0" prefWidth="194.0" text="niepoprawne hasła alert">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="rejestracja_alert" alignment="CENTER" layoutX="99.0" layoutY="587.0" prefHeight="40.0" prefWidth="436.0" text="cos sie nie zgadza alert">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
     </children>
 </AnchorPane>
