@@ -11,7 +11,7 @@ public class Uzytkownik
     private String haslo;
     private String mail;
     private String rola;
-    private String weryfikacja;
+    private int weryfikacja;
 
 
 
@@ -109,12 +109,12 @@ public class Uzytkownik
 
 
 
-    public String getWeryfikacja()
+    public int getWeryfikacja()
     {
         return weryfikacja;
     }
 
-    public void setWeryfikacja(String weryfikacja)
+    public void setWeryfikacja(int weryfikacja)
     {
         this.weryfikacja = weryfikacja;
     }
@@ -125,7 +125,7 @@ public class Uzytkownik
     // Konstruktory
     public Uzytkownik() { }
 
-    public Uzytkownik(int id, String imie, String nazwisko, String pesel, String login, String haslo, String mail, String rola, String weryfikacja)
+    public Uzytkownik(int id, String imie, String nazwisko, String pesel, String login, String haslo, String mail, String rola, int weryfikacja)
     {
         this.id = id;
         this.imie = imie;
