@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="776.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rejestracja">
     <children>
         <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
@@ -96,7 +95,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_wyczysc" layoutX="23.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+        <Button fx:id="btn_wyczysc" layoutX="23.0" layoutY="710.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -106,7 +105,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_zamknij" layoutX="332.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
+        <Button fx:id="btn_zamknij" layoutX="332.0" layoutY="710.0" mnemonicParsing="false" onAction="#zamknijButton" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
