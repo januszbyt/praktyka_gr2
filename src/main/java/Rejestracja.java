@@ -123,6 +123,8 @@ public void sprawdzRejestracja()
 
 public void komunikat()
 {
+    //sprawdzenie czy zmienna przechowywujace nieprawidlowe pola jest pusta
+
     if(blad.isBlank())
     {//SUKCES
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
