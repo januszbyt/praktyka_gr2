@@ -127,5 +127,5 @@ gradle-app.setting
 .idea/shelf/
 .idea/workspace.xml
 .idea/gradle.xml
-
+.idea/misc.xml
 # End of https://www.toptal.com/developers/gitignore/api/gradle,intellij
