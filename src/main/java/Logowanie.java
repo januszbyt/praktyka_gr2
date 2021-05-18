@@ -16,8 +16,8 @@ public class Logowanie implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        File plik= new File("src/images/logobiale.png");
-        Image zdjecie= new Image(plik.toURI().toString());
+        File plik = new File("src/images/logobiale.png");
+        Image zdjecie = new Image(plik.toURI().toString());
         logowanie_logo.setImage(zdjecie);
     }
 }
