@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
     implementation "mysql:mysql-connector-java:8.0.24"
+    implementation 'commons-validator:commons-validator:1.7'
 }
 
 test {
