@@ -9,9 +9,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="776.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logowanie">
+<AnchorPane prefHeight="776.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Logowanie">
     <children>
-        <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
+        <AnchorPane layoutX="-6.0" prefHeight="116.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
             <children>
                 <ImageView fx:id="logowanie_logo" fitHeight="116.0" fitWidth="279.0" layoutX="180.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -40,12 +40,12 @@
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="btn_zaloguj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zaloguj" textFill="WHITE">
+        <Button fx:id="btn_zaloguj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" onAction="#zaloguj_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zaloguj" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_wyczysc" layoutX="23.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+        <Button fx:id="btn_wyczysc" layoutX="23.0" layoutY="710.0" mnemonicParsing="false" onAction="#wyczysc_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
@@ -55,20 +55,10 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_zamknij" layoutX="332.0" layoutY="710.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
+        <Button fx:id="btn_zamknij" layoutX="332.0" layoutY="710.0" mnemonicParsing="false" onAction="#zamknij_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Label fx:id="logowanie_haslo_alert" layoutX="317.0" layoutY="382.0" prefHeight="27.0" prefWidth="194.0" text="niepoprawne hasło alert">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
-        <Label fx:id="logowanie_alert" alignment="CENTER" layoutX="99.0" layoutY="529.0" prefHeight="40.0" prefWidth="436.0" text="cos sie nie zgadza alert">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Label>
     </children>
 </AnchorPane>

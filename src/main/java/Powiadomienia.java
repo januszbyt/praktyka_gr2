@@ -27,7 +27,23 @@ public class Powiadomienia {
 
     // Logowanie
 
+    public static void alertLogowanie(String blad_logowania){
+        if(blad_logowania.isBlank()){ //sukces
+            Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+            sukces.setTitle("Powiadomienie");
+            sukces.setHeaderText(null);
+            sukces.setContentText("Pomyslnie zalogowano!");
 
+            sukces.showAndWait();
+        }else { // porazka
+            Alert porazka = new Alert(Alert.AlertType.INFORMATION);
+            porazka.setTitle("Powiadomienie");
+            porazka.setHeaderText(null);
+            porazka.setContentText("Nie udalo sie zalogowac!" + blad_logowania);
+
+            porazka.showAndWait();
+        }
+    }
     // Przelew
 
 
