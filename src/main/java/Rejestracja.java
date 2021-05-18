@@ -10,6 +10,8 @@ import org.apache.commons.validator.routines.EmailValidator;
 import java.io.File;
 import java.io.Serializable;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ResourceBundle;
 
 
@@ -141,6 +143,43 @@ public class Rejestracja implements Initializable, Serializable {
 
     public static boolean weryfikujEmail(final String email) {
         return validator.isValid(email);
+    }
+
+    public void rejestracjaUzytkownik()
+    {
+        DBConnection polaczenie= new DBConnection();
+        Connection statusDB= polaczenie.getConnection();
+
+        String imie=rejestracja_imie.getText();
+        String nazwisko=rejestracja_nazwisko.getText();
+        String pesel=rejestracja_pesel.getText();
+        String login=rejestracja_login.getText();
+        String haslo=rejestracja_haslo.getText();
+        String email=rejestracja_email.getText();
+
+        String bazaSql="INSERT INTO uzytkownik(imie,nazwisko,pesel,login,haslo,mail,rola,weryfikacja) VALUES('";
+        String wpisaneSql=imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + haslo + "','" +email + "','" +"U" + "','" +"0" +"')";
+        String kodSql = bazaSql+wpisaneSql;
+
+        try
+        {
+            if(blad.isBlank())
+            {
+                Statement statement= statusDB.createStatement();
+                statement.executeUpdate(kodSql);
+                Powiadomienia.alertRejestracja(blad);
+                wyczyscButton();
+            }
+            else
+            {
+                Powiadomienia.alertRejestracja(blad);
+            }
+        }
+
+        catch (Exception e)
+        {
+
+        }
     }
 
     public void zarejestrujButton(ActionEvent actionEvent) {
