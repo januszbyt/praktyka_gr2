@@ -20,72 +20,72 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Label layoutX="146.0" layoutY="164.0" prefHeight="26.0" prefWidth="102.0" text="Imię">
+        <Label layoutX="163.0" layoutY="162.0" prefHeight="26.0" prefWidth="102.0" text="Imię">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_imie" layoutX="146.0" layoutY="190.0" prefHeight="17.0" prefWidth="324.0">
+        <TextField fx:id="rejestracja_imie" layoutX="164.0" layoutY="190.0" prefHeight="17.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="146.0" layoutY="225.0" prefHeight="26.0" prefWidth="102.0" text="Nazwisko">
+        <Label layoutX="163.0" layoutY="223.0" prefHeight="26.0" prefWidth="102.0" text="Nazwisko">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_nazwisko" layoutX="146.0" layoutY="251.0" prefHeight="17.0" prefWidth="324.0">
+        <TextField fx:id="rejestracja_nazwisko" layoutX="163.0" layoutY="249.0" prefHeight="17.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="146.0" layoutY="285.0" prefHeight="26.0" prefWidth="102.0" text="Pesel">
+        <Label layoutX="163.0" layoutY="283.0" prefHeight="26.0" prefWidth="102.0" text="Pesel">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_pesel" layoutX="146.0" layoutY="311.0" prefHeight="15.0" prefWidth="324.0">
+        <TextField fx:id="rejestracja_pesel" layoutX="163.0" layoutY="309.0" prefHeight="15.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="146.0" layoutY="344.0" prefHeight="26.0" prefWidth="102.0" text="Login">
+        <Label layoutX="163.0" layoutY="342.0" prefHeight="26.0" prefWidth="102.0" text="Login">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_login" layoutX="146.0" layoutY="370.0" prefHeight="19.0" prefWidth="324.0">
+        <TextField fx:id="rejestracja_login" layoutX="163.0" layoutY="368.0" prefHeight="19.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="146.0" layoutY="403.0" prefHeight="27.0" prefWidth="102.0" text="Hasło">
+        <Label layoutX="163.0" layoutY="401.0" prefHeight="27.0" prefWidth="102.0" text="Hasło">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="rejestracja_haslo" layoutX="148.0" layoutY="430.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField fx:id="rejestracja_haslo" layoutX="165.0" layoutY="428.0" prefHeight="26.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Label layoutX="147.0" layoutY="463.0" prefHeight="27.0" prefWidth="153.0" text="Powtórz hasło">
+        <Label layoutX="164.0" layoutY="461.0" prefHeight="27.0" prefWidth="153.0" text="Powtórz hasło">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="rejestracja_haslo2" layoutX="147.0" layoutY="490.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField fx:id="rejestracja_haslo2" layoutX="164.0" layoutY="488.0" prefHeight="26.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Label layoutX="147.0" layoutY="523.0" prefHeight="26.0" prefWidth="102.0" text="Adres e-mail">
+        <Label layoutX="164.0" layoutY="521.0" prefHeight="26.0" prefWidth="102.0" text="Adres e-mail">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_email" layoutX="147.0" layoutY="549.0" prefHeight="26.0" prefWidth="324.0">
+        <TextField fx:id="rejestracja_email" layoutX="164.0" layoutY="547.0" prefHeight="26.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>

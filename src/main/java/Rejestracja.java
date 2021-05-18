@@ -11,6 +11,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class Rejestracja implements Initializable {
 
 
@@ -82,14 +83,13 @@ public void sprawdzRejestracja()
         blad+="Nazwisko \n";
     }
 
-    // pole pesel
-    //TUTAJ BEDZIE VALIDATOR
 
-   /* if (rejestracja_imie.getLength()<3 || rejestracja_imie.getLength()>20)
+
+    if (weryfikujPesel(rejestracja_pesel.getText())==false)
     {
-        blad+="pesel \n";
+        blad+="Pesel \n";
     }
-*/
+
     // pole login
     if (rejestracja_login.getLength()<5 || rejestracja_login.getLength()>20)
     {
@@ -130,7 +130,7 @@ public void komunikat()
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
         sukces.setHeaderText(null);
-        sukces.setContentText("Rejestracja zakończona sukcesem!");
+        sukces.setContentText("Rejestracja zakonczona sukcesem!");
 
         sukces.showAndWait();
     }
@@ -139,15 +139,51 @@ public void komunikat()
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
-        porazka.setContentText("Rejestracja zakonczaona niepowodzeniem. Popraw nastepujace pola: "+blad );
+        porazka.setContentText("Rejestracja zakonczaona niepowodzeniem.\nPopraw nastepujace pola: "+blad );
 
         porazka.showAndWait();
     }
 
 }
-    public void zarejestrujButton(ActionEvent actionEvent) {
+// metoda weryfikujaca pesel
+public boolean weryfikujPesel(String pesel) {
+    if (pesel.length() == 11) {
+
+        int pierwszaCyfra = Integer.parseInt(pesel.substring(0, 1));
+        int drugaCyfra = Integer.parseInt(pesel.substring(1, 2));
+        int trzeciaCyfra = Integer.parseInt(pesel.substring(2, 3));
+        int czwartaCyfra = Integer.parseInt(pesel.substring(3, 4));
+        int piataCyfra = Integer.parseInt(pesel.substring(4, 5));
+        int szostaCyfra = Integer.parseInt(pesel.substring(5, 6));
+        int siodmaCyfra = Integer.parseInt(pesel.substring(6, 7));
+        int osmaCyfra = Integer.parseInt(pesel.substring(7, 8));
+        int dziewiataCyfra = Integer.parseInt(pesel.substring(8, 9));
+        int dziesiataCyfra = Integer.parseInt(pesel.substring(9, 10));
+        int jedenastaCyfra = Integer.parseInt(pesel.substring(10, 11));
+
+        int check = 1 * pierwszaCyfra + 3 * drugaCyfra + 7 * trzeciaCyfra
+                + 9 * czwartaCyfra + 1 * piataCyfra + 3 * szostaCyfra + 7
+                * siodmaCyfra + 9 * osmaCyfra + 1 * dziewiataCyfra + 3
+                * dziesiataCyfra;
+        int lastNumber = check % 10;
+        int controlNumber = 10 - lastNumber;
+
+            if (controlNumber==jedenastaCyfra)
+            {
+                return true;
+            }
+
+    }
+    return false;
+}
+
+
+
+    public void zarejestrujButton(ActionEvent actionEvent)
+    {
         sprawdzRejestracja();
-        komunikat();
+       komunikat();
+
 
     }
 }
