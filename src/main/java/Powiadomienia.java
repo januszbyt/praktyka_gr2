@@ -5,7 +5,7 @@ public class Powiadomienia
 {
 
     // Rejestracja
-    public void alertRejestracja(String blad)
+    public static void alertRejestracja(String blad)
     {
         //sprawdzenie czy zmienna przechowywujace nieprawidlowe pola jest pusta
 
@@ -14,7 +14,7 @@ public class Powiadomienia
             Alert sukces = new Alert(Alert.AlertType.INFORMATION);
             sukces.setTitle("Powiadomienie");
             sukces.setHeaderText(null);
-            sukces.setContentText("Rejestracja zakończona sukcesem!");
+            sukces.setContentText("Rejestracja zakonczona sukcesem!");
 
             sukces.showAndWait();
         }
@@ -23,7 +23,7 @@ public class Powiadomienia
             Alert porazka = new Alert(Alert.AlertType.ERROR);
             porazka.setTitle("Powiadomienie");
             porazka.setHeaderText(null);
-            porazka.setContentText("Rejestracja zakończona niepowodzeniem. Popraw następujące pola: "+blad );
+            porazka.setContentText("Rejestracja zakonczona niepowodzeniem. Popraw nastepujace pola: "+blad );
 
             porazka.showAndWait();
         }

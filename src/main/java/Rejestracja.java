@@ -105,26 +105,6 @@ public class Rejestracja implements Initializable, Serializable {
 
     }
 
-    public void komunikat() {
-        //sprawdzenie czy zmienna przechowywujace nieprawidlowe pola jest pusta
-
-        if (blad.isBlank()) {//SUKCES
-            Alert sukces = new Alert(Alert.AlertType.INFORMATION);
-            sukces.setTitle("Powiadomienie");
-            sukces.setHeaderText(null);
-            sukces.setContentText("Rejestracja zakonczona sukcesem!");
-
-            sukces.showAndWait();
-        } else {//PORAZKA
-            Alert porazka = new Alert(Alert.AlertType.ERROR);
-            porazka.setTitle("Powiadomienie");
-            porazka.setHeaderText(null);
-            porazka.setContentText("Rejestracja zakonczaona niepowodzeniem.\nPopraw nastepujace pola: " + blad);
-
-            porazka.showAndWait();
-        }
-
-    }
 
     // metoda weryfikujaca pesel
     public boolean weryfikujPesel(String pesel) {
@@ -165,7 +145,7 @@ public class Rejestracja implements Initializable, Serializable {
 
     public void zarejestrujButton(ActionEvent actionEvent) {
         sprawdzRejestracja();
-        komunikat();
+        Powiadomienia.alertRejestracja(blad);
 
     }
 }
