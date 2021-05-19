@@ -1,5 +1,8 @@
 package classes;
 
+import java.sql.*;
+import application.DBConnection;
+
 public class Uzytkownik
 {
     // Lista zmiennych
@@ -120,6 +123,42 @@ public class Uzytkownik
     }
 
 
+
+/*
+    public void zaloguj(String login)
+    {
+
+         polaczenie= new DBConnection();
+        Connection statusDB= polaczenie.getConnection();
+
+        try
+        {
+            ResultSet result = stat.executeQuery("SELECT * FROM uczen");
+            int id, idKlasy;
+            String imie, nazwisko, pesel;
+            while(result.next())
+            {
+                id = result.getInt("id");
+                imie = result.getString("imie");
+                nazwisko = result.getString("nazwisko");
+                pesel = result.getString("pesel");
+                idKlasy = result.getInt("idKlasy");
+                uczniowie.add(new Uczen(id, imie, nazwisko, pesel, idKlasy));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+
+
+    }
+
+
+
+*/
 
 
     // Konstruktory

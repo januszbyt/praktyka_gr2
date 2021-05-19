@@ -27,4 +27,4 @@ test {
     useJUnitPlatform()
 }
 
-mainClassName = "Main"
+mainClassName = "application.Main"
