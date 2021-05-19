@@ -34,7 +34,8 @@ public class Rejestracja implements Initializable, Serializable {
     @FXML
     private PasswordField rejestracja_haslo, rejestracja_haslo2;
     @FXML
-    private Button btn_zarejestruj, btn_mjk, btn_wyczysc, btn_zamknij;
+    private Button btn_zarejestruj, btn_wyczysc, btn_zamknij,btn_mjk;
+
 
 
     // zmienna przechowywujaca informacje ktore pola nie spelniaja wymagan
@@ -202,6 +203,6 @@ public class Rejestracja implements Initializable, Serializable {
     }
 
     public void zmienOkno(ActionEvent actionEvent) throws Exception {
-        ZmienOkno.zmienScene("logowanie.fxml",650,776,btn_mjk);
+        ZmienOkno.zmienScene("logowanie.fxml",650,552,btn_mjk);
     }
 }

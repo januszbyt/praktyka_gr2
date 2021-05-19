@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="776.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Logowanie">
+<AnchorPane prefHeight="552.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Logowanie">
     <children>
         <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
             <children>
@@ -20,42 +20,42 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Label layoutX="149.0" layoutY="241.0" prefHeight="26.0" prefWidth="102.0" text="Login">
+        <Label layoutX="164.0" layoutY="189.0" prefHeight="26.0" prefWidth="102.0" text="Login">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="logowanie_login" layoutX="149.0" layoutY="267.0" prefHeight="19.0" prefWidth="324.0">
+        <TextField fx:id="logowanie_login" layoutX="164.0" layoutY="215.0" prefHeight="19.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </TextField>
-        <Label layoutX="147.0" layoutY="382.0" prefHeight="27.0" prefWidth="102.0" text="Hasło">
+        <Label layoutX="163.0" layoutY="282.0" prefHeight="27.0" prefWidth="102.0" text="Hasło">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="logowanie_haslo" layoutX="149.0" layoutY="409.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField fx:id="logowanie_haslo" layoutX="165.0" layoutY="309.0" prefHeight="26.0" prefWidth="324.0">
             <font>
                 <Font size="13.0" />
             </font>
         </PasswordField>
-        <Button fx:id="btn_zaloguj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" onAction="#zaloguj_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zaloguj" textFill="WHITE">
+        <Button fx:id="btn_zaloguj" layoutX="32.0" layoutY="411.0" mnemonicParsing="false" onAction="#zaloguj_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zaloguj" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_wyczysc" layoutX="23.0" layoutY="710.0" mnemonicParsing="false" onAction="#wyczysc_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+        <Button fx:id="btn_wyczysc" layoutX="32.0" layoutY="470.0" mnemonicParsing="false" onAction="#wyczysc_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_nmk" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" onAction="#zmienOkno" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Nie masz konta?" textFill="WHITE">
+        <Button fx:id="btn_nmk" layoutX="341.0" layoutY="411.0" mnemonicParsing="false" onAction="#zmienOkno" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Nie masz konta?" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_zamknij" layoutX="332.0" layoutY="710.0" mnemonicParsing="false" onAction="#zamknij_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
+        <Button fx:id="btn_zamknij" layoutX="341.0" layoutY="470.0" mnemonicParsing="false" onAction="#zamknij_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zamknij" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>

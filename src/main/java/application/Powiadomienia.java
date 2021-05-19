@@ -18,7 +18,7 @@ public class Powiadomienia {
     }
 
     // Rejestracja
-    public static void alertRejestracja(String blad) {
+    public static void alertRejestracja(String blad) throws Exception {
         //sprawdzenie czy zmienna przechowywujace nieprawidlowe pola jest pusta
 
         if (blad.isBlank()) {//SUKCES
@@ -28,6 +28,7 @@ public class Powiadomienia {
             sukces.setContentText("Rejestracja zakonczona sukcesem!");
 
             sukces.showAndWait();
+
 
         } else {//PORAZKA
             Alert porazka = new Alert(Alert.AlertType.ERROR);
