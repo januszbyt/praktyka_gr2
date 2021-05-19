@@ -184,7 +184,8 @@ public class Rejestracja implements Initializable, Serializable {
 
     public void zarejestrujButton(ActionEvent actionEvent) {
         sprawdzRejestracja();
-        Powiadomienia.alertRejestracja(blad);
+        rejestracjaUzytkownik();
+        //Powiadomienia.alertRejestracja(blad);
 
     }
 }
