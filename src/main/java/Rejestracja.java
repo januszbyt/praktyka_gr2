@@ -11,6 +11,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -145,47 +146,52 @@ public class Rejestracja implements Initializable, Serializable {
         return validator.isValid(email);
     }
 
-    public void rejestracjaUzytkownik()
-    {
-        DBConnection polaczenie= new DBConnection();
-        Connection statusDB= polaczenie.getConnection();
+    public void rejestracjaUzytkownik() {
+        DBConnection polaczenie = new DBConnection();
+        Connection statusDB = polaczenie.getConnection();
 
-        String imie=rejestracja_imie.getText();
-        String nazwisko=rejestracja_nazwisko.getText();
-        String pesel=rejestracja_pesel.getText();
-        String login=rejestracja_login.getText();
-        String haslo=rejestracja_haslo.getText();
-        String email=rejestracja_email.getText();
+        String imie = rejestracja_imie.getText();
+        String nazwisko = rejestracja_nazwisko.getText();
+        String pesel = rejestracja_pesel.getText();
+        String login = rejestracja_login.getText();
+        String haslo = rejestracja_haslo.getText();
+        String email = rejestracja_email.getText();
 
-        String bazaSql="INSERT INTO uzytkownik(imie,nazwisko,pesel,login,haslo,mail,rola,weryfikacja) VALUES('";
-        String wpisaneSql=imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + haslo + "','" +email + "','" +"U" + "','" +"0" +"')";
-        String kodSql = bazaSql+wpisaneSql;
+        // zapytanie sprawdzajace czy login lub email jest zajety
+        String query = "SELECT COUNT(id) from uzytkownik where login='" + rejestracja_login.getText() + "' OR mail = '" + rejestracja_email.getText() + " ' ";
 
-        try
-        {
-            if(blad.isBlank())
-            {
-                Statement statement= statusDB.createStatement();
-                statement.executeUpdate(kodSql);
+
+        String bazaSql = "INSERT INTO uzytkownik(imie,nazwisko,pesel,login,haslo,mail,rola,weryfikacja) VALUES('";
+        String wpisaneSql = imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + haslo + "','" + email + "','" + "U" + "','" + "0" + "')";
+        String kodSql = bazaSql + wpisaneSql;
+
+        try {
+            Statement statement = statusDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(query);
+
+
+            queryResult.next();
+
+            if (blad.isBlank()) {
+                if (queryResult.getInt(1) == 0) {
+                    statement.executeUpdate(kodSql);
+                    Powiadomienia.alertRejestracja(blad);
+                    wyczyscButton();
+                } else {
+                    Powiadomienia.alertRejestracjaZajety();
+                }
+            } else {
                 Powiadomienia.alertRejestracja(blad);
-                wyczyscButton();
             }
-            else
-            {
-                Powiadomienia.alertRejestracja(blad);
-            }
-        }
-
-        catch (Exception e)
-        {
-
+        } catch (Exception e) {
+            Powiadomienia.alertBazaDanych();
         }
     }
 
     public void zarejestrujButton(ActionEvent actionEvent) {
         sprawdzRejestracja();
         rejestracjaUzytkownik();
-        //Powiadomienia.alertRejestracja(blad);
+
 
     }
 }

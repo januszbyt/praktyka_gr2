@@ -2,6 +2,20 @@ import javafx.scene.control.Alert;
 
 public class Powiadomienia {
 
+
+
+    //BAZA DANYCH BLAD
+
+    public static void alertBazaDanych()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nie mozna polaczyc z baza danych!");
+
+        porazka.showAndWait();
+    }
+
     // Rejestracja
     public static void alertRejestracja(String blad) {
         //sprawdzenie czy zmienna przechowywujace nieprawidlowe pola jest pusta
@@ -22,6 +36,16 @@ public class Powiadomienia {
             porazka.showAndWait();
         }
 
+    }
+
+    public static void alertRejestracjaZajety ()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Uzytkownik z podanym loginem lub email istnieje! " );
+
+        porazka.showAndWait();
     }
 
 
