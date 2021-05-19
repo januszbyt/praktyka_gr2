@@ -7,13 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="930.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Menugl">
+<AnchorPane prefHeight="450.0" prefWidth="930.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Menugl">
    <children>
       <AnchorPane layoutX="-5.0" prefHeight="483.0" prefWidth="170.0" style="-fx-background-color: #ff8b35;">
          <children>
             <ImageView fitHeight="58.0" fitWidth="170.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../images/logobiale.png" />
+                  <Image url="@../../../images/logobiale.png" />
                </image>
             </ImageView>
             <Label layoutX="7.0" layoutY="58.0" prefHeight="33.0" prefWidth="156.0" stylesheets="@style.css" text="Zalogowano jako" textFill="WHITE">

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Przelew">
+   <children>
+      <Label layoutX="301.0" layoutY="112.0" text="Podaj dane odbiorcy:" />
+      <TextField fx:id="przelew_dane" layoutX="301.0" layoutY="138.0" promptText="Nazwa/Imię i nazwisko" />
+      <TextField fx:id="przelew_numer" layoutX="301.0" layoutY="188.0" promptText="Numer rachunku" />
+      <TextField fx:id="przelew_kwota" layoutX="301.0" layoutY="238.0" promptText="Kwota" />
+      <TextField fx:id="przelew_tytul" layoutX="301.0" layoutY="288.0" promptText="Tytuł" />
+      <ComboBox fx:id="przelew_listarachunek" layoutX="300.0" layoutY="73.0" prefWidth="150.0" promptText="Rachunek" />
+      <Button fx:id="btn_wyczysc" layoutX="95.0" layoutY="405.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btn_potwierdz" layoutX="521.0" layoutY="405.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
