@@ -50,7 +50,7 @@ public class Logowanie implements Initializable {
         haslo = "0";
         zaloguj();
         sprawdz_logowanie();
-        // Powiadomienia.alertLogowanie(blad_logowanie);
+        Powiadomienia.alertLogowanie(blad_logowanie);
 
     }
 

@@ -184,13 +184,13 @@ public class Rejestracja implements Initializable, Serializable {
                     Powiadomienia.alertRejestracja(blad);
                     wyczyscButton();
                 } else {
-             //       Powiadomienia.alertRejestracjaZajety();
+                    Powiadomienia.alertRejestracjaZajety();
                 }
             } else {
                 Powiadomienia.alertRejestracja(blad);
             }
         } catch (Exception e) {
-           //  Powiadomienia.alertBazaDanych();
+             Powiadomienia.alertBazaDanych();
         }
     }
 
