@@ -29,7 +29,7 @@ public class Logowanie implements Initializable {
     public PasswordField logowanie_haslo;
     public Button btn_zaloguj;
     public Button btn_wyczysc;
-    public Button btn_nmk;
+    public  Button btn_nmk;
     public Button btn_zamknij;
     public Label logowanie_haslo_alert;
     public Label logowanie_alert;
@@ -110,5 +110,9 @@ public class Logowanie implements Initializable {
 
     public void zamknij_btn_M(ActionEvent actionEvent) {
         Platform.exit();
+    }
+
+    public void zmienOkno(ActionEvent actionEvent) throws Exception {
+        ZmienOkno.zmienScene("rejestracja.fxml",650,776,btn_nmk);
     }
 }

@@ -100,7 +100,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_mjk" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Masz już konto?" textFill="WHITE">
+        <Button fx:id="btn_mjk" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" onAction="#zmienOkno" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Masz już konto?" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>

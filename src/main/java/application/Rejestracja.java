@@ -200,4 +200,8 @@ public class Rejestracja implements Initializable, Serializable {
 
 
     }
+
+    public void zmienOkno(ActionEvent actionEvent) throws Exception {
+        ZmienOkno.zmienScene("logowanie.fxml",650,776,btn_mjk);
+    }
 }

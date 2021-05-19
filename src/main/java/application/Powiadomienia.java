@@ -28,6 +28,7 @@ public class Powiadomienia {
             sukces.setContentText("Rejestracja zakonczona sukcesem!");
 
             sukces.showAndWait();
+
         } else {//PORAZKA
             Alert porazka = new Alert(Alert.AlertType.ERROR);
             porazka.setTitle("Powiadomienie");

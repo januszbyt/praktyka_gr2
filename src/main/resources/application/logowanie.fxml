@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="776.0" prefWidth="650.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Logowanie">
     <children>
-        <AnchorPane layoutX="-6.0" prefHeight="116.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
+        <AnchorPane layoutX="-6.0" prefHeight="106.0" prefWidth="663.0" style="-fx-background-color: #ff8b35;">
             <children>
                 <ImageView fx:id="logowanie_logo" fitHeight="116.0" fitWidth="279.0" layoutX="180.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -50,7 +50,7 @@
                 <Font name="System Bold" size="15.0" />
             </font>
         </Button>
-        <Button fx:id="btn_nmk" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Nie masz konta?" textFill="WHITE">
+        <Button fx:id="btn_nmk" layoutX="332.0" layoutY="651.0" mnemonicParsing="false" onAction="#zmienOkno" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Nie masz konta?" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="15.0" />
             </font>
