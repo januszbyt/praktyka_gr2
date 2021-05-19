@@ -45,13 +45,15 @@ public class Logowanie implements Initializable {
         logowanie_logo.setImage(zdjecie);
     }
 
-    public void zaloguj_btn_M(ActionEvent actionEvent) {
+    public void zaloguj_btn_M(ActionEvent actionEvent) throws Exception{
         login = "0";
         haslo = "0";
         zaloguj();
         sprawdz_logowanie();
         Powiadomienia.alertLogowanie(blad_logowanie);
-
+        if (login.equals(login_field) && haslo.equals(haslo_field)) {
+            zmien_okno();
+        }
     }
 
     public void zaloguj(){
@@ -72,8 +74,6 @@ public class Logowanie implements Initializable {
             haslo = result.getString(2);
 
 
-
-
         }catch (Exception e){
             e.printStackTrace();
             e.getCause();
@@ -88,16 +88,20 @@ public class Logowanie implements Initializable {
 
         if (login_field.isBlank() && haslo_field.isBlank()){ //Sprawdzam czy pola sa puste
             blad_logowanie += "Nie wypelniono zadnego pola!";
-            System.out.println(blad_logowanie); //Test
+            //System.out.println(blad_logowanie); //Test
         }
         else if (login_field.isBlank() || haslo_field.isBlank()){ //Sprawdzam czy login lub haslo sa puste
             blad_logowanie += "Login lub haslo sa puste";
-            System.out.println(blad_logowanie); //Test
+            //System.out.println(blad_logowanie); //Test
         }else if (!login.equals(login_field) || !haslo.equals(haslo_field)){
 
             blad_logowanie += "Wprowadzono nieprawidlowe dane!";
-            System.out.println(blad_logowanie); //Test
+            //System.out.println(blad_logowanie); //Test
         }
+    }
+
+    public void zmien_okno() throws Exception{
+        ZmienOkno.zmienScene("menugl.fxml",930,483,btn_zaloguj);
     }
 
     public void wyczysc_btn_M(ActionEvent actionEvent) {
