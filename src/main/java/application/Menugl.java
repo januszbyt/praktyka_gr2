@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 public class Menugl implements Initializable {
     public ImageView menugl_logo;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File plik = new File("src/images/logobiale.png");

@@ -54,10 +54,15 @@ public class Logowanie implements Initializable {
         haslo = "0";
         zaloguj();
         sprawdz_logowanie();
-        Powiadomienia.alertLogowanie(blad_logowanie);
+
         if (login.equals(login_field) && haslo.equals(haslo_field)) {
-            Uzytkownik.zaloguj(login);
-            zmien_okno();
+            Uzytkownik sesja = Uzytkownik.zaloguj(login);
+            if (sesja.getWeryfikacja()==1){
+                zmien_okno();
+            }else {
+                blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
+            }
+            Powiadomienia.alertLogowanie(blad_logowanie);
         }
     }
 
@@ -83,7 +88,6 @@ public class Logowanie implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
-
 
     }
 
