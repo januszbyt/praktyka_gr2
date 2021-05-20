@@ -25,7 +25,7 @@ public class Powiadomienia {
             Alert sukces = new Alert(Alert.AlertType.INFORMATION);
             sukces.setTitle("Powiadomienie");
             sukces.setHeaderText(null);
-            sukces.setContentText("Rejestracja zakonczona sukcesem! \n Mozesz zalogowac się na swoje konto!");
+            sukces.setContentText("Rejestracja zakonczona sukcesem! \n Mozesz zalogowac sie na swoje konto!");
 
             sukces.showAndWait();
 
