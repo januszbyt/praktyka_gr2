@@ -188,6 +188,7 @@ public class Rejestracja implements Initializable, Serializable {
                     statement.executeUpdate(kodSql);
                     Powiadomienia.alertRejestracja(blad);
                     wyczyscButton();
+                    ZmienOkno.zmienScene("logowanie.fxml",650,552,btn_mjk);
                 } else {
                     Powiadomienia.alertRejestracjaZajety();
                 }
