@@ -58,6 +58,7 @@ public class Logowanie implements Initializable {
         if (login.equals(login_field) && haslo.equals(haslo_field)) {
             Uzytkownik sesja = Uzytkownik.zaloguj(login);
             if (sesja.getWeryfikacja()==1){
+
                 zmien_okno();
             }else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
@@ -74,6 +75,7 @@ public class Logowanie implements Initializable {
 
             String query = "SELECT login,haslo FROM uzytkownik WHERE login='"+login_field+"' AND haslo='"+haslo_field+"'";
 
+
             DBConnection polaczenie = new DBConnection();
             Connection polacz = polaczenie.getConnection();
 
@@ -84,10 +86,23 @@ public class Logowanie implements Initializable {
             login = result.getString(1);
             haslo = result.getString(2);
 
+            query="SELECT COUNT(id) from uzytkownik where login='"+login+"' and haslo='"+haslo+"'";
+            result=statement.executeQuery(query);
+            result.next();
+            if(result.getInt(1)==1)
+            {
+                String id;
+                query="SELECT id FROM uzytkownik where login ='"+login+"'";
+                result=statement.executeQuery(query);
+                result.next();
+                id=result.getString(1);
+                query="INSERT INTO logi (typ,tresc,uzytkownik) VALUES ('Logowanie','Udane logowanie','"+id+"')";
+                statement.executeUpdate(query);
+            }
 
         }catch (Exception e){
-//            e.printStackTrace();
-//            e.getCause();
+            e.printStackTrace();
+            e.getCause();
         }
 
     }
