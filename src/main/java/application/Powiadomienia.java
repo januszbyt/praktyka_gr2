@@ -71,7 +71,62 @@ public class Powiadomienia {
             porazka.showAndWait();
         }
     }
+
     // Przelew
 
+    public static void alertPrzelewWeryfikacjaRachunkow()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podaj rozne numery rachunkow!");
+        porazka.showAndWait();
+    }
+
+
+    public static void alertPrzelewWeryfikacjaRachunek()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Niepoprawny numer rachunku!");
+        porazka.showAndWait();
+    }
+
+    public static void alertPrzelewWybierzRachunek()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz rachunek!");
+        porazka.showAndWait();
+    }
+
+    public static void alertPrzelewWeryfikacjaSaldo()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Niewystarczajaca ilosc srodkow!");
+        porazka.showAndWait();
+    }
+
+    public static void alertPrzelewWeryfikacjaSaldo2()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Niepoprawna kwota przelewu!");
+        porazka.showAndWait();
+    }
+
+    public static void alertPrzelewSukces()
+    {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Przelew wykonano pomyslnie!");
+        sukces.showAndWait();
+    }
 
 }

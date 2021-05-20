@@ -1,11 +1,9 @@
 package classes;
 
 import application.DBConnection;
+import application.Powiadomienia;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Rachunek {
     // Lista zmiennych
@@ -99,6 +97,66 @@ public class Rachunek {
             return null;
         }
 
+
+    }
+
+    public static boolean weryfikacjaSaldo(Rachunek rachunek, float kwota){
+        if(kwota <= 0)
+        {
+            Powiadomienia.alertPrzelewWeryfikacjaSaldo2();
+            return false;
+        }
+        if(rachunek.saldo < kwota)
+        {
+            Powiadomienia.alertPrzelewWeryfikacjaSaldo();
+            return false;
+        }
+        else return true;
+    }
+
+
+
+    public static void dodajSaldo(Rachunek rachunek, float kwota)
+    {
+        rachunek.saldo += kwota;
+        try {
+
+            DBConnection DBpolaczenie = new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+
+            Statement statement = polaczenie.createStatement();
+            String query = "update rachunek set saldo = "+rachunek.getSaldo()+" where id = "+rachunek.getId();
+            statement.executeUpdate(query);
+
+            polaczenie.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    public static void usunSaldo(Rachunek rachunek, float kwota)
+    {
+        rachunek.saldo -= kwota;
+        System.out.println("pousunieciu "+rachunek.saldo);
+        try {
+
+            DBConnection DBpolaczenie = new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+
+            Statement statement = polaczenie.createStatement();
+            String query = "update rachunek set saldo = "+rachunek.getSaldo()+" where id = "+rachunek.getId();
+            statement.executeUpdate(query);
+
+            polaczenie.close();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
 
     }
 

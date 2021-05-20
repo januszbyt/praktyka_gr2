@@ -10,11 +10,11 @@
 <AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Przelew">
    <children>
       <Label fx:id="przelew_danenazwa" layoutX="521.0" layoutY="121.0" text="Nazwa:" />
-      <TextField fx:id="przelew_dane" layoutX="171.0" layoutY="138.0" promptText="Nazwa/Imię i nazwisko" />
-      <TextField fx:id="przelew_numer" layoutX="171.0" layoutY="188.0" promptText="Numer rachunku" />
-      <TextField fx:id="przelew_kwota" layoutX="171.0" layoutY="238.0" promptText="Kwota" />
-      <TextField fx:id="przelew_tytul" layoutX="171.0" layoutY="288.0" promptText="Tytuł" />
-      <ComboBox fx:id="przelew_listarachunek" layoutX="170.0" layoutY="73.0" onAction="#listarachunekAkcja" prefWidth="150.0" promptText="Rachunek" />
+      <TextField fx:id="przelew_dane" layoutX="171.0" layoutY="138.0" prefHeight="25.0" prefWidth="180.0" promptText="Nazwa/Imię i nazwisko" />
+      <TextField fx:id="przelew_numer" layoutX="171.0" layoutY="188.0" prefHeight="25.0" prefWidth="180.0" promptText="Numer rachunku" />
+      <TextField fx:id="przelew_kwota" layoutX="171.0" layoutY="238.0" prefHeight="25.0" prefWidth="180.0" promptText="Kwota" />
+      <TextField fx:id="przelew_tytul" layoutX="171.0" layoutY="288.0" prefHeight="25.0" prefWidth="180.0" promptText="Tytuł" />
+      <ComboBox fx:id="przelew_listarachunek" layoutX="170.0" layoutY="73.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="180.0" promptText="Rachunek" />
       <Button fx:id="btn_wyczysc" layoutX="95.0" layoutY="405.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -25,7 +25,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="521.0" layoutY="90.0" text="Aktualnie wybrany rachunek:" />
+      <Label layoutX="520.0" layoutY="77.0" text="Aktualnie wybrany rachunek:" />
       <Label fx:id="przelew_danewaluta" layoutX="521.0" layoutY="142.0" text="Waluta:" />
+      <Label fx:id="przelew_danesaldo" layoutX="520.0" layoutY="163.0" text="Saldo:" />
+      <Label fx:id="przelew_danenazwa1" layoutX="569.0" layoutY="121.0" />
+      <Label fx:id="przelew_danewaluta1" layoutX="569.0" layoutY="142.0" />
+      <Label fx:id="przelew_danesaldo1" layoutX="568.0" layoutY="163.0" />
+      <Label fx:id="przelew_numerrachunku" layoutX="520.0" layoutY="98.0" />
    </children>
 </AnchorPane>

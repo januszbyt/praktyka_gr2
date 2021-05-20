@@ -2,6 +2,7 @@ package application;
 
 import classes.Rachunek;
 import classes.Uzytkownik;
+import classes.Waluta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -9,17 +10,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
-import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedList;
-import java.util.List;
+import java.sql.*;
 import java.util.ResourceBundle;
 
 public class Przelew implements Initializable
@@ -34,34 +27,56 @@ public class Przelew implements Initializable
     @FXML
     private ComboBox przelew_listarachunek;
     @FXML
-    private Label przelew_danenazwa, przelew_danewaluta;
+    private Label przelew_numerrachunku, przelew_danenazwa1, przelew_danewaluta1, przelew_danesaldo1;
 
     public Uzytkownik sesja;
-    public Rachunek rachunek;
+    public Rachunek rachunek1,rachunek2;
+    public Waluta waluta1,waluta2;
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Uzytkownik.zaloguj("pkazako");
-        WypelnijListaRachunek(sesja.getId());
+        wypelnijListaRachunek(sesja.getId());
     }
 
 
     public void listarachunekAkcja(ActionEvent event)
     {
-        rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(przelew_listarachunek.getValue()));
-        przelew_danenazwa.setText("Nazwa: "+rachunek.getNazwa());
+        rachunek1 = Rachunek.wczytajRachunek_numer(String.valueOf(przelew_listarachunek.getValue()));
+        waluta1 = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
+        przelew_numerrachunku.setText(rachunek1.getNumer());
+        przelew_danenazwa1.setText(rachunek1.getNazwa());
+        przelew_danewaluta1.setText(waluta1.getSkrot());
+        przelew_danesaldo1.setText(String.valueOf(rachunek1.getSaldo()));
 
     }
 
 
 
-    public void potwierdzButton()
-    {
+
+    public void potwierdzButton() {
 
 
+        rachunek2 = Rachunek.wczytajRachunek_numer(przelew_numer.getText());
+        if(czyistniejeRachunek(przelew_numer.getText()) == false)
+        {
+            Powiadomienia.alertPrzelewWeryfikacjaRachunek();
+
+        }
+        else if(weryfikacjaRachunkow(rachunek1, rachunek2) == true)
+       {
+           if(Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(przelew_kwota.getText()))) {
+               if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
+                   przelejSamaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
+                   wyczyscButton();
+               } else {
 
 
+               }
+           }
+
+       }
 
     }
 
@@ -76,14 +91,70 @@ public class Przelew implements Initializable
     }
 
 
-    public void WypelnijDaneRachunek(Rachunek rachunek){
-        przelew_danenazwa.setText(rachunek.getNazwa());
-        przelew_danewaluta.setText(rachunek.getNazwa());
+    public void przelejSamaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota){
+        Rachunek.usunSaldo(rachunek1, kwota);
+        Rachunek.dodajSaldo(rachunek2, kwota);
+        Powiadomienia.alertPrzelewSukces();
+    }
+
+
+
+    public boolean weryfikacjaRachunkow(Rachunek rachunek1, Rachunek rachunek2){
+
+        if(rachunek1 == null)
+        {
+            Powiadomienia.alertPrzelewWybierzRachunek();
+        }
+        if(rachunek1.getId() == rachunek2.getId())
+        {
+            Powiadomienia.alertPrzelewWeryfikacjaRachunkow();
+            return false;
+        }
+        else return true;
 
     }
 
 
-    public void WypelnijListaRachunek(int uzytkownik)
+    public static boolean czyistniejeRachunek(String numer)
+    {
+
+        try {
+            DBConnection DBpolaczenie= new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+            Statement stat = polaczenie.createStatement();
+
+            ResultSet result = stat.executeQuery("SELECT * FROM rachunek WHERE numer = '"+numer+"';");
+
+
+            if(result.next())
+            {
+                stat.close();
+                polaczenie.close();
+                return true;
+            }
+            else
+            {
+                stat.close();
+                polaczenie.close();
+                return false;
+            }
+
+
+
+
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+
+
+
+    public void wypelnijListaRachunek(int uzytkownik)
     {
         try
         {
