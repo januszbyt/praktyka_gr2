@@ -30,6 +30,9 @@
             <font>
                 <Font size="13.0" />
             </font>
+         <tooltip>
+            <Tooltip text="Podaj Imię:&#10;• od 3 do 20 znaków" />
+         </tooltip>
         </TextField>
         <Label layoutX="163.0" layoutY="223.0" prefHeight="26.0" prefWidth="102.0" text="Nazwisko">
             <font>
@@ -40,6 +43,9 @@
             <font>
                 <Font size="13.0" />
             </font>
+         <tooltip>
+            <Tooltip text="Podaj nazwisko:&#10;• od 3 do 20 znaków" />
+         </tooltip>
         </TextField>
         <Label layoutX="163.0" layoutY="283.0" prefHeight="26.0" prefWidth="102.0" text="Pesel">
             <font>
