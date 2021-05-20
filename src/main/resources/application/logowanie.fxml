@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -29,6 +30,9 @@
             <font>
                 <Font size="13.0" />
             </font>
+         <tooltip>
+            <Tooltip text="Podaj login podany przy rejestracji" />
+         </tooltip>
         </TextField>
         <Label layoutX="163.0" layoutY="282.0" prefHeight="27.0" prefWidth="102.0" text="Hasło">
             <font>
@@ -39,6 +43,9 @@
             <font>
                 <Font size="13.0" />
             </font>
+         <tooltip>
+            <Tooltip text="Podaj hasło podane przy rejestracji" />
+         </tooltip>
         </PasswordField>
         <Button fx:id="btn_zaloguj" layoutX="32.0" layoutY="411.0" mnemonicParsing="false" onAction="#zaloguj_btn_M" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zaloguj" textFill="WHITE">
             <font>

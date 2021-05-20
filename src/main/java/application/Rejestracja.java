@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -25,6 +26,7 @@ import java.util.ResourceBundle;
 public class Rejestracja implements Initializable, Serializable {
 
 
+
 //deklaracja labelów, przycisków itp. z Scen Builder'a
 
     @FXML
@@ -35,6 +37,8 @@ public class Rejestracja implements Initializable, Serializable {
     private PasswordField rejestracja_haslo, rejestracja_haslo2;
     @FXML
     private Button btn_zarejestruj, btn_wyczysc, btn_zamknij,btn_mjk;
+
+
 
 
 
