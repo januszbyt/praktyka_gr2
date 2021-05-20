@@ -3,6 +3,8 @@ package classes;
 import java.sql.*;
 import application.DBConnection;
 
+import javax.security.auth.login.LoginContext;
+
 public class Uzytkownik
 {
     // Lista zmiennych
@@ -124,27 +126,33 @@ public class Uzytkownik
 
 
 
-/*
-    public void zaloguj(String login)
+
+    public static Uzytkownik zaloguj(String login)
     {
-
-         polaczenie= new DBConnection();
-        Connection statusDB= polaczenie.getConnection();
-
+        Uzytkownik sesja = new Uzytkownik();
         try
         {
-            ResultSet result = stat.executeQuery("SELECT * FROM uczen");
-            int id, idKlasy;
-            String imie, nazwisko, pesel;
+
+            DBConnection DBpolaczenie= new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+            Statement stat = polaczenie.createStatement();
+
+            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE login = '"+login+"';");
+
             while(result.next())
             {
-                id = result.getInt("id");
-                imie = result.getString("imie");
-                nazwisko = result.getString("nazwisko");
-                pesel = result.getString("pesel");
-                idKlasy = result.getInt("idKlasy");
-                uczniowie.add(new Uczen(id, imie, nazwisko, pesel, idKlasy));
+                sesja.setId(result.getInt("id"));
+                sesja.setImie(result.getString("imie"));
+                sesja.setNazwisko(result.getString("nazwisko"));
+                sesja.setPesel(result.getString("pesel"));
+                sesja.setLogin(result.getString("login"));
+                sesja.setMail(result.getString("mail"));
+                sesja.setRola(result.getString("rola"));
+                sesja.setWeryfikacja(result.getInt("weryfikacja"));
             }
+            stat.close();
+            polaczenie.close();
+            return sesja;
         }
         catch (SQLException e)
         {
@@ -152,13 +160,81 @@ public class Uzytkownik
             return null;
         }
 
+    }
 
+    public static Uzytkownik wczytajUzytkownik_id(int id)
+    {
+        Uzytkownik uzytkownik = new Uzytkownik();
+        try
+        {
+
+            DBConnection DBpolaczenie= new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+            Statement stat = polaczenie.createStatement();
+
+            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE id = "+id+";");
+
+            while(result.next())
+            {
+                uzytkownik.setId(result.getInt("id"));
+                uzytkownik.setImie(result.getString("imie"));
+                uzytkownik.setNazwisko(result.getString("nazwisko"));
+                uzytkownik.setPesel(result.getString("pesel"));
+                uzytkownik.setLogin(result.getString("login"));
+                uzytkownik.setMail(result.getString("mail"));
+                uzytkownik.setRola(result.getString("rola"));
+                uzytkownik.setWeryfikacja(result.getInt("weryfikacja"));
+            }
+            stat.close();
+            polaczenie.close();
+            return uzytkownik;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    public static Uzytkownik wczytajUzytkownik_login(String login)
+    {
+        Uzytkownik uzytkownik = new Uzytkownik();
+        try
+        {
+
+            DBConnection DBpolaczenie= new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+            Statement stat = polaczenie.createStatement();
+
+            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE login = '"+login+"';");
+
+            while(result.next())
+            {
+                uzytkownik.setId(result.getInt("id"));
+                uzytkownik.setImie(result.getString("imie"));
+                uzytkownik.setNazwisko(result.getString("nazwisko"));
+                uzytkownik.setPesel(result.getString("pesel"));
+                uzytkownik.setLogin(result.getString("login"));
+                uzytkownik.setMail(result.getString("mail"));
+                uzytkownik.setRola(result.getString("rola"));
+                uzytkownik.setWeryfikacja(result.getInt("weryfikacja"));
+            }
+            stat.close();
+            polaczenie.close();
+            return uzytkownik;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
 
     }
 
 
 
-*/
 
 
     // Konstruktory

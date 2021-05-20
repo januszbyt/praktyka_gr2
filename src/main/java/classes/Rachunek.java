@@ -1,5 +1,12 @@
 package classes;
 
+import application.DBConnection;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 public class Rachunek {
     // Lista zmiennych
     private int id;
@@ -53,6 +60,41 @@ public class Rachunek {
     public void setWaluta(int waluta) {
         this.waluta = waluta;
     }
+
+
+
+    public static Rachunek wczytajRachunek_numer(String numer){
+        Rachunek rachunek = new Rachunek();
+        try
+        {
+
+            DBConnection DBpolaczenie= new DBConnection();
+            Connection polaczenie = DBpolaczenie.getConnection();
+            Statement stat = polaczenie.createStatement();
+
+            ResultSet result = stat.executeQuery("SELECT * FROM rachunek WHERE numer = '"+numer+"';");
+
+            while(result.next())
+            {
+                rachunek.setId(result.getInt("id"));
+                rachunek.setNazwa(result.getString("nazwa"));
+                rachunek.setNumer(result.getString("numer"));
+                rachunek.setUzytkownik(result.getInt("uzytkownik"));
+                rachunek.setWaluta(result.getInt("waluta"));
+            }
+            stat.close();
+            polaczenie.close();
+            return rachunek;
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+
+
+    }
+
 
 
     // Konstruktory
