@@ -62,8 +62,9 @@ public class Logowanie implements Initializable {
             }else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
             }
-            Powiadomienia.alertLogowanie(blad_logowanie);
+
         }
+        Powiadomienia.alertLogowanie(blad_logowanie);
     }
 
     public void zaloguj(){
@@ -85,8 +86,8 @@ public class Logowanie implements Initializable {
 
 
         }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
+//            e.printStackTrace();
+//            e.getCause();
         }
 
     }
