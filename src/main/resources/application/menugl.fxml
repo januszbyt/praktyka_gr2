@@ -7,46 +7,46 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="930.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Menugl">
+<AnchorPane prefHeight="534.0" prefWidth="1077.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Menugl">
    <children>
-      <AnchorPane layoutX="-5.0" prefHeight="483.0" prefWidth="170.0" style="-fx-background-color: #ff8b35;">
+      <AnchorPane layoutX="-5.0" prefHeight="534.0" prefWidth="206.0" style="-fx-background-color: #ff8b35;">
          <children>
-            <ImageView fitHeight="58.0" fitWidth="170.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="menugl_logo" fitHeight="74.0" fitWidth="199.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logobiale.png" />
                </image>
             </ImageView>
-            <Label layoutX="7.0" layoutY="58.0" prefHeight="33.0" prefWidth="156.0" stylesheets="@style.css" text="Zalogowano jako" textFill="WHITE">
+            <Label layoutX="25.0" layoutY="86.0" prefHeight="33.0" prefWidth="156.0" stylesheets="@style.css" text="Zalogowano jako" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="10.0" />
+                  <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="12.0" layoutY="236.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Rachunki" textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="236.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Rachunki" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Historia " textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Historia " textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="438.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wyloguj" textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="438.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wyloguj" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="186.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wymiana" textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="186.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wymiana" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="136.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Przelew" textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="136.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Przelew" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zgłoszenia" textFill="#ff8b35">
+            <Button layoutX="28.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zgłoszenia" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

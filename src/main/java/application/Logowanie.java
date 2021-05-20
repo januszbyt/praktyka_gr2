@@ -1,5 +1,6 @@
 package application;
 
+import classes.Uzytkownik;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -46,12 +47,16 @@ public class Logowanie implements Initializable {
     }
 
     public void zaloguj_btn_M(ActionEvent actionEvent) throws Exception{
+
+        // Login kaziks
+        // Haslo kaziks
         login = "0";
         haslo = "0";
         zaloguj();
         sprawdz_logowanie();
         Powiadomienia.alertLogowanie(blad_logowanie);
         if (login.equals(login_field) && haslo.equals(haslo_field)) {
+            Uzytkownik.zaloguj(login);
             zmien_okno();
         }
     }
@@ -101,7 +106,7 @@ public class Logowanie implements Initializable {
     }
 
     public void zmien_okno() throws Exception{
-        ZmienOkno.zmienScene("menugl.fxml",930,483,btn_zaloguj);
+        ZmienOkno.zmienScene("menugl.fxml",1077,534,btn_zaloguj);
     }
 
     public void wyczysc_btn_M(ActionEvent actionEvent) {
