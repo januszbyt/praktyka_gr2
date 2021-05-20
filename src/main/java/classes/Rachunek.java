@@ -12,6 +12,7 @@ public class Rachunek {
     private int id;
     private String nazwa;
     private String numer;
+    private float saldo;
     private int uzytkownik;
     private int waluta;
 
@@ -42,6 +43,11 @@ public class Rachunek {
     public void setNumer(String numer) {
         this.numer = numer;
     }
+
+
+    public float getSaldo() { return saldo; }
+
+    public void setSaldo(float saldo) { this.saldo = saldo; }
 
 
     public int getUzytkownik() {
@@ -79,6 +85,7 @@ public class Rachunek {
                 rachunek.setId(result.getInt("id"));
                 rachunek.setNazwa(result.getString("nazwa"));
                 rachunek.setNumer(result.getString("numer"));
+                rachunek.setSaldo(result.getFloat("saldo"));
                 rachunek.setUzytkownik(result.getInt("uzytkownik"));
                 rachunek.setWaluta(result.getInt("waluta"));
             }
@@ -101,10 +108,11 @@ public class Rachunek {
     public Rachunek() {
     }
 
-    public Rachunek(int id, String nazwa, String numer, int uzytkownik, int waluta) {
+    public Rachunek(int id, String nazwa, String numer, float saldo, int uzytkownik, int waluta) {
         this.id = id;
         this.nazwa = nazwa;
         this.numer = numer;
+        this.saldo = saldo;
         this.uzytkownik = uzytkownik;
         this.waluta = waluta;
     }

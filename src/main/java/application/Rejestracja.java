@@ -109,7 +109,7 @@ public class Rejestracja implements Initializable, Serializable {
         }
 
         // pole email
-        if (weryfikujEmail(rejestracja_email.getText()) == false) {
+        if (weryfikujEmail(rejestracja_email.getText()) == false || rejestracja_email.getLength()>50) {
             blad += "Email\n";
         }
 
@@ -139,7 +139,7 @@ public class Rejestracja implements Initializable, Serializable {
             int lastNumber = check % 10;
             int controlNumber = 10 - lastNumber;
 
-            if (controlNumber == jedenastaCyfra) {
+            if (controlNumber == jedenastaCyfra || (controlNumber==10 && jedenastaCyfra==0)) {
                 return true;
             }
 
