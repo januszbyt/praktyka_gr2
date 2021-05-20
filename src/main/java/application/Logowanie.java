@@ -86,7 +86,7 @@ public class Logowanie implements Initializable {
             login = result.getString(1);
             haslo = result.getString(2);
 
-            query="SELECT COUNT(id) from uzytkownik where login='"+login+"' and haslo='"+haslo+"'";
+            query="SELECT COUNT(id) from uzytkownik where login='"+login+"' and haslo='"+haslo+"' and weryfikacja=1";
             result=statement.executeQuery(query);
             result.next();
             if(result.getInt(1)==1)
@@ -101,8 +101,9 @@ public class Logowanie implements Initializable {
             }
 
         }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
+           // e.printStackTrace();
+           // e.getCause();
+
         }
 
     }
