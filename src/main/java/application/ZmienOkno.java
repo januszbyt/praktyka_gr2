@@ -1,5 +1,6 @@
 package application;
 
+import classes.Uzytkownik;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,4 +20,7 @@ public class ZmienOkno {
         Stage window = (Stage)button.getScene().getWindow();
         window.setScene(new Scene(root, x, y));
     }
+
+
+
 }
