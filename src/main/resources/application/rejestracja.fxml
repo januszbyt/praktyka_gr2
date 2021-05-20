@@ -56,6 +56,9 @@
             <font>
                 <Font size="13.0" />
             </font>
+         <tooltip>
+            <Tooltip text="Pesel:&#10;• 11 znaków" />
+         </tooltip>
         </TextField>
         <Label layoutX="163.0" layoutY="342.0" prefHeight="26.0" prefWidth="102.0" text="Login">
             <font>
@@ -80,7 +83,7 @@
                 <Font size="13.0" />
             </font>
          <tooltip>
-            <Tooltip fx:id="ttHaslo" text="Podaj hasło&#10;• Od 5 do 20 znaków" />
+            <Tooltip fx:id="ttHaslo" text="Podaj hasło:&#10;• Od 5 do 20 znaków" />
          </tooltip>
         </PasswordField>
         <Label layoutX="164.0" layoutY="461.0" prefHeight="27.0" prefWidth="153.0" text="Powtórz hasło">
@@ -103,7 +106,7 @@
                 <Font size="13.0" />
             </font>
          <tooltip>
-            <Tooltip text="Podaj e-mail&#10;• E-mail musi zawierać symbol @&#10;• E-mail nie może rozpoczynać się od znaków . / , \ !  # $ % &amp; ' * + - = ? ^ _ ` { | } ~&#10;• E-mail może zwierać litery A-z oraz liczby 0-9" />
+            <Tooltip text="Podaj e-mail:&#10;• E-mail musi zawierać symbol @&#10;• E-mail nie może rozpoczynać się od znaków . / , \ !  # $ % &amp; ' * + - = ? ^ _ ` { | } ~&#10;• E-mail może zwierać litery A-z oraz liczby 0-9" />
          </tooltip>
         </TextField>
         <Button fx:id="btn_zarejestruj" layoutX="23.0" layoutY="651.0" mnemonicParsing="false" onAction="#zarejestrujButton" prefHeight="40.0" prefWidth="279.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Zarejestruj" textFill="WHITE">
