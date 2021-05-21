@@ -133,7 +133,6 @@ public class Wymiana implements Initializable {
             String skrot1 = wymiana_danewaluta.getText();
             String skrot2 = wymiana_danewaluta2.getText();
         double kurs1, kurs2;
-            System.out.println(skrot1+" "+skrot2);
 
         if(jestLiczba(wymiana_kwota.getText()) == true)
         {
