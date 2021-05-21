@@ -62,6 +62,8 @@ public class Logowanie implements Initializable {
                 zmien_okno();
             }else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
+                Powiadomienia.alertLogowanie(blad_logowanie);
+
             }
 
         }
