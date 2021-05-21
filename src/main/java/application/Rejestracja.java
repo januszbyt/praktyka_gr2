@@ -2,6 +2,7 @@ package application;
 
 import application.Powiadomienia;
 import application.DBConnection;
+import classes.Hash;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -173,7 +174,7 @@ public class Rejestracja implements Initializable, Serializable {
 
 
         String bazaSql = "INSERT INTO uzytkownik(imie,nazwisko,pesel,login,haslo,mail,rola,weryfikacja) VALUES('";
-        String wpisaneSql = imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + haslo + "','" + email + "','" + "U" + "','" + "0" + "')";
+        String wpisaneSql = imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + Hash.getHash(haslo) + "','" + email + "','" + "U" + "','" + "0" + "')";
         String kodSql = bazaSql + wpisaneSql;
 
         try {

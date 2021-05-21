@@ -1,5 +1,6 @@
 package application;
 
+import classes.Hash;
 import classes.Uzytkownik;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -55,7 +56,7 @@ public class Logowanie implements Initializable {
         zaloguj();
         sprawdz_logowanie();
 
-        if (login.equals(login_field) && haslo.equals(haslo_field)) {
+        if (login.equals(login_field) && Hash.checkHash(haslo_field,haslo)) {
             Uzytkownik sesja = Uzytkownik.zaloguj(login);
             if (sesja.getWeryfikacja()==1){
 
@@ -124,7 +125,7 @@ public class Logowanie implements Initializable {
         else if (login_field.isBlank() || haslo_field.isBlank()){ //Sprawdzam czy login lub haslo sa puste
             blad_logowanie += "Login lub haslo sa puste";
             //System.out.println(blad_logowanie); //Test
-        }else if (!login.equals(login_field) || !haslo.equals(haslo_field)){
+        }else if (!login.equals(login_field) || !Hash.checkHash(haslo_field,haslo)){
 
             blad_logowanie += "Wprowadzono nieprawidlowe dane!";
             //System.out.println(blad_logowanie); //Test
