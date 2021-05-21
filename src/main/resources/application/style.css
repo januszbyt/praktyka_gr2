@@ -36,3 +36,21 @@
     -fx-background-color: #a9a9a9 , white , white;
     -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 3 -1;
 }
+
+.label{
+    
+    -fx-border: 50px, solid black;
+    -fx-border-radius: 50px;
+    -fx-border-color: #ff8b35;
+    -fx-alignment: center;
+}
+
+#tfprzelew{
+    -fx-alignment: center;
+    -fx-background-radius: 50; 
+}
+#tfprzelew:focused{
+    -fx-border-color:#ff8b35;
+    -fx-border: 50px, solid black;
+    -fx-border-radius: 50px; 
+}
