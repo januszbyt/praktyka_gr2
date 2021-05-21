@@ -58,14 +58,15 @@ public class Logowanie implements Initializable {
         if (login.equals(login_field) && haslo.equals(haslo_field)) {
             Uzytkownik sesja = Uzytkownik.zaloguj(login);
             if (sesja.getWeryfikacja()==1){
-
+                Powiadomienia.alertLogowanie(blad_logowanie);
                 zmien_okno();
             }else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
             }
 
         }
-        Powiadomienia.alertLogowanie(blad_logowanie);
+        else {Powiadomienia.alertLogowanie(blad_logowanie);}
+
     }
 
     public void zaloguj(){
