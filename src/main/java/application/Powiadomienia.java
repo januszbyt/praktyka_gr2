@@ -120,13 +120,54 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewSukces(String numer1, String numer2, double Kwota1, double Kwota2, String skrot1, String skrot2)
+    public static void alertPrzelewSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2)
     {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
         sukces.setHeaderText(null);
-        sukces.setContentText("Przelew wykonano pomyslnie!\nNadawca: "+numer1+"\nOdbiorca: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
+        sukces.setContentText("Przelew wykonany pomyslnie!\nNadawca: "+numer1+"\nOdbiorca: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
         sukces.showAndWait();
     }
+
+    // Wymiana
+
+    public static void alertWymianaWeryfikacjaRachunkow()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podano ten sam rachunek. Wybierz inny rachunek!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWymianaWybierzRachunek()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz odpowiednie rachunki!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWymianaKwota()
+    {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podaj odpowiednia kwote!");
+        porazka.showAndWait();
+    }
+
+
+    public static void alertWymianaSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2)
+    {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Wymiana wykonana pomyslnie!\nSprzedaz: "+numer1+"\nKupno: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
+        sukces.showAndWait();
+    }
+
+
 
 }

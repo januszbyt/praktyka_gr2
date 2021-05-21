@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class Przelew implements Initializable
@@ -33,7 +34,7 @@ public class Przelew implements Initializable
 
     public Uzytkownik sesja;
     public Rachunek rachunek1,rachunek2;
-    public Waluta waluta1,waluta2;
+    public Waluta waluta1, waluta2;
 
 
     @Override
@@ -100,8 +101,8 @@ public class Przelew implements Initializable
         Rachunek.usunSaldo(rachunek1, kwota);
         Rachunek.dodajSaldo(rachunek2, kwota);
         Waluta waluta = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
-        kwota = Math.round(kwota*100)/100;
-        Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), kwota, kwota, waluta.getSkrot(), waluta.getSkrot());
+        DecimalFormat df = new DecimalFormat("###.##");
+        Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
     }
 
     public void przelejInnaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota)
@@ -126,9 +127,9 @@ public class Przelew implements Initializable
 
         Rachunek.usunSaldo(rachunek1, kwota);
         Rachunek.dodajSaldo(rachunek2, kwota2);
-        kwota = Math.round(kwota*100)/100;
-        kwota2 = Math.round(kwota2*100)/100;
-        Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), kwota, kwota2, waluta1.getSkrot(), waluta2.getSkrot());
+        DecimalFormat df = new DecimalFormat("###.##");
+
+        Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
     }
 
 

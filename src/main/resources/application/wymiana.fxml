@@ -7,41 +7,56 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
+<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
     <children>
-        <Label layoutX="166.0" layoutY="86.0" text="Sprzedaj">
+        <Label layoutX="161.0" layoutY="64.0" text="Sprzedaż">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <Label layoutX="179.0" layoutY="182.0" text="Kup">
+        <Label layoutX="516.0" layoutY="64.0" text="Kupno">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <ComboBox layoutX="300.0" layoutY="82.0" prefWidth="150.0" />
-        <ComboBox layoutX="300.0" layoutY="178.0" prefWidth="150.0" />
-        <TextField layoutX="301.0" layoutY="269.0" />
-        <Label layoutX="173.0" layoutY="273.0" text="Kwota">
+        <ComboBox fx:id="wymiana_listarachunek1" layoutX="101.0" layoutY="100.0" onAction="#listarachunek1Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" />
+        <ComboBox fx:id="wymiana_listarachunek2" layoutX="450.0" layoutY="100.0" onAction="#listarachunek2Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" />
+        <TextField fx:id="wymiana_kwota" layoutX="301.0" layoutY="292.0" onAction="#aktualizujPodglad" onKeyTyped="#aktualizujPodglad" />
+        <Label layoutX="357.0" layoutY="265.0" text="Kwota">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <Button layoutX="66.0" layoutY="400.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Anuluj" textFill="WHITE">
+        <Button fx:id="btn_wyczysc" layoutX="66.0" layoutY="400.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="301.0" layoutY="400.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+        <Button fx:id="btn_potwierdz" layoutX="535.0" layoutY="400.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="535.0" layoutY="400.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
-            <font>
-                <Font name="System Bold" size="13.0" />
-            </font>
-        </Button>
+      <Label layoutX="102.0" layoutY="183.0" text="Nazwa:" />
+      <Label layoutX="101.0" layoutY="139.0" text="Aktualnie wybrany rachunek:" />
+      <Label layoutX="102.0" layoutY="204.0" text="Waluta:" />
+      <Label layoutX="101.0" layoutY="225.0" text="Saldo:" />
+      <Label fx:id="wymiana_danenazwa" layoutX="150.0" layoutY="183.0" />
+      <Label fx:id="wymiana_danewaluta" layoutX="150.0" layoutY="204.0" />
+      <Label fx:id="wymiana_danesaldo" layoutX="149.0" layoutY="225.0" />
+      <Label fx:id="wymiana_numerrachunku" layoutX="101.0" layoutY="160.0" />
+      <Label layoutX="451.0" layoutY="184.0" text="Nazwa:" />
+      <Label layoutX="450.0" layoutY="139.0" text="Aktualnie wybrany rachunek:" />
+      <Label layoutX="451.0" layoutY="205.0" text="Waluta:" />
+      <Label layoutX="450.0" layoutY="226.0" text="Saldo:" />
+      <Label fx:id="wymiana_danenazwa2" layoutX="499.0" layoutY="184.0" />
+      <Label fx:id="wymiana_danewaluta2" layoutX="499.0" layoutY="205.0" />
+      <Label fx:id="wymiana_danesaldo2" layoutX="498.0" layoutY="226.0" />
+      <Label fx:id="wymiana_numerrachunku2" layoutX="450.0" layoutY="161.0" />
+      <Label fx:id="wymiana_podglad" layoutX="301.0" layoutY="333.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
     </children>
 </AnchorPane>
