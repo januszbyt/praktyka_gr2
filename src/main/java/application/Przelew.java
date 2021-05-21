@@ -167,6 +167,7 @@ public class Przelew implements Initializable
     {
 
         try {
+
             DBConnection DBpolaczenie= new DBConnection();
             Connection polaczenie = DBpolaczenie.getConnection();
             Statement stat = polaczenie.createStatement();
