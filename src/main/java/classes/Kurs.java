@@ -15,9 +15,9 @@ import com.google.gson.Gson;
 
 public class Kurs {
     private  float mnoznik;
-    public String BaseURL = "http://api.nbp.pl/api";
+    public static String BaseURL = "http://api.nbp.pl/api";
 
-    public double getKurs(String skrotWaluty) throws IOException, InterruptedException {
+    public static double getKurs(String skrotWaluty) throws IOException, InterruptedException {
         Gson gson = new Gson();
         var client = HttpClient.newHttpClient();
 

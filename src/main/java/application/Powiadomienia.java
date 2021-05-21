@@ -120,12 +120,12 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewSukces()
+    public static void alertPrzelewSukces(String numer1, String numer2, double Kwota1, double Kwota2, String skrot1, String skrot2)
     {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
         sukces.setHeaderText(null);
-        sukces.setContentText("Przelew wykonano pomyslnie!");
+        sukces.setContentText("Przelew wykonano pomyslnie!\nNadawca: "+numer1+"\nOdbiorca: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
         sukces.showAndWait();
     }
 

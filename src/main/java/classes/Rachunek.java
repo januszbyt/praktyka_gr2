@@ -141,7 +141,6 @@ public class Rachunek {
     public static void usunSaldo(Rachunek rachunek, float kwota)
     {
         rachunek.saldo -= kwota;
-        System.out.println("pousunieciu "+rachunek.saldo);
         try {
 
             DBConnection DBpolaczenie = new DBConnection();
