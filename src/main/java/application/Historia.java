@@ -1,6 +1,7 @@
 package application;
 
 import classes.Uzytkownik;
+import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -33,7 +34,7 @@ public class Historia implements Initializable
     private Uzytkownik sesja;
     private int id;
     private String wybor;
-    private String query="select * from logi where uzytkownik=11";
+    private String query="select * from logi where uzytkownik=12";
     private ObservableList<String> lista=FXCollections.observableArrayList();
 
     public void listaHistoriaAkcja(ActionEvent event)
@@ -70,19 +71,46 @@ public class Historia implements Initializable
             String kwota;
             String tresc;
 
-            while(result.next())
-            {
-                data = result.getString("data");
-                typ = result.getString("typ");
-                rachunek = result.getString("rachunek");
-                kwota = result.getString("kwota");
-                tresc = result.getString("uzytkownik");
 
-            historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+            switch (wybor){ // Rozpoczęcie switch case
+                case "Wszystko":
+                    historia_text.getItems().clear();
+                    while(result.next())
+                    {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
 
+                        historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                        System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                    }
+                    break;
+                case "Logowanie":
+                    historia_text.getItems().clear();
+                    while(result.next())
+                    {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
 
-                System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                        historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t\t\t\t"+tresc);
+                        System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                    }
+                    break;
+                case "Przelewy przychodzace":
+                    historia_text.getItems().clear();
+                    //kod
+                    break;
+                case "Przelwy wychodzace":
+                    historia_text.getItems().clear();
+                    //kod
+                    break;
             }
+
 
         }
         catch (SQLException e)
@@ -91,6 +119,7 @@ public class Historia implements Initializable
         }
 
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijListe();
