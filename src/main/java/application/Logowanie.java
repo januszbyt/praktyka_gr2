@@ -25,20 +25,19 @@ public class Logowanie implements Initializable {
 
     // Zmienne ----------------
 
-    public String login,haslo,login_field,haslo_field,blad_logowanie;
+    public String login, haslo, login_field, haslo_field, blad_logowanie;
 
     //--------------------------
     public TextField logowanie_login;
     public PasswordField logowanie_haslo;
     public Button btn_zaloguj;
     public Button btn_wyczysc;
-    public  Button btn_nmk;
+    public Button btn_nmk;
     public Button btn_zamknij;
     public Label logowanie_haslo_alert;
     public Label logowanie_alert;
     @FXML
     private ImageView logowanie_logo;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -48,7 +47,7 @@ public class Logowanie implements Initializable {
         logowanie_logo.setImage(zdjecie);
     }
 
-    public void zaloguj_btn_M(ActionEvent actionEvent) throws Exception{
+    public void zaloguj_btn_M(ActionEvent actionEvent) throws Exception {
 
         // Login kaziks
         // Haslo kaziks
@@ -57,9 +56,9 @@ public class Logowanie implements Initializable {
         zaloguj();
         sprawdz_logowanie();
 
-        if (login.equals(login_field) && Hash.checkHash(haslo_field,haslo)) {
+        if (login.equals(login_field) && Hash.checkHash(haslo_field, haslo)) {
             Uzytkownik sesja = Uzytkownik.zaloguj(login);
-            if (sesja.getWeryfikacja()==1){
+            if (sesja.getWeryfikacja() == 1) {
 
                 DBConnection polaczenie = new DBConnection();
                 Connection polacz = polaczenie.getConnection();
@@ -69,31 +68,31 @@ public class Logowanie implements Initializable {
                 String query;
                 String id;
 
-                query="SELECT id FROM uzytkownik where login ='"+login+"'";
-                result=statement.executeQuery(query);
+                query = "SELECT id FROM uzytkownik where login ='" + login + "'";
+                result = statement.executeQuery(query);
                 result.next();
-                id=result.getString(1);
+                id = result.getString(1);
                 statement.executeUpdate(Logi.logLogowanie(id));
                 Powiadomienia.alertLogowanie(blad_logowanie);
                 zmien_okno();
-            }else {
+            } else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
                 Powiadomienia.alertLogowanie(blad_logowanie);
 
             }
 
+        } else {
+            Powiadomienia.alertLogowanie(blad_logowanie);
         }
-        else {Powiadomienia.alertLogowanie(blad_logowanie);}
 
     }
 
-    public void zaloguj(){
+    public void zaloguj() {
         login_field = logowanie_login.getText(); //Przypisanie loginu i hasla z textfield do zmiennych
         haslo_field = logowanie_haslo.getText();
-        try{
+        try {
 
-            String query = "SELECT login,haslo FROM uzytkownik WHERE login='"+login_field+"'";
-
+            String query = "SELECT login,haslo FROM uzytkownik WHERE login='" + login_field + "'";
 
             DBConnection polaczenie = new DBConnection();
             Connection polacz = polaczenie.getConnection();
@@ -105,40 +104,39 @@ public class Logowanie implements Initializable {
             login = result.getString(1);
             haslo = result.getString(2);
 
-        }catch (Exception e){
-           // e.printStackTrace();
-           // e.getCause();
+        } catch (Exception e) {
+            // e.printStackTrace();
+            // e.getCause();
 
         }
 
     }
 
-    public void sprawdz_logowanie(){
+    public void sprawdz_logowanie() {
         blad_logowanie = "\n"; //czyszczenie zmiennej
 
-
-        if (login_field.isBlank() && haslo_field.isBlank()){ //Sprawdzam czy pola sa puste
+        if (login_field.isBlank() && haslo_field.isBlank()) { //Sprawdzam czy pola sa puste
             blad_logowanie += "Nie wypelniono zadnego pola!";
             //System.out.println(blad_logowanie); //Test
-        }
-        else if (login_field.isBlank() || haslo_field.isBlank()){ //Sprawdzam czy login lub haslo sa puste
+        } else if (login_field.isBlank() || haslo_field.isBlank()) { //Sprawdzam czy login lub haslo sa puste
             blad_logowanie += "Login lub haslo sa puste";
             //System.out.println(blad_logowanie); //Test
-        }else if (!login.equals(login_field) || !Hash.checkHash(haslo_field,haslo)){
+        } else if (!login.equals(login_field) || !Hash.checkHash(haslo_field, haslo)) {
 
             blad_logowanie += "Wprowadzono nieprawidlowe dane!";
             //System.out.println(blad_logowanie); //Test
         }
     }
 
-    public void zmien_okno() throws Exception{
-        ZmienOkno.zmienScene("menugl.fxml",1077,534,btn_zaloguj);
+    public void zmien_okno() throws Exception {
+        ZmienOkno.zmienScene("menugl.fxml", 1077, 534, btn_zaloguj);
     }
 
     public void wyczysc_btn_M(ActionEvent actionEvent) {
         wyczysc();
     }
-    public void wyczysc(){
+
+    public void wyczysc() {
         logowanie_login.setText("");
         logowanie_haslo.setText("");
     }
@@ -148,6 +146,6 @@ public class Logowanie implements Initializable {
     }
 
     public void zmienOkno(ActionEvent actionEvent) throws Exception {
-        ZmienOkno.zmienScene("rejestracja.fxml",650,776,btn_nmk);
+        ZmienOkno.zmienScene("rejestracja.fxml", 650, 776, btn_nmk);
     }
 }

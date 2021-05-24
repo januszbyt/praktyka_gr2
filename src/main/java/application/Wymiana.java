@@ -38,11 +38,6 @@ public class Wymiana implements Initializable {
     public Rachunek rachunek1, rachunek2;
     public Waluta waluta1, waluta2;
 
-
-
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Uzytkownik.zaloguj("pkazako");
@@ -50,36 +45,27 @@ public class Wymiana implements Initializable {
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek2);
     }
 
-    public void potwierdzButton(){
-        if(wymiana_numerrachunku.getText().isEmpty() || wymiana_numerrachunku2.getText().isEmpty() )
-        {
+    public void potwierdzButton() {
+        if (wymiana_numerrachunku.getText().isEmpty() || wymiana_numerrachunku2.getText().isEmpty()) {
             Powiadomienia.alertWymianaWybierzRachunek();
-        }
-        else if(wymiana_kwota.getText().isEmpty())
-        {
-           Powiadomienia.alertWymianaKwota();
+        } else if (wymiana_kwota.getText().isEmpty()) {
+            Powiadomienia.alertWymianaKwota();
 
-        }
-        else if(weryfikacjaRachunkow(rachunek1, rachunek2) == true)
-            {
-                if(Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(wymiana_kwota.getText()))) {
-                    if (rachunek1.getWaluta() == rachunek2.getWaluta())
-                    {
-                        wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
-                        wyczyscButton();
-                    }
-                    else {
-                        wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
-                        wyczyscButton();
+        } else if (weryfikacjaRachunkow(rachunek1, rachunek2) == true) {
+            if (Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(wymiana_kwota.getText()))) {
+                if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
+                    wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
+                    wyczyscButton();
+                } else {
+                    wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
+                    wyczyscButton();
 
-                    }
                 }
-
             }
 
+        }
 
     }
-
 
     public void wyczyscButton()   // Guzik wyczyszczenia pola
     {
@@ -87,21 +73,16 @@ public class Wymiana implements Initializable {
         wymiana_podglad.setText("");
     }
 
+    public boolean weryfikacjaRachunkow(Rachunek rachunek1, Rachunek rachunek2) {
 
-    public boolean weryfikacjaRachunkow(Rachunek rachunek1, Rachunek rachunek2){
-
-        if(rachunek1.getId() == rachunek2.getId())
-        {
+        if (rachunek1.getId() == rachunek2.getId()) {
             Powiadomienia.alertWymianaWeryfikacjaRachunkow();
             return false;
-        }
-        else return true;
+        } else return true;
 
     }
 
-
-    public void listarachunek1Akcja(ActionEvent event)
-    {
+    public void listarachunek1Akcja(ActionEvent event) {
         rachunek1 = Rachunek.wczytajRachunek_numer(String.valueOf(wymiana_listarachunek1.getValue()));
         waluta1 = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
         wymiana_numerrachunku.setText(rachunek1.getNumer());
@@ -112,8 +93,7 @@ public class Wymiana implements Initializable {
 
     }
 
-    public void listarachunek2Akcja(ActionEvent event)
-    {
+    public void listarachunek2Akcja(ActionEvent event) {
         rachunek2 = Rachunek.wczytajRachunek_numer(String.valueOf(wymiana_listarachunek2.getValue()));
         waluta2 = Waluta.wczytajWaluta_id(rachunek2.getWaluta());
         wymiana_numerrachunku2.setText(rachunek2.getNumer());
@@ -124,65 +104,55 @@ public class Wymiana implements Initializable {
 
     }
 
-
     public void aktualizujPodglad() {
 
-        if (!wymiana_danewaluta.getText().isEmpty() && !wymiana_danewaluta2.getText().isEmpty() && !wymiana_kwota.getText().isEmpty())
-        {
+        if (!wymiana_danewaluta.getText().isEmpty() && !wymiana_danewaluta2.getText().isEmpty() && !wymiana_kwota.getText().isEmpty()) {
             DecimalFormat df = new DecimalFormat("###.##");
             String skrot1 = wymiana_danewaluta.getText();
             String skrot2 = wymiana_danewaluta2.getText();
-        double kurs1, kurs2;
+            double kurs1, kurs2;
 
-        if(jestLiczba(wymiana_kwota.getText()) == true)
-        {
-            double kwota = Double.parseDouble(wymiana_kwota.getText());
-            if (kwota >= 0) {
-                if (!skrot1.equals("PLN")) {
-                    kurs1 = sprawdzWaluta2(skrot1);
-                } else kurs1 = 1.0;
+            if (jestLiczba(wymiana_kwota.getText()) == true) {
+                double kwota = Double.parseDouble(wymiana_kwota.getText());
+                if (kwota >= 0) {
+                    if (!skrot1.equals("PLN")) {
+                        kurs1 = sprawdzWaluta2(skrot1);
+                    } else kurs1 = 1.0;
 
-                if (!skrot2.equals("PLN")) {
-                    kurs2 = sprawdzWaluta2(skrot2);
-                } else kurs2 = 1.0;
+                    if (!skrot2.equals("PLN")) {
+                        kurs2 = sprawdzWaluta2(skrot2);
+                    } else kurs2 = 1.0;
 
-                Double przelicznik = kurs1 / kurs2;
-                kwota = kwota * przelicznik;
+                    Double przelicznik = kurs1 / kurs2;
+                    kwota = kwota * przelicznik;
 
-                wymiana_podglad.setText(df.format(kwota) + " " + skrot2);
+                    wymiana_podglad.setText(df.format(kwota) + " " + skrot2);
 
+                }
             }
         }
-        }
-        }
+    }
 
-
-    public void wypelnijListaRachunek(int uzytkownik, ComboBox listarachunek)
-    {
-        try
-        {
-            DBConnection DBpolaczenie= new DBConnection();
+    public void wypelnijListaRachunek(int uzytkownik, ComboBox listarachunek) {
+        try {
+            DBConnection DBpolaczenie = new DBConnection();
             Connection polaczenie = DBpolaczenie.getConnection();
             Statement stat = polaczenie.createStatement();
 
-
-            ResultSet result = stat.executeQuery("SELECT numer FROM rachunek WHERE uzytkownik = "+uzytkownik+";");
+            ResultSet result = stat.executeQuery("SELECT numer FROM rachunek WHERE uzytkownik = " + uzytkownik + ";");
             String numer;
-            while(result.next())
-            {
+            while (result.next()) {
                 numer = result.getString("numer");
                 listarachunek.getItems().add(numer);
 
             }
 
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void wymienSamaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota){
+    public void wymienSamaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota) {
         Rachunek.usunSaldo(rachunek1, kwota);
         Rachunek.dodajSaldo(rachunek2, kwota);
         Waluta waluta = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
@@ -190,21 +160,18 @@ public class Wymiana implements Initializable {
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
     }
 
-    public void wymienInnaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota)
-    {
+    public void wymienInnaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota) {
         double kurs1 = 0;
         double kurs2 = 0;
         Waluta waluta1 = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
         Waluta waluta2 = Waluta.wczytajWaluta_id(rachunek2.getWaluta());
-        if(!waluta1.getSkrot().equals("PLN"))
-        {
+        if (!waluta1.getSkrot().equals("PLN")) {
             kurs1 = sprawdzWaluta(waluta1);
-        }else kurs1 = 1.0;
+        } else kurs1 = 1.0;
 
-        if(!waluta2.getSkrot().equals("PLN"))
-        {
+        if (!waluta2.getSkrot().equals("PLN")) {
             kurs2 = sprawdzWaluta(waluta2);
-        }else kurs2 = 1.0;
+        } else kurs2 = 1.0;
 
         Double przelicznik = kurs1 / kurs2;
         float kwota2 = kwota;
@@ -217,8 +184,7 @@ public class Wymiana implements Initializable {
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
     }
 
-    public boolean jestLiczba(String tekst)
-    {
+    public boolean jestLiczba(String tekst) {
         try {
             int wartosc = Integer.parseInt(tekst);
             return true;
@@ -228,8 +194,7 @@ public class Wymiana implements Initializable {
 
     }
 
-    public double sprawdzWaluta(Waluta waluta)
-    {
+    public double sprawdzWaluta(Waluta waluta) {
         try {
             return Kurs.getKurs(waluta.getSkrot());
         } catch (IOException e) {
@@ -240,8 +205,7 @@ public class Wymiana implements Initializable {
         return 0;
     }
 
-    public double sprawdzWaluta2(String skrot)
-    {
+    public double sprawdzWaluta2(String skrot) {
         try {
             return Kurs.getKurs(skrot);
         } catch (IOException e) {

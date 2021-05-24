@@ -15,12 +15,10 @@ public class ZmienOkno {
     -nazwe dowolnego przycisku z aktualnego okna
      */
 
-    public static void zmienScene( String fxml,int x, int y, Button button  ) throws Exception {
+    public static void zmienScene(String fxml, int x, int y, Button button) throws Exception {
         Parent root = FXMLLoader.load(ZmienOkno.class.getResource(fxml));
-        Stage window = (Stage)button.getScene().getWindow();
+        Stage window = (Stage) button.getScene().getWindow();
         window.setScene(new Scene(root, x, y));
     }
-
-
 
 }

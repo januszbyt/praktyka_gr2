@@ -1,14 +1,12 @@
 package application;
+
 import javafx.scene.control.Alert;
 
 public class Powiadomienia {
 
-
-
     //BAZA DANYCH BLAD
 
-    public static void alertBazaDanych()
-    {
+    public static void alertBazaDanych() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -29,7 +27,6 @@ public class Powiadomienia {
 
             sukces.showAndWait();
 
-
         } else {//PORAZKA
             Alert porazka = new Alert(Alert.AlertType.ERROR);
             porazka.setTitle("Powiadomienie");
@@ -41,28 +38,26 @@ public class Powiadomienia {
 
     }
 
-    public static void alertRejestracjaZajety ()
-    {
+    public static void alertRejestracjaZajety() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
-        porazka.setContentText("Uzytkownik z podanym loginem lub email istnieje! " );
+        porazka.setContentText("Uzytkownik z podanym loginem lub email istnieje! ");
 
         porazka.showAndWait();
     }
 
-
     // Logowanie
 
-    public static void alertLogowanie(String blad_logowania){
-        if(blad_logowania.isBlank()){ //sukces
+    public static void alertLogowanie(String blad_logowania) {
+        if (blad_logowania.isBlank()) { //sukces
             Alert sukces = new Alert(Alert.AlertType.INFORMATION);
             sukces.setTitle("Powiadomienie");
             sukces.setHeaderText(null);
             sukces.setContentText("Pomyslnie zalogowano!");
 
             sukces.showAndWait();
-        }else { // porazka
+        } else { // porazka
             Alert porazka = new Alert(Alert.AlertType.INFORMATION);
             porazka.setTitle("Powiadomienie");
             porazka.setHeaderText(null);
@@ -74,8 +69,7 @@ public class Powiadomienia {
 
     // Przelew
 
-    public static void alertPrzelewWeryfikacjaRachunkow()
-    {
+    public static void alertPrzelewWeryfikacjaRachunkow() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -83,9 +77,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-
-    public static void alertPrzelewWeryfikacjaRachunek()
-    {
+    public static void alertPrzelewWeryfikacjaRachunek() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -93,8 +85,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewWybierzRachunek()
-    {
+    public static void alertPrzelewWybierzRachunek() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -102,8 +93,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewWeryfikacjaSaldo()
-    {
+    public static void alertPrzelewWeryfikacjaSaldo() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -111,8 +101,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewWeryfikacjaSaldo2()
-    {
+    public static void alertPrzelewWeryfikacjaSaldo2() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -120,19 +109,17 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertPrzelewSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2)
-    {
+    public static void alertPrzelewSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2) {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
         sukces.setHeaderText(null);
-        sukces.setContentText("Przelew wykonany pomyslnie!\nNadawca: "+numer1+"\nOdbiorca: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
+        sukces.setContentText("Przelew wykonany pomyslnie!\nNadawca: " + numer1 + "\nOdbiorca: " + numer2 + "\n" + Kwota1 + " " + skrot1 + " --> " + Kwota2 + " " + skrot2);
         sukces.showAndWait();
     }
 
     // Wymiana
 
-    public static void alertWymianaWeryfikacjaRachunkow()
-    {
+    public static void alertWymianaWeryfikacjaRachunkow() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -140,8 +127,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertWymianaWybierzRachunek()
-    {
+    public static void alertWymianaWybierzRachunek() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -149,8 +135,7 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-    public static void alertWymianaKwota()
-    {
+    public static void alertWymianaKwota() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
@@ -158,16 +143,12 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
-
-    public static void alertWymianaSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2)
-    {
+    public static void alertWymianaSukces(String numer1, String numer2, String Kwota1, String Kwota2, String skrot1, String skrot2) {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
         sukces.setHeaderText(null);
-        sukces.setContentText("Wymiana wykonana pomyslnie!\nSprzedaz: "+numer1+"\nKupno: "+numer2+"\n"+Kwota1+" "+skrot1+" --> "+Kwota2+" "+skrot2);
+        sukces.setContentText("Wymiana wykonana pomyslnie!\nSprzedaz: " + numer1 + "\nKupno: " + numer2 + "\n" + Kwota1 + " " + skrot1 + " --> " + Kwota2 + " " + skrot2);
         sukces.showAndWait();
     }
-
-
 
 }
