@@ -69,5 +69,21 @@ public class Logi {
         this.tresc = tresc;
     }
 
+    public static String przelewWykonujacyLog(String rachunek, String kwota,String tresc,String id /* tutaj bedzie id zmiennej sesyjnej*/)
+    {
+        String sql="INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew wychodzacy','"+rachunek+"','"+kwota+"','"+tresc+"','"+id+"','"+"')";
+        return sql;
+    }
+
+    public static String przelewPrzyjmujacyLog(String rachunek /*od kogo przelew*/, String kwota,String tresc,String id)
+    {
+        String sql="INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew przychodzacy','"+rachunek+"','"+kwota+"','"+tresc+id+"','"+"')";
+        return sql;
+    }
+    public static String logLogowanie(String id)
+    {
+       String sql="INSERT INTO logi (typ,tresc,uzytkownik,kwota) VALUES ('Logowanie','Udane logowanie','"+id+"','0.0')";
+       return sql;
+    }
 
 }
