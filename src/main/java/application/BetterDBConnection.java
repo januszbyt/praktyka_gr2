@@ -3,6 +3,7 @@ import java.sql.*;
 
 public class BetterDBConnection {
 
+
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://sql4.freemysqlhosting.net/sql4412131";
     static final String DB_USER = "sql4412131";
