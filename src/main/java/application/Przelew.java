@@ -126,8 +126,9 @@ public class Przelew implements Initializable
         Rachunek.dodajSaldo(rachunek2, kwota2);
         DecimalFormat df = new DecimalFormat("###.##");
 
-        String query1=Logi.przelewWykonujacyLog(rachunek2.getNumer(),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(sesja.getId()));
-        String query2=Logi.przelewPrzyjmujacyLog(rachunek1.getNumer(),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik()));
+        //metody dodajace logi przelewow
+        //String query1=Logi.przelewWykonujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(sesja.getId()));
+        //String query2=Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik()));
 
         Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
     }
