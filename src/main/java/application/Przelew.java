@@ -39,7 +39,7 @@ public class Przelew implements Initializable
         sesja = Uzytkownik.zaloguj("pkazako");
         wypelnijListaRachunek(sesja.getId());
     }
-
+//test
 
     public void listarachunekAkcja(ActionEvent event)
     {
