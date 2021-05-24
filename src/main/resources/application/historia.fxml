@@ -19,12 +19,22 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="206.0" layoutY="20.0" text="Typ" textFill="WHITE">
+            <Label layoutX="191.0" layoutY="20.0" text="Typ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="378.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="598.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="historia_rachunek" layoutX="315.0" layoutY="20.0" text="Rachunek" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="historia_kwota" layoutX="473.0" layoutY="20.0" text="Kwota" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

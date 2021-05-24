@@ -29,6 +29,8 @@ public class Historia implements Initializable
     private ListView<String> historia_text;
     @FXML
     private  Button historia_wyszukaj_btn;
+    @FXML
+    private Label historia_rachunek,historia_kwota;
 
     private Uzytkownik sesja;
     private int id;
