@@ -72,7 +72,7 @@ public class Logowanie implements Initializable {
                 result=statement.executeQuery(query);
                 result.next();
                 id=result.getString(1);
-                query="INSERT INTO logi (typ,tresc,uzytkownik) VALUES ('Logowanie','Udane logowanie','"+id+"')";
+                query="INSERT INTO logi (typ,tresc,uzytkownik,kwota) VALUES ('Logowanie','Udane logowanie','"+id+"','0.0')";
                 statement.executeUpdate(query);
 
                 Powiadomienia.alertLogowanie(blad_logowanie);

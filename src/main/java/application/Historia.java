@@ -1,6 +1,10 @@
 package application;
 
 import classes.Uzytkownik;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class Historia implements Initializable
 {
@@ -21,14 +26,15 @@ public class Historia implements Initializable
     @FXML
     private TextField historia_wyszukaj_text;
     @FXML
-    private ListView historia_text;
+    private ListView<String> historia_text;
     @FXML
     private  Button historia_wyszukaj_btn;
 
     private Uzytkownik sesja;
     private int id;
     private String wybor;
-    private String query="select * from logi where uzytkownik=12";
+    private String query="select * from logi where uzytkownik=11";
+    private ObservableList<String> lista=FXCollections.observableArrayList();
 
     public void listaHistoriaAkcja(ActionEvent event)
     {
@@ -70,8 +76,11 @@ public class Historia implements Initializable
                 typ = result.getString("typ");
                 rachunek = result.getString("rachunek");
                 kwota = result.getString("kwota");
-                tresc = result.getString("tresc");
-            //historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t");
+                tresc = result.getString("uzytkownik");
+
+            historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+
+
                 System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
             }
 
@@ -86,6 +95,8 @@ public class Historia implements Initializable
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijListe();
        // id=sesja.getId();
+        historia_text.setItems(lista);
+
 
     }
 }

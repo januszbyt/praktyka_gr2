@@ -24,7 +24,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="474.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="378.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -33,7 +33,7 @@
       </AnchorPane>
       <VBox layoutY="158.0" prefHeight="375.0" prefWidth="791.0" style="-fx-background-color: blue;">
          <children>
-            <ListView prefHeight="401.0" prefWidth="791.0" />
+            <ListView fx:id="historia_text" prefHeight="401.0" prefWidth="791.0" />
          </children>
       </VBox>
       <TextField fx:id="historia_wyszukaj_text" layoutX="190.0" layoutY="23.0" prefHeight="39.0" prefWidth="168.0" />
