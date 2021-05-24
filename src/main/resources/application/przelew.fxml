@@ -17,7 +17,7 @@
       <TextField id="tf" fx:id="przelew_numer" layoutX="171.0" layoutY="188.0" prefHeight="25.0" prefWidth="206.0" promptText="Numer rachunku" styleClass="text-field" stylesheets="@style.css" />
       <TextField id="tf" fx:id="przelew_kwota" layoutX="171.0" layoutY="238.0" prefHeight="25.0" prefWidth="206.0" promptText="Kwota" styleClass="text-field" stylesheets="@style.css" />
       <TextField id="tf" fx:id="przelew_tytul" layoutX="171.0" layoutY="288.0" prefHeight="25.0" prefWidth="206.0" promptText="Tytuł" stylesheets="@style.css" />
-      <ComboBox fx:id="przelew_listarachunek" layoutX="170.0" layoutY="73.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="206.0" promptText="Rachunek" />
+      <ComboBox fx:id="przelew_listarachunek" layoutX="170.0" layoutY="73.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="206.0" promptText="Rachunek" stylesheets="@style.css" />
       <Button fx:id="btn_wyczysc" layoutX="95.0" layoutY="405.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />

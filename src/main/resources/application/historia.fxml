@@ -11,7 +11,7 @@
 
 <AnchorPane prefHeight="522.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
    <children>
-      <ComboBox fx:id="historia_lista" layoutX="14.0" layoutY="23.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" />
+      <ComboBox fx:id="historia_lista" layoutX="14.0" layoutY="23.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
       <AnchorPane layoutY="88.0" prefHeight="70.0" prefWidth="792.0" style="-fx-background-color: #ff8b35;">
          <children>
             <Label layoutX="38.0" layoutY="20.0" text="Data" textFill="WHITE">
@@ -47,9 +47,9 @@
          </children>
       </VBox>
       <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="190.0" layoutY="23.0" prefHeight="39.0" prefWidth="168.0" stylesheets="@style.css" />
-      <Button fx:id="historia_wyszukaj_btn" layoutX="375.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" text="Wyszukaj">
+      <Button fx:id="historia_wyszukaj_btn" layoutX="375.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
          <font>
-            <Font size="20.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
    </children>
