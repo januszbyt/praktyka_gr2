@@ -1,5 +1,6 @@
 package application;
 
+import classes.Uzytkownik;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,11 +11,12 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("logowanie.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("przelew.fxml"));
         primaryStage.setTitle("Test");
-        primaryStage.setScene(new Scene(root, 650, 776));
+        primaryStage.setScene(new Scene(root, 750, 483));
         primaryStage.show();
     }
+
 
 
     public static void main(String[] args) {
