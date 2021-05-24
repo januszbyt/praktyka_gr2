@@ -1,7 +1,7 @@
 package application;
 import java.sql.*;
 
-public class BetterDBconnection {
+public class BetterDBConnection {
 
     static final String DRIVER = "com.mysql.cj.jdbc.Driver";
     static final String DB_URL = "jdbc:mysql://sql4.freemysqlhosting.net/sql4412131";
@@ -9,7 +9,7 @@ public class BetterDBconnection {
     static final String DB_PASSWORD = "azsNhGPJfq";
     Connection connection;
 
-    public BetterDBconnection(){
+    public BetterDBConnection(){
         connect();
     }
 
