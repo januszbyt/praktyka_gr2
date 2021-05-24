@@ -46,7 +46,7 @@
             <ListView fx:id="historia_text" prefHeight="401.0" prefWidth="791.0" />
          </children>
       </VBox>
-      <TextField fx:id="historia_wyszukaj_text" layoutX="190.0" layoutY="23.0" prefHeight="39.0" prefWidth="168.0" />
+      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="190.0" layoutY="23.0" prefHeight="39.0" prefWidth="168.0" stylesheets="@style.css" />
       <Button fx:id="historia_wyszukaj_btn" layoutX="375.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" text="Wyszukaj">
          <font>
             <Font size="20.0" />
