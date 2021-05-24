@@ -23,10 +23,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
-
 public class Rejestracja implements Initializable, Serializable {
-
-
 
 //deklaracja labelów, przycisków itp. z Scen Builder'a
 
@@ -37,11 +34,7 @@ public class Rejestracja implements Initializable, Serializable {
     @FXML
     private PasswordField rejestracja_haslo, rejestracja_haslo2;
     @FXML
-    private Button btn_zarejestruj, btn_wyczysc, btn_zamknij,btn_mjk;
-
-
-
-
+    private Button btn_zarejestruj, btn_wyczysc, btn_zamknij, btn_mjk;
 
     // zmienna przechowywujaca informacje ktore pola nie spelniaja wymagan
     private String blad = "";
@@ -91,7 +84,6 @@ public class Rejestracja implements Initializable, Serializable {
             blad += "Nazwisko \n";
         }
 
-
         if (weryfikujPesel(rejestracja_pesel.getText()) == false) {
             blad += "Pesel \n";
         }
@@ -114,12 +106,11 @@ public class Rejestracja implements Initializable, Serializable {
         }
 
         // pole email
-        if (weryfikujEmail(rejestracja_email.getText()) == false || rejestracja_email.getLength()>50) {
+        if (weryfikujEmail(rejestracja_email.getText()) == false || rejestracja_email.getLength() > 50) {
             blad += "Email\n";
         }
 
     }
-
 
     // metoda weryfikujaca pesel
     public boolean weryfikujPesel(String pesel) {
@@ -144,7 +135,7 @@ public class Rejestracja implements Initializable, Serializable {
             int lastNumber = check % 10;
             int controlNumber = 10 - lastNumber;
 
-            if (controlNumber == jedenastaCyfra || (controlNumber==10 && jedenastaCyfra==0)) {
+            if (controlNumber == jedenastaCyfra || (controlNumber == 10 && jedenastaCyfra == 0)) {
                 return true;
             }
 
@@ -172,7 +163,6 @@ public class Rejestracja implements Initializable, Serializable {
         // zapytanie sprawdzajace czy login lub email jest zajety
         String query = "SELECT COUNT(id) from uzytkownik where login='" + rejestracja_login.getText() + "' OR mail = '" + rejestracja_email.getText() + " ' ";
 
-
         String bazaSql = "INSERT INTO uzytkownik(imie,nazwisko,pesel,login,haslo,mail,rola,weryfikacja) VALUES('";
         String wpisaneSql = imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + Hash.getHash(haslo) + "','" + email + "','" + "U" + "','" + "0" + "')";
         String kodSql = bazaSql + wpisaneSql;
@@ -181,7 +171,6 @@ public class Rejestracja implements Initializable, Serializable {
             Statement statement = statusDB.createStatement();
             ResultSet queryResult = statement.executeQuery(query);
 
-
             queryResult.next();
 
             if (blad.isBlank()) {
@@ -189,7 +178,7 @@ public class Rejestracja implements Initializable, Serializable {
                     statement.executeUpdate(kodSql);
                     Powiadomienia.alertRejestracja(blad);
                     wyczyscButton();
-                    ZmienOkno.zmienScene("logowanie.fxml",650,552,btn_mjk);
+                    ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_mjk);
                 } else {
                     Powiadomienia.alertRejestracjaZajety();
                 }
@@ -197,7 +186,7 @@ public class Rejestracja implements Initializable, Serializable {
                 Powiadomienia.alertRejestracja(blad);
             }
         } catch (Exception e) {
-             Powiadomienia.alertBazaDanych();
+            Powiadomienia.alertBazaDanych();
         }
     }
 
@@ -205,10 +194,9 @@ public class Rejestracja implements Initializable, Serializable {
         sprawdzRejestracja();
         rejestracjaUzytkownik();
 
-
     }
 
     public void zmienOkno(ActionEvent actionEvent) throws Exception {
-        ZmienOkno.zmienScene("logowanie.fxml",650,552,btn_mjk);
+        ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_mjk);
     }
 }

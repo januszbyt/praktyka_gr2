@@ -11,7 +11,6 @@ public class Zgloszenie {
     private String status;
     private int uzytkownik;
 
-
     // Lista metod związanych z klasą
     public int getId() {
         return id;
@@ -21,7 +20,6 @@ public class Zgloszenie {
         this.id = id;
     }
 
-
     public Date getData() {
         return data;
     }
@@ -29,7 +27,6 @@ public class Zgloszenie {
     public void setData(Date data) {
         this.data = data;
     }
-
 
     public String getTresc_user() {
         return tresc_user;
@@ -39,7 +36,6 @@ public class Zgloszenie {
         this.tresc_user = tresc_user;
     }
 
-
     public String getTresc_admin() {
         return tresc_admin;
     }
@@ -47,7 +43,6 @@ public class Zgloszenie {
     public void setTresc_admin(String tresc_admin) {
         this.tresc_admin = tresc_admin;
     }
-
 
     public String getStatus() {
         return status;
@@ -57,7 +52,6 @@ public class Zgloszenie {
         this.status = status;
     }
 
-
     public int getUzytkownik() {
         return uzytkownik;
     }
@@ -65,7 +59,6 @@ public class Zgloszenie {
     public void setUzytkownik(int uzytkownik) {
         this.uzytkownik = uzytkownik;
     }
-
 
     // Konstruktory
     public Zgloszenie() {
@@ -79,6 +72,5 @@ public class Zgloszenie {
         this.status = status;
         this.uzytkownik = uzytkownik;
     }
-
 
 }
