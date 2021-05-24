@@ -54,3 +54,9 @@
     -fx-border: 50px, solid black;
     -fx-border-radius: 50px; 
 }
+
+
+.combo-box-base {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, white;
+    -fx-border-color: #ff8b35;
+}

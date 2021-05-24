@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
+<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
     <children>
         <Label layoutX="161.0" layoutY="64.0" text="Sprzedaż">
             <font>
@@ -19,9 +19,9 @@
                 <Font size="13.0" />
             </font>
         </Label>
-        <ComboBox fx:id="wymiana_listarachunek1" layoutX="101.0" layoutY="100.0" onAction="#listarachunek1Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" />
-        <ComboBox fx:id="wymiana_listarachunek2" layoutX="450.0" layoutY="100.0" onAction="#listarachunek2Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" />
-        <TextField fx:id="wymiana_kwota" layoutX="301.0" layoutY="292.0" onAction="#aktualizujPodglad" onKeyTyped="#aktualizujPodglad" />
+        <ComboBox fx:id="wymiana_listarachunek1" layoutX="101.0" layoutY="100.0" onAction="#listarachunek1Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
+        <ComboBox fx:id="wymiana_listarachunek2" layoutX="450.0" layoutY="100.0" onAction="#listarachunek2Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
+        <TextField id="tf" fx:id="wymiana_kwota" layoutX="301.0" layoutY="292.0" onAction="#aktualizujPodglad" onKeyTyped="#aktualizujPodglad" stylesheets="@style.css" />
         <Label layoutX="357.0" layoutY="265.0" text="Kwota">
             <font>
                 <Font size="13.0" />
