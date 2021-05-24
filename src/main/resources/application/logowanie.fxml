@@ -21,12 +21,12 @@
                 </ImageView>
             </children>
         </AnchorPane>
-        <Label layoutX="164.0" layoutY="189.0" prefHeight="26.0" prefWidth="102.0" text="Login">
+        <Label layoutX="164.0" layoutY="189.0" prefHeight="26.0" prefWidth="102.0" stylesheets="@style.css" text="Login">
             <font>
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="logowanie_login" layoutX="164.0" layoutY="215.0" prefHeight="19.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="logowanie_login" layoutX="164.0" layoutY="215.0" prefHeight="19.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -39,7 +39,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="logowanie_haslo" layoutX="165.0" layoutY="309.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField id="tf" fx:id="logowanie_haslo" layoutX="165.0" layoutY="309.0" prefHeight="26.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>

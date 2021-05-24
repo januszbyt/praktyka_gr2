@@ -26,7 +26,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_imie" layoutX="164.0" layoutY="190.0" prefHeight="17.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="rejestracja_imie" layoutX="164.0" layoutY="190.0" prefHeight="17.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -39,7 +39,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_nazwisko" layoutX="163.0" layoutY="249.0" prefHeight="17.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="rejestracja_nazwisko" layoutX="163.0" layoutY="249.0" prefHeight="17.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -52,12 +52,12 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_pesel" layoutX="163.0" layoutY="309.0" prefHeight="15.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="rejestracja_pesel" layoutX="163.0" layoutY="309.0" prefHeight="15.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
          <tooltip>
-            <Tooltip text="Pesel:&#10;• 11 znaków" />
+            <Tooltip text="Pesel:&#10;• 11 znaków&#10;Przykład - 53042700335" />
          </tooltip>
         </TextField>
         <Label layoutX="163.0" layoutY="342.0" prefHeight="26.0" prefWidth="102.0" text="Login">
@@ -65,7 +65,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_login" layoutX="163.0" layoutY="368.0" prefHeight="19.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="rejestracja_login" layoutX="163.0" layoutY="368.0" prefHeight="19.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -78,7 +78,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="rejestracja_haslo" layoutX="165.0" layoutY="428.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField id="tf" fx:id="rejestracja_haslo" layoutX="165.0" layoutY="428.0" prefHeight="26.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -91,7 +91,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <PasswordField fx:id="rejestracja_haslo2" layoutX="164.0" layoutY="488.0" prefHeight="26.0" prefWidth="324.0">
+        <PasswordField id="tf" fx:id="rejestracja_haslo2" layoutX="164.0" layoutY="488.0" prefHeight="26.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
@@ -101,7 +101,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <TextField fx:id="rejestracja_email" layoutX="164.0" layoutY="547.0" prefHeight="26.0" prefWidth="324.0">
+        <TextField id="tf" fx:id="rejestracja_email" layoutX="164.0" layoutY="547.0" prefHeight="26.0" prefWidth="324.0" stylesheets="@style.css">
             <font>
                 <Font size="13.0" />
             </font>
