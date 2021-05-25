@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import static classes.DBManager.select;
+
 public class Waluta {
     // Lista zmiennych
     private int id;
@@ -50,12 +52,7 @@ public class Waluta {
     public static Waluta wczytajWaluta_id(int id) {
         Waluta waluta = new Waluta();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM waluta WHERE id = " + id + ";");
+            ResultSet result = select("SELECT * FROM waluta WHERE id = " + id + ";");
 
             while (result.next()) {
                 waluta.setId(result.getInt("id"));
@@ -63,8 +60,6 @@ public class Waluta {
                 waluta.setSkrot(result.getString("skrot"));
                 waluta.setWartosc(result.getFloat("wartosc"));
             }
-            stat.close();
-            polaczenie.close();
             return waluta;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -76,12 +71,7 @@ public class Waluta {
     public static Waluta wczytajWaluta_nazwa(String nazwa) {
         Waluta waluta = new Waluta();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM waluta WHERE nazwa = '" + nazwa + "';");
+            ResultSet result = select("SELECT * FROM waluta WHERE nazwa = '" + nazwa + "';");
 
             while (result.next()) {
                 waluta.setId(result.getInt("id"));
@@ -89,8 +79,6 @@ public class Waluta {
                 waluta.setSkrot(result.getString("skrot"));
                 waluta.setWartosc(result.getFloat("wartosc"));
             }
-            stat.close();
-            polaczenie.close();
             return waluta;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -102,12 +90,7 @@ public class Waluta {
     public static Waluta wczytajWaluta_skrot(String skrot) {
         Waluta waluta = new Waluta();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM waluta WHERE skrot = '" + skrot + "';");
+            ResultSet result = select("SELECT * FROM waluta WHERE skrot = '" + skrot + "';");
 
             while (result.next()) {
                 waluta.setId(result.getInt("id"));
@@ -115,8 +98,6 @@ public class Waluta {
                 waluta.setSkrot(result.getString("skrot"));
                 waluta.setWartosc(result.getFloat("wartosc"));
             }
-            stat.close();
-            polaczenie.close();
             return waluta;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -1,9 +1,6 @@
 package application;
 
-import classes.Rachunek;
-import classes.Uzytkownik;
-import classes.Waluta;
-import classes.Kurs;
+import classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -135,11 +132,8 @@ public class Wymiana implements Initializable {
 
     public void wypelnijListaRachunek(int uzytkownik, ComboBox listarachunek) {
         try {
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
 
-            ResultSet result = stat.executeQuery("SELECT numer FROM rachunek WHERE uzytkownik = " + uzytkownik + ";");
+            ResultSet result = DBManager.select("SELECT numer FROM rachunek WHERE uzytkownik = " + uzytkownik + ";");
             String numer;
             while (result.next()) {
                 numer = result.getString("numer");

@@ -15,6 +15,8 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
+import static classes.DBManager.select;
+
 public class Przelew implements Initializable {
 
     //deklaracja zmiennych z Scen Buildera
@@ -141,19 +143,11 @@ public class Przelew implements Initializable {
 
         try {
 
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM rachunek WHERE numer = '" + numer + "';");
+            ResultSet result = select("SELECT * FROM rachunek WHERE numer = '" + numer + "';");
 
             if (result.next()) {
-                stat.close();
-                polaczenie.close();
                 return true;
             } else {
-                stat.close();
-                polaczenie.close();
                 return false;
             }
 
@@ -166,11 +160,7 @@ public class Przelew implements Initializable {
 
     public void wypelnijListaRachunek(int uzytkownik) {
         try {
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT numer FROM rachunek WHERE uzytkownik = " + uzytkownik + ";");
+            ResultSet result = select("SELECT numer FROM rachunek WHERE uzytkownik = " + uzytkownik + ";");
             String numer;
             while (result.next()) {
                 numer = result.getString("numer");

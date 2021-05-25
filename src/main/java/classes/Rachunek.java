@@ -5,6 +5,9 @@ import application.Powiadomienia;
 
 import java.sql.*;
 
+import static classes.DBManager.select;
+import static classes.DBManager.update;
+
 public class Rachunek {
     // Lista zmiennych
     private int id;
@@ -66,12 +69,7 @@ public class Rachunek {
     public static Rachunek wczytajRachunek_numer(String numer) {
         Rachunek rachunek = new Rachunek();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM rachunek WHERE numer = '" + numer + "';");
+            ResultSet result = select("SELECT * FROM rachunek WHERE numer = '" + numer + "';");
 
             while (result.next()) {
                 rachunek.setId(result.getInt("id"));
@@ -81,8 +79,6 @@ public class Rachunek {
                 rachunek.setUzytkownik(result.getInt("uzytkownik"));
                 rachunek.setWaluta(result.getInt("waluta"));
             }
-            stat.close();
-            polaczenie.close();
             return rachunek;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,38 +100,12 @@ public class Rachunek {
 
     public static void dodajSaldo(Rachunek rachunek, float kwota) {
         rachunek.saldo += kwota;
-        try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-
-            Statement statement = polaczenie.createStatement();
-            String query = "update rachunek set saldo = " + rachunek.getSaldo() + " where id = " + rachunek.getId();
-            statement.executeUpdate(query);
-
-            polaczenie.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+        update("update rachunek set saldo = " + rachunek.getSaldo() + " where id = " + rachunek.getId());
     }
 
     public static void usunSaldo(Rachunek rachunek, float kwota) {
         rachunek.saldo -= kwota;
-        try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-
-            Statement statement = polaczenie.createStatement();
-            String query = "update rachunek set saldo = " + rachunek.getSaldo() + " where id = " + rachunek.getId();
-            statement.executeUpdate(query);
-
-            polaczenie.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
+            update("update rachunek set saldo = " + rachunek.getSaldo() + " where id = " + rachunek.getId());
     }
 
     // Konstruktory

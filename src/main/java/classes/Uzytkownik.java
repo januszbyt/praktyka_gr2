@@ -6,6 +6,8 @@ import application.DBConnection;
 
 import javax.security.auth.login.LoginContext;
 
+import static classes.DBManager.select;
+
 public class Uzytkownik {
     // Lista zmiennych
     private int id;
@@ -94,12 +96,7 @@ public class Uzytkownik {
     public static Uzytkownik zaloguj(String login) {
         Uzytkownik sesja = new Uzytkownik();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE login = '" + login + "';");
+            ResultSet result = select("SELECT * FROM uzytkownik WHERE login = '" + login + "';");
 
             while (result.next()) {
                 sesja.setId(result.getInt("id"));
@@ -111,8 +108,6 @@ public class Uzytkownik {
                 sesja.setRola(result.getString("rola"));
                 sesja.setWeryfikacja(result.getInt("weryfikacja"));
             }
-            stat.close();
-            polaczenie.close();
             return sesja;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -124,12 +119,7 @@ public class Uzytkownik {
     public static Uzytkownik wczytajUzytkownik_id(int id) {
         Uzytkownik uzytkownik = new Uzytkownik();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE id = " + id + ";");
+            ResultSet result = select("SELECT * FROM uzytkownik WHERE id = " + id + ";");
 
             while (result.next()) {
                 uzytkownik.setId(result.getInt("id"));
@@ -141,8 +131,6 @@ public class Uzytkownik {
                 uzytkownik.setRola(result.getString("rola"));
                 uzytkownik.setWeryfikacja(result.getInt("weryfikacja"));
             }
-            stat.close();
-            polaczenie.close();
             return uzytkownik;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -154,12 +142,7 @@ public class Uzytkownik {
     public static Uzytkownik wczytajUzytkownik_login(String login) {
         Uzytkownik uzytkownik = new Uzytkownik();
         try {
-
-            DBConnection DBpolaczenie = new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-            ResultSet result = stat.executeQuery("SELECT * FROM uzytkownik WHERE login = '" + login + "';");
+            ResultSet result = select("SELECT * FROM uzytkownik WHERE login = '" + login + "';");
 
             while (result.next()) {
                 uzytkownik.setId(result.getInt("id"));
@@ -171,8 +154,6 @@ public class Uzytkownik {
                 uzytkownik.setRola(result.getString("rola"));
                 uzytkownik.setWeryfikacja(result.getInt("weryfikacja"));
             }
-            stat.close();
-            polaczenie.close();
             return uzytkownik;
         } catch (SQLException e) {
             e.printStackTrace();
