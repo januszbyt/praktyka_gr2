@@ -1,8 +1,5 @@
 package application;
 
-import application.Powiadomienia;
-import application.DBConnection;
-import classes.ZmienOkno;
 import classes.DBManager;
 import classes.Hash;
 import javafx.application.Platform;
@@ -12,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -20,10 +16,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 import java.io.File;
 import java.io.Serializable;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
 
 public class Rejestracja implements Initializable, Serializable {

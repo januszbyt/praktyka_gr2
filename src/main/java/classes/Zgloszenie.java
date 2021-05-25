@@ -20,9 +20,7 @@ public class Zgloszenie {
         this.id = id;
     }
 
-    public Date getData() {
-        return data;
-    }
+    public Date getData() { return data; }
 
     public void setData(Date data) {
         this.data = data;
