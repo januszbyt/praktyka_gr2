@@ -1,5 +1,5 @@
 package classes;
-import application.BetterDBConnection;
+import classes.BetterDBConnection;
 
 import java.sql.ResultSet;
 

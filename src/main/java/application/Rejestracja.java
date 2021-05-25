@@ -2,6 +2,8 @@ package application;
 
 import application.Powiadomienia;
 import application.DBConnection;
+import classes.ZmienOkno;
+import classes.DBManager;
 import classes.Hash;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -20,6 +22,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -149,10 +152,7 @@ public class Rejestracja implements Initializable, Serializable {
         return validator.isValid(email);
     }
 
-    public void rejestracjaUzytkownik() {
-        DBConnection polaczenie = new DBConnection();
-        Connection statusDB = polaczenie.getConnection();
-
+    public void rejestracjaUzytkownik() throws Exception {
         String imie = rejestracja_imie.getText();
         String nazwisko = rejestracja_nazwisko.getText();
         String pesel = rejestracja_pesel.getText();
@@ -167,30 +167,26 @@ public class Rejestracja implements Initializable, Serializable {
         String wpisaneSql = imie + "','" + nazwisko + "','" + pesel + "','" + login + "','" + Hash.getHash(haslo) + "','" + email + "','" + "U" + "','" + "0" + "')";
         String kodSql = bazaSql + wpisaneSql;
 
-        try {
-            Statement statement = statusDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(query);
+        ResultSet queryResult = DBManager.select(query);
 
-            queryResult.next();
+        queryResult.next();
 
-            if (blad.isBlank()) {
-                if (queryResult.getInt(1) == 0) {
-                    statement.executeUpdate(kodSql);
-                    Powiadomienia.alertRejestracja(blad);
-                    wyczyscButton();
-                    ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_mjk);
-                } else {
-                    Powiadomienia.alertRejestracjaZajety();
-                }
-            } else {
+        if (blad.isBlank()) {
+            if (queryResult.getInt(1) == 0) {
+                DBManager.update(kodSql);
                 Powiadomienia.alertRejestracja(blad);
+                wyczyscButton();
+                ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_mjk);
+            } else {
+                Powiadomienia.alertRejestracjaZajety();
             }
-        } catch (Exception e) {
-            Powiadomienia.alertBazaDanych();
+        } else {
+            Powiadomienia.alertRejestracja(blad);
         }
+
     }
 
-    public void zarejestrujButton(ActionEvent actionEvent) {
+    public void zarejestrujButton(ActionEvent actionEvent) throws Exception {
         sprawdzRejestracja();
         rejestracjaUzytkownik();
 

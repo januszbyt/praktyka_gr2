@@ -69,6 +69,7 @@ public class Logowanie implements Initializable {
                 id = result.getString(1);
                 DBManager.update(Logi.logLogowanie(id));
                 Powiadomienia.alertLogowanie(blad_logowanie);
+                System.out.println(blad_logowanie);
                 zmien_okno();
             } else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
