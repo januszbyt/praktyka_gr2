@@ -1,5 +1,6 @@
 package application;
 
+import classes.DBManager;
 import classes.Hash;
 import classes.Logi;
 import classes.Uzytkownik;
@@ -49,8 +50,6 @@ public class Logowanie implements Initializable {
 
     public void zaloguj_btn_M(ActionEvent actionEvent) throws Exception {
 
-        // Login kaziks
-        // Haslo kaziks
         login = "0";
         haslo = "0";
         zaloguj();
@@ -60,19 +59,15 @@ public class Logowanie implements Initializable {
             Uzytkownik sesja = Uzytkownik.zaloguj(login);
             if (sesja.getWeryfikacja() == 1) {
 
-                DBConnection polaczenie = new DBConnection();
-                Connection polacz = polaczenie.getConnection();
-                Statement statement = polacz.createStatement();
-
                 ResultSet result;
                 String query;
                 String id;
 
                 query = "SELECT id FROM uzytkownik where login ='" + login + "'";
-                result = statement.executeQuery(query);
+                result = DBManager.select(query);
                 result.next();
                 id = result.getString(1);
-                statement.executeUpdate(Logi.logLogowanie(id));
+                DBManager.update(Logi.logLogowanie(id));
                 Powiadomienia.alertLogowanie(blad_logowanie);
                 zmien_okno();
             } else {
@@ -93,12 +88,7 @@ public class Logowanie implements Initializable {
         try {
 
             String query = "SELECT login,haslo FROM uzytkownik WHERE login='" + login_field + "'";
-
-            DBConnection polaczenie = new DBConnection();
-            Connection polacz = polaczenie.getConnection();
-
-            Statement statement = polacz.createStatement();
-            ResultSet result = statement.executeQuery(query);
+            ResultSet result = DBManager.select(query);
             result.next();
 
             login = result.getString(1);

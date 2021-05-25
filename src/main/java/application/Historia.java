@@ -1,5 +1,6 @@
 package application;
 
+import classes.DBManager;
 import classes.Uzytkownik;
 import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 import javafx.beans.value.ChangeListener;
@@ -20,52 +21,40 @@ import java.sql.Statement;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
-public class Historia implements Initializable
-{
+public class Historia implements Initializable {
     @FXML
     private ComboBox historia_lista;
     @FXML
-    private TextField historia_wyszukaj_text;
-    @FXML
     private ListView<String> historia_text;
     @FXML
-    private  Button historia_wyszukaj_btn;
+    private Button historia_wyszukaj_btn;
     @FXML
-    private Label historia_rachunek,historia_kwota;
+    private Label historia_rachunek, historia_kwota;
 
     private Uzytkownik sesja;
     private int id;
     private String wybor;
-    private String query="select * from logi where uzytkownik=12";
-    private ObservableList<String> lista=FXCollections.observableArrayList();
+    private String query = "select * from logi where uzytkownik=12";
+    private ObservableList<String> lista = FXCollections.observableArrayList();
 
-    public void listaHistoriaAkcja(ActionEvent event)
-    {
-        wybor=(String) historia_lista.getValue();
+    public void listaHistoriaAkcja(ActionEvent event) {
+        wybor = (String) historia_lista.getValue();
         System.out.println(wybor);
         odswiezBaza(query);
 
     }
 
-    public void wypelnijListe()
-    {
+    public void wypelnijListe() {
         historia_lista.getItems().add("Wszystko");
         historia_lista.getItems().add("Logowanie");
         historia_lista.getItems().add("Przelewy przychodzace");
         historia_lista.getItems().add("Przelewy wychodzace");
     }
 
-    public void odswiezBaza(String zapytanie)
-    {
+    public void odswiezBaza(String zapytanie) {
 
-        try
-        {
-            DBConnection DBpolaczenie= new DBConnection();
-            Connection polaczenie = DBpolaczenie.getConnection();
-            Statement stat = polaczenie.createStatement();
-
-
-            ResultSet result = stat.executeQuery(query);
+        try {
+            ResultSet result = DBManager.select(query);
 
             String data;
             String typ;
@@ -73,34 +62,31 @@ public class Historia implements Initializable
             String kwota;
             String tresc;
 
-
-            switch (wybor){ // Rozpoczęcie switch case
+            switch (wybor) { // Rozpoczęcie switch case
                 case "Wszystko":
                     historia_text.getItems().clear();
-                    while(result.next())
-                    {
+                    while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
                         rachunek = result.getString("rachunek");
                         kwota = result.getString("kwota");
                         tresc = result.getString("tresc");
 
-                        historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
-                        System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                        historia_text.getItems().add(data + "\t\t\t" + typ + "\t\t\t" + rachunek + "\t\t" + kwota + "\t\t" + tresc);
+                        System.out.println(data + "\t\t\t" + typ + "\t\t\t" + rachunek + "\t\t" + kwota + "\t\t" + tresc);
                     }
                     break;
                 case "Logowanie":
                     historia_text.getItems().clear();
-                    while(result.next())
-                    {
+                    while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
                         rachunek = result.getString("rachunek");
                         kwota = result.getString("kwota");
                         tresc = result.getString("tresc");
 
-                        historia_text.getItems().add(data+"\t\t\t"+typ+"\t\t\t\t\t\t"+tresc);
-                        System.out.println(data+"\t\t\t"+typ+"\t\t\t"+rachunek+"\t\t"+kwota+"\t\t"+tresc);
+                        historia_text.getItems().add(data + "\t\t\t" + typ + "\t\t\t\t\t\t" + tresc);
+                        System.out.println(data + "\t\t\t" + typ + "\t\t\t" + rachunek + "\t\t" + kwota + "\t\t" + tresc);
                     }
                     break;
                 case "Przelewy przychodzace":
@@ -114,9 +100,7 @@ public class Historia implements Initializable
             }
 
 
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -125,7 +109,7 @@ public class Historia implements Initializable
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijListe();
-       // id=sesja.getId();
+        // id=sesja.getId();
         historia_text.setItems(lista);
 
 
