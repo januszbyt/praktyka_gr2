@@ -1,4 +1,4 @@
-package application;
+package classes;
 import java.sql.*;
 
 public class BetterDBConnection {
