@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 
 public class DBManager {
 
-
    public static void update(String query){
        new BetterDBConnection().update(query);
    }
