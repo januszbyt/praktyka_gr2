@@ -68,10 +68,13 @@ public class Logi {
         return sql;
     }
 
-    public static String przelewPrzyjmujacyLog(String rachunek /*od kogo przelew*/, String kwota, String tresc, String id) {
-        String sql = "INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew przychodzacy','" + rachunek + "','" + kwota + "','" + tresc + "','" +id + "')";
+    public static String przelewPrzyjmujacyLog(String rachunek /*od kogo przelew*/,String rachunek2 /*na jaki konkretnie rachunek*/, String kwota, String tresc, String id) {
+        String sql = "INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Przelew przychodzacy','" + rachunek + "','"+rachunek2+"','"+ kwota + "','" + tresc + "','" +id + "')";
         return sql;
     }
+
+
+
     public static String logLogowanie(String id) {
         String sql = "INSERT INTO logi (typ,tresc,uzytkownik,kwota) VALUES ('Logowanie','Udane logowanie','" + id + "','0.0')";
         return sql;
