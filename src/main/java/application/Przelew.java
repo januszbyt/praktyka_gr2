@@ -85,6 +85,11 @@ public class Przelew implements Initializable {
         Rachunek.dodajSaldo(rachunek2, kwota);
         Waluta waluta = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
         DecimalFormat df = new DecimalFormat("###.##");
+
+        DBManager.update(Logi.przelewWykonujacyLog(Integer.toString(rachunek2.getId()),Float.toString(kwota),przelew_tytul.getText(),Integer.toString(sesja.getId())));
+        DBManager.update(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
+
+        System.out.println(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
         Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
     }
 
@@ -110,9 +115,9 @@ public class Przelew implements Initializable {
         DecimalFormat df = new DecimalFormat("###.##");
 
         //metody dodajace logi przelewow
-        //String query1=Logi.przelewWykonujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(sesja.getId()));
-        //String query2=Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik()));
-
+        DBManager.update(Logi.przelewWykonujacyLog(Integer.toString(rachunek2.getId()),Float.toString(kwota),przelew_tytul.getText(),Integer.toString(sesja.getId())));
+        DBManager.update(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
+        System.out.println(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
         Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
     }
 
