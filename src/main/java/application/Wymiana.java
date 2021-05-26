@@ -180,7 +180,7 @@ public class Wymiana implements Initializable {
 
     public boolean jestLiczba(String tekst) {
         try {
-            int wartosc = Integer.parseInt(tekst);
+            Float wartosc = Float.parseFloat(tekst);
             return true;
         } catch (NumberFormatException e) {
             return false;
