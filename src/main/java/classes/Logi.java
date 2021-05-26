@@ -63,15 +63,29 @@ public class Logi {
         this.tresc = tresc;
     }
 
-    public static String przelewWykonujacyLog(String rachunek/*do kogo*/, String kwota, String tresc, String id /* tutaj bedzie id zmiennej sesyjnej*/) {
-        String sql = "INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew wychodzacy','" + rachunek + "','" + kwota + "','" + tresc + "','" + id + "')";
+    public static String przelewWykonujacyLog(String rachunekId/*do kogo*/, String kwota, String tresc, String id /* tutaj bedzie id zmiennej sesyjnej*/) {
+        String sql = "INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew wychodzacy','" + rachunekId + "','" + kwota + "','" + tresc + "','" + id + "')";
         return sql;
     }
 
-    public static String przelewPrzyjmujacyLog(String rachunek /*od kogo przelew*/, String kwota, String tresc, String id) {
-        String sql = "INSERT INTO logi(typ,rachunek,kwota,tresc,uzytkownik) VALUES('Przelew przychodzacy','" + rachunek + "','" + kwota + "','" + tresc + "','" +id + "')";
+    public static String przelewPrzyjmujacyLog(String rachunekId /*od kogo przelew*/,String rachunek2Id /*na jaki konkretnie rachunek*/, String kwota, String tresc, String id) {
+        String sql = "INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Przelew przychodzacy','" + rachunekId + "','"+rachunek2Id+"','"+ kwota + "','" + tresc + "','" +id + "')";
         return sql;
     }
+
+public static String przewalutowanieLog(String rachunekSprzedazId, String rachunekKupnoId, String kwotaSprzedaz,String kwotaKupno, String walutaSprzedaz,String walutaKupno,String id){
+    String sql="INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Przewalutowanie','" + rachunekSprzedazId + "','"+rachunekKupnoId+"','"+ kwotaSprzedaz + "','Wymiana "
+            +kwotaSprzedaz+" "+walutaSprzedaz+" na "+kwotaKupno+" "+walutaKupno+ "','" +id + "')";
+    return sql;
+    }
+
+    public static String transferLog(String rachunek_1_Id, String rachunek_2_Id, String kwota,String waluta,String id){
+        String sql="INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Transfer srodkow','" + rachunek_1_Id + "','"+rachunek_2_Id+"','"+ kwota+"','"+"Transfer "
+                +kwota+" "+waluta+ "','"+id+ "')";
+        return sql;
+    }
+
+
     public static String logLogowanie(String id) {
         String sql = "INSERT INTO logi (typ,tresc,uzytkownik,kwota) VALUES ('Logowanie','Udane logowanie','" + id + "','0.0')";
         return sql;

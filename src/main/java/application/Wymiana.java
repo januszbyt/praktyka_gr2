@@ -151,6 +151,10 @@ public class Wymiana implements Initializable {
         Rachunek.dodajSaldo(rachunek2, kwota);
         Waluta waluta = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
         DecimalFormat df = new DecimalFormat("###.##");
+
+        DBManager.update(Logi.transferLog(Integer.toString(rachunek1.getId()),Integer.toString(rachunek2.getId()),Float.toString(kwota),
+                waluta.getSkrot(),Integer.toString(sesja.getId())));
+
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
     }
 
@@ -174,6 +178,9 @@ public class Wymiana implements Initializable {
         Rachunek.usunSaldo(rachunek1, kwota);
         Rachunek.dodajSaldo(rachunek2, kwota2);
         DecimalFormat df = new DecimalFormat("###.##");
+
+        DBManager.update(Logi.przewalutowanieLog(Integer.toString(rachunek1.getId()),Integer.toString(rachunek2.getId()),Float.toString(kwota),Float.toString(kwota2),
+                waluta1.getSkrot(),waluta2.getSkrot(),Integer.toString(sesja.getId())));
 
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
     }
