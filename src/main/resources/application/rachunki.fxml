@@ -1,46 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Rachunki">
+<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Rachunki">
     <children>
-        <Label layoutX="539.0" layoutY="30.0" text="Dodaj nowy rachunek" />
-        <Label layoutX="417.0" layoutY="79.0" text="Podaj nazwę" />
-        <TextField id="tf" layoutX="487.0" layoutY="201.0" prefHeight="25.0" prefWidth="249.0" stylesheets="@style.css" />
-        <Text layoutX="424.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wybierz walutę" />
-        <ComboBox layoutX="524.0" layoutY="134.0" prefWidth="150.0" stylesheets="@style.css" />
-        <TextField id="tf" layoutX="487.0" layoutY="75.0" prefHeight="25.0" prefWidth="249.0" stylesheets="@style.css">
-            <font>
-                <Font size="10.0" />
-            </font>
-        </TextField>
-        <Text layoutX="364.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Wygenerowany numer" />
-        <Button layoutX="579.0" layoutY="281.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
+        <Button fx:id="rachunki_usun" layoutX="300.0" layoutY="379.0" mnemonicParsing="false" onAction="#usunButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Usuń Rachunek" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button layoutX="384.0" layoutY="281.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Anuluj" textFill="WHITE">
+        <Button fx:id="rachunki_edytuj" layoutX="112.0" layoutY="379.0" mnemonicParsing="false" onAction="#edytujButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Edytuj Rachunek" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-      <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="13.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/domek.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
+      <ComboBox fx:id="rachunki_listarachunek" layoutX="168.0" layoutY="49.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="225.0" promptText="Rachunek" />
+      <Label layoutX="142.0" layoutY="215.0" text="Nazwa:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="252.0" text="Waluta:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="140.0" layoutY="289.0" prefHeight="30.0" prefWidth="67.0" text="Saldo:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="rachunki_danenazwa" layoutX="219.0" layoutY="214.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="rachunki_danewaluta" layoutX="219.0" layoutY="251.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="rachunki_danesaldo" layoutX="219.0" layoutY="288.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="rachunki_numerrachunku" layoutX="142.0" layoutY="149.0" prefHeight="40.0" prefWidth="284.0" style="-fx-alignment: center;">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="rachunki_dodaj" layoutX="555.0" layoutY="49.0" mnemonicParsing="false" onAction="#dodajButton" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Dodaj Rachunek" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Label layoutX="158.0" layoutY="99.0" text="Aktualnie wybrany rachunek:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="rachunki_wplac" layoutX="555.0" layoutY="202.0" mnemonicParsing="false" onAction="#wplacButton" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wpłacanie" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="rachunki_wyplac" layoutX="555.0" layoutY="349.0" mnemonicParsing="false" onAction="#wyplacButton" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wypłacanie" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

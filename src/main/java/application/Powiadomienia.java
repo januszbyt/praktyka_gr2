@@ -151,4 +151,30 @@ public class Powiadomienia {
         sukces.showAndWait();
     }
 
+    // Panel rachunkow
+
+    public static void alertWplacSukces(String rachunek, String skrot, String kwota) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Wplata wykonana pomyslnie!\nRachunek: " + rachunek + "\nWplacono: " + kwota + " " + skrot);
+        sukces.showAndWait();
+    }
+
+    public static void alertWyplacSukces(String rachunek, String skrot, String kwota) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Wyplata wykonana pomyslnie!\nRachunek: " + rachunek + "\nWplacono: " + kwota + " " + skrot);
+        sukces.showAndWait();
+    }
+
+    public static void alertRachunkiKwota() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podaj odpowiednia kwote!");
+        porazka.showAndWait();
+    }
+
 }
