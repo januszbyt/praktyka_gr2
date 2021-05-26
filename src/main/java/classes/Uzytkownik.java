@@ -2,10 +2,6 @@ package classes;
 
 import java.sql.*;
 
-import application.DBConnection;
-
-import javax.security.auth.login.LoginContext;
-
 import static classes.DBManager.select;
 
 public class Uzytkownik {

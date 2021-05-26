@@ -1,6 +1,5 @@
 package classes;
 
-import application.DBConnection;
 import application.Powiadomienia;
 
 import java.sql.*;
