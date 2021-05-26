@@ -74,8 +74,8 @@ public class Logi {
     }
 
 public static String przewalutowanieLog(String rachunekSprzedazId, String rachunekKupnoId, String kwotaSprzedaz,String kwotaKupno, String walutaSprzedaz,String walutaKupno,String id){
-    String sql="INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Przewalutowanie','" + rachunekSprzedazId + "','"+rachunekKupnoId+"','"+ kwotaSprzedaz + "',','Wymiana "
-            +walutaSprzedaz+" "+walutaSprzedaz+" na "+kwotaKupno+" "+walutaKupno+ "','" +id + "')";
+    String sql="INSERT INTO logi(typ,rachunek,rachunek2,kwota,tresc,uzytkownik) VALUES('Przewalutowanie','" + rachunekSprzedazId + "','"+rachunekKupnoId+"','"+ kwotaSprzedaz + "','Wymiana "
+            +kwotaSprzedaz+" "+walutaSprzedaz+" na "+kwotaKupno+" "+walutaKupno+ "','" +id + "')";
     return sql;
     }
 
