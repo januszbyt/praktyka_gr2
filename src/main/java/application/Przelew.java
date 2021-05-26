@@ -8,7 +8,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -18,6 +22,7 @@ import java.util.ResourceBundle;
 import static classes.DBManager.select;
 
 public class Przelew implements Initializable {
+    public ImageView img_menugl;
 
     //deklaracja zmiennych z Scen Buildera
 
@@ -38,6 +43,10 @@ public class Przelew implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Uzytkownik.zaloguj("pkazako");
         wypelnijListaRachunek(sesja.getId());
+        //wczytanie obrazu
+        File plik = new File("src/images/domek.png");
+        Image zdjecie = new Image(plik.toURI().toString());
+        img_menugl.setImage(zdjecie);
     }
 
     public void listarachunekAkcja(ActionEvent event) {
@@ -178,4 +187,7 @@ public class Przelew implements Initializable {
         }
     }
 
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+    }
 }

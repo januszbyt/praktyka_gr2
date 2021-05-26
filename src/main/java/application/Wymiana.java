@@ -8,8 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import org.apache.commons.beanutils.converters.StringArrayConverter;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -34,12 +38,17 @@ public class Wymiana implements Initializable {
     public Uzytkownik sesja;
     public Rachunek rachunek1, rachunek2;
     public Waluta waluta1, waluta2;
+    public ImageView img_menugl;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Uzytkownik.zaloguj("pkazako");
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek1);
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek2);
+        //wczytanie obrazu
+        File plik = new File("src/images/domek.png");
+        Image zdjecie = new Image(plik.toURI().toString());
+        img_menugl.setImage(zdjecie);
     }
 
     public void potwierdzButton() {
@@ -209,5 +218,7 @@ public class Wymiana implements Initializable {
         }
         return 0;
     }
-
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+    }
 }

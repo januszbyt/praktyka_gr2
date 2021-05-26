@@ -21,12 +21,12 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <Button layoutX="28.0" layoutY="236.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Rachunki" textFill="#ff8b35">
+            <Button fx:id="btn_rachunki" layoutX="28.0" layoutY="236.0" mnemonicParsing="false" onAction="#btn_rachunki_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Rachunki" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="286.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Historia " textFill="#ff8b35">
+            <Button fx:id="btn_historia" layoutX="28.0" layoutY="286.0" mnemonicParsing="false" onAction="#btn_historia_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Historia " textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -36,17 +36,17 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="186.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wymiana" textFill="#ff8b35">
+            <Button fx:id="btn_wymiana" layoutX="28.0" layoutY="186.0" mnemonicParsing="false" onAction="#btn_wymiana_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wymiana" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="136.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Przelew" textFill="#ff8b35">
+            <Button fx:id="btn_przelew" layoutX="28.0" layoutY="136.0" mnemonicParsing="false" onAction="#btn_przelew_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Przelew" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="336.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zgłoszenia" textFill="#ff8b35">
+            <Button fx:id="btn_zgloszenia" layoutX="28.0" layoutY="336.0" mnemonicParsing="false" onAction="#btn_zgloszenia_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zgłoszenia" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

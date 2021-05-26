@@ -11,8 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,6 +39,7 @@ public class Historia implements Initializable {
     private String wybor;
     private String query = "select * from logi where uzytkownik=12";
     private ObservableList<String> lista = FXCollections.observableArrayList();
+    public ImageView img_menugl;
 
     public void listaHistoriaAkcja(ActionEvent event) {
         wybor = (String) historia_lista.getValue();
@@ -111,7 +115,14 @@ public class Historia implements Initializable {
         wypelnijListe();
         // id=sesja.getId();
         historia_text.setItems(lista);
-
-
+        //wczytanie obrazu
+        File plik = new File("src/images/domek.png");
+        Image zdjecie = new Image(plik.toURI().toString());
+        img_menugl.setImage(zdjecie);
     }
+
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+    }
+
 }

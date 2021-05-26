@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="522.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
+<AnchorPane fx:id="historia" prefHeight="522.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
    <children>
-      <ComboBox fx:id="historia_lista" layoutX="14.0" layoutY="23.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
+      <ComboBox fx:id="historia_lista" layoutX="193.0" layoutY="24.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
       <AnchorPane layoutY="88.0" prefHeight="70.0" prefWidth="792.0" style="-fx-background-color: #ff8b35;">
          <children>
             <Label layoutX="38.0" layoutY="20.0" text="Data" textFill="WHITE">
@@ -46,11 +49,19 @@
             <ListView fx:id="historia_text" prefHeight="401.0" prefWidth="791.0" />
          </children>
       </VBox>
-      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="190.0" layoutY="23.0" prefHeight="39.0" prefWidth="168.0" stylesheets="@style.css" />
-      <Button fx:id="historia_wyszukaj_btn" layoutX="375.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
+      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="396.0" layoutY="24.0" prefHeight="39.0" prefWidth="168.0" stylesheets="@style.css" />
+      <Button fx:id="historia_wyszukaj_btn" layoutX="610.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="12.0" layoutY="20.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/domek.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
    </children>
 </AnchorPane>

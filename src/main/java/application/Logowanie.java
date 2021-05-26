@@ -35,6 +35,7 @@ public class Logowanie implements Initializable {
     public Button btn_zamknij;
     public Label logowanie_haslo_alert;
     public Label logowanie_alert;
+
     @FXML
     private ImageView logowanie_logo;
 
