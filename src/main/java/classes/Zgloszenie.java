@@ -1,11 +1,16 @@
 package classes;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static classes.DBManager.select;
 
 public class Zgloszenie {
     // Lista zmiennych
     private int id;
     private Date data;
+    private String tytul;
     private String tresc_user;
     private String tresc_admin;
     private String status;
@@ -56,6 +61,27 @@ public class Zgloszenie {
 
     public void setUzytkownik(int uzytkownik) {
         this.uzytkownik = uzytkownik;
+    }
+
+    public void wczytajZgloszenie(int id){
+        try {
+            ResultSet result = select("SELECT * FROM zgloszenie WHERE id = " + id + ";");
+            result.next();
+
+            this.id = result.getInt("id");
+            this.data = result.getDate("data");
+            this.tytul = result.getString("tytul");
+            this.tresc_user = result.getString("tresc_user");
+            this.tresc_admin = result.getString("tresc_admin");
+            this.status = result.getString("status");
+            this.uzytkownik = result.getInt("uzytkownik");
+
+        }catch (SQLException e) {
+        }
+    }
+
+    public void dodajZgloszenie(){
+        DBManager.update("INSERT INTO `zgloszenie` (`id`, `data`, `tytul`, `tresc_user`, `tresc_admin`, `status`, `uzytkownik`) VALUES (NULL, '"+this.data+"', '"+this.tytul+"', '"+this.tresc_user+"', '"+this.tresc_admin+"', '"+this.status+"', '"+this.uzytkownik+"');");
     }
 
     // Konstruktory
