@@ -105,7 +105,19 @@ public class Rachunki implements Initializable {
     }
 
     public void dodajButton(){
+        Stage anotherStage = new Stage();
 
+        try {
+            FXMLLoader anotherLoader = new FXMLLoader(getClass().getResource("rachunki_dodaj.fxml"));
+            Parent anotherRoot = anotherLoader.load();
+            Scene anotherScene = new Scene(anotherRoot, 270, 180);
+            anotherStage.setScene(anotherScene);
+            anotherStage.setTitle("Dodawanie rachunku");
+            anotherStage.showAndWait();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

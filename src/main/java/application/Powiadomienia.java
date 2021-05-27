@@ -177,4 +177,28 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
+    public static void alertRachunkiNazwa() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nieodpowiednia dlugosc nazwy rachunku!");
+        porazka.showAndWait();
+    }
+
+    public static void alertRachunkiListaWalut() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz odpowiednia walute!");
+        porazka.showAndWait();
+    }
+
+    public static void alertDodajSukces(String rachunek, String nazwa, String waluta) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie dodano rachunek!\nRachunek: " + rachunek + "\nNazwa: " + nazwa + "\nWaluta: "+waluta);
+        sukces.showAndWait();
+    }
+
 }
