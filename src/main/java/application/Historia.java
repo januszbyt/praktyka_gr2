@@ -74,6 +74,17 @@ public class Historia implements Initializable {
             switch (wybor) { // Rozpoczęcie switch case
                 case "Wszystko":
                     historia_text.getItems().clear();
+
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
                     while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
@@ -181,12 +192,57 @@ public class Historia implements Initializable {
 
                 case "Transfer srodkow":
                     historia_text.getItems().clear();
-                    //kod
+
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Transfer srodkow'");
+
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                + t3 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t3 + kwota + t4 + tresc);
+                    }
                     break;
 
                 case "Przewalutowanie":
                     historia_text.getItems().clear();
-                    //kod
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Przewalutowanie'");
+
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                + t3 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t3 + kwota + t4 + tresc);
+                    }
                     break;
 
                 default:
