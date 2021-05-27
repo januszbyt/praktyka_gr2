@@ -30,7 +30,7 @@ public class Historia implements Initializable {
     @FXML
     private Button historia_wyszukaj_btn,historia_wyczysc_btn;
     @FXML
-    private Label historia_rachunek,historia_rachunek2,historia_kwota,historia_opis;
+    private Label historia_rachunek,historia_rachunek2,historia_kwota,historia_opis,historia_typ;
 
     private Uzytkownik sesja;
     private int id;
@@ -89,6 +89,13 @@ public class Historia implements Initializable {
                 case "Logowanie":
                     historia_text.getItems().clear();
                     result= DBManager.select("select * from logi where uzytkownik=4 and typ='Logowanie'");
+
+                    historia_rachunek.setVisible(false);
+                    historia_rachunek2.setVisible(false);
+                    historia_kwota.setVisible(false);
+
+                    historia_typ.setLayoutX(200);
+
                     while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
@@ -110,11 +117,10 @@ public class Historia implements Initializable {
                     historia_kwota.setVisible(true);
 
                     historia_rachunek.setLayoutX(278);
-                    historia_rachunek.setLayoutY(20);
                     historia_rachunek2.setLayoutX(501);
-                    historia_rachunek2.setLayoutY(20);
                     historia_kwota.setLayoutX(714);
-                    historia_kwota.setLayoutY(20);
+                    historia_opis.setLayoutX(774);
+                    historia_typ.setLayoutX(162);
 
                     result= DBManager.select("select * from logi where uzytkownik=5 and typ='Przelew przychodzacy'");
                     while (result.next()) {
@@ -152,6 +158,25 @@ public class Historia implements Initializable {
                     historia_opis.setLayoutX(640);
                     historia_opis.setLayoutY(20);
 
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Przelew wychodzacy'");
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        if (kwota.length()>=5)
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + t2 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                    +t4 + kwota + t4 + tresc);
+                        }
+                        else
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                     +t4 + kwota + t3+t2 + tresc);
+                        }
+                    }
                     break;
 
                 case "Transfer srodkow":
