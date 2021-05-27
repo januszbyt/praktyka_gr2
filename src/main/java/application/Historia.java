@@ -37,7 +37,7 @@ public class Historia implements Initializable {
     private Uzytkownik sesja;
     private int id;
     private String wybor;
-    private String query = "select * from logi where uzytkownik=12";
+    private String query = "select * from logi where uzytkownik=4";
     private ObservableList<String> lista = FXCollections.observableArrayList();
     public ImageView img_menugl;
 
@@ -50,12 +50,14 @@ public class Historia implements Initializable {
 
     public void wypelnijListe() {
         historia_lista.getItems().add("Wszystko");
-        historia_lista.getItems().add("Logowanie");
         historia_lista.getItems().add("Przelewy przychodzace");
         historia_lista.getItems().add("Przelewy wychodzace");
+        historia_lista.getItems().add("Przewalutowanie");
+        historia_lista.getItems().add("Transfer srodkow");
+        historia_lista.getItems().add("Logowanie");
     }
 
-    public void odswiezBaza(String zapytanie) {
+    public void odswiezBaza(String query) {
 
         try {
             ResultSet result = DBManager.select(query);

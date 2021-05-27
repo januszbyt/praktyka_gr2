@@ -1,6 +1,5 @@
 package classes;
 
-import application.DBConnection;
 import application.Powiadomienia;
 
 import java.sql.*;
@@ -70,6 +69,28 @@ public class Rachunek {
         Rachunek rachunek = new Rachunek();
         try {
             ResultSet result = select("SELECT * FROM rachunek WHERE numer = '" + numer + "';");
+
+            while (result.next()) {
+                rachunek.setId(result.getInt("id"));
+                rachunek.setNazwa(result.getString("nazwa"));
+                rachunek.setNumer(result.getString("numer"));
+                rachunek.setSaldo(result.getFloat("saldo"));
+                rachunek.setUzytkownik(result.getInt("uzytkownik"));
+                rachunek.setWaluta(result.getInt("waluta"));
+            }
+            return rachunek;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+
+    public static Rachunek wczytajRachunek_id(int id) {
+        Rachunek rachunek = new Rachunek();
+        try {
+            ResultSet result = select("SELECT * FROM rachunek WHERE id = " + id + ";");
 
             while (result.next()) {
                 rachunek.setId(result.getInt("id"));
