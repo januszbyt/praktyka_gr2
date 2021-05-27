@@ -31,6 +31,12 @@ public class Zgloszenie {
         this.data = data;
     }
 
+    public String getTytul() { return tytul; }
+
+    public void setTytul (String tytul) {
+        this.tresc_user = tytul;
+    }
+
     public String getTresc_user() {
         return tresc_user;
     }
@@ -63,21 +69,23 @@ public class Zgloszenie {
         this.uzytkownik = uzytkownik;
     }
 
-    public void wczytajZgloszenie(int id){
+    public Zgloszenie wczytajZgloszenie(int id){
+       Zgloszenie zgloszenie =  new Zgloszenie();
         try {
             ResultSet result = select("SELECT * FROM zgloszenie WHERE id = " + id + ";");
             result.next();
 
-            this.id = result.getInt("id");
-            this.data = result.getDate("data");
-            this.tytul = result.getString("tytul");
-            this.tresc_user = result.getString("tresc_user");
-            this.tresc_admin = result.getString("tresc_admin");
-            this.status = result.getString("status");
-            this.uzytkownik = result.getInt("uzytkownik");
+            zgloszenie.setId(result.getInt("id"));
+            zgloszenie.setData(result.getDate("data"));
+            zgloszenie.setTytul(result.getString("tytul"));
+            zgloszenie.setTresc_user(result.getString("tresc_user"));
+            zgloszenie.setTresc_admin(result.getString("tresc_admin"));
+            zgloszenie.setStatus(result.getString("status"));
+            zgloszenie.setUzytkownik(result.getInt("uzytkownik"));
 
         }catch (SQLException e) {
         }
+        return zgloszenie;
     }
 
     public void dodajZgloszenie(){

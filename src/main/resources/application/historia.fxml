@@ -12,45 +12,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="historia" prefHeight="522.0" prefWidth="791.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
+<AnchorPane fx:id="historia" prefHeight="482.0" prefWidth="1023.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
    <children>
-      <ComboBox fx:id="historia_lista" layoutX="193.0" layoutY="24.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
-      <AnchorPane layoutY="88.0" prefHeight="70.0" prefWidth="792.0" style="-fx-background-color: #ff8b35;">
+      <ComboBox fx:id="historia_lista" layoutX="110.0" layoutY="24.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
+      <AnchorPane layoutY="88.0" prefHeight="70.0" prefWidth="1023.0" style="-fx-background-color: #ff8b35;">
          <children>
             <Label layoutX="38.0" layoutY="20.0" text="Data" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="191.0" layoutY="20.0" text="Typ" textFill="WHITE">
+            <Label fx:id="historia_typ" layoutX="162.0" layoutY="20.0" text="Typ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="598.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
+            <Label fx:id="historia_opis" alignment="CENTER" layoutX="774.0" layoutY="20.0" prefHeight="30.0" prefWidth="128.0" text="Opis" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="historia_rachunek" layoutX="315.0" layoutY="20.0" text="Rachunek" textFill="WHITE">
+            <Label fx:id="historia_rachunek" layoutX="278.0" layoutY="20.0" text="Rachunek nadawcy" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="historia_kwota" layoutX="473.0" layoutY="20.0" text="Kwota" textFill="WHITE">
+            <Label fx:id="historia_kwota" layoutX="714.0" layoutY="20.0" text="Kwota" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="historia_rachunek2" layoutX="501.0" layoutY="20.0" text="Rachunek odbiorcy" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <VBox layoutY="158.0" prefHeight="375.0" prefWidth="791.0" style="-fx-background-color: blue;">
+      <VBox layoutY="158.0" prefHeight="375.0" prefWidth="1023.0" style="-fx-background-color: blue;">
          <children>
-            <ListView fx:id="historia_text" prefHeight="401.0" prefWidth="791.0" />
+            <ListView fx:id="historia_text" prefHeight="375.0" prefWidth="984.0" />
          </children>
       </VBox>
-      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="396.0" layoutY="24.0" prefHeight="39.0" prefWidth="168.0" stylesheets="@style.css" />
-      <Button fx:id="historia_wyszukaj_btn" layoutX="610.0" layoutY="23.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="168.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
+      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="290.0" layoutY="24.0" prefHeight="39.0" prefWidth="158.0" stylesheets="@style.css" />
+      <Button fx:id="historia_wyszukaj_btn" layoutX="471.0" layoutY="24.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -63,5 +68,10 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
+      <Button fx:id="historia_wysczysc_btn" layoutX="631.0" layoutY="26.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

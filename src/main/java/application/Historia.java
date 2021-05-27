@@ -1,6 +1,7 @@
 package application;
 
 import classes.DBManager;
+import classes.Rachunek;
 import classes.Uzytkownik;
 import com.google.gson.internal.bind.ReflectiveTypeAdapterFactory;
 import javafx.beans.value.ChangeListener;
@@ -17,12 +18,9 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.net.URL;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class Historia implements Initializable {
     @FXML
@@ -30,9 +28,9 @@ public class Historia implements Initializable {
     @FXML
     private ListView<String> historia_text;
     @FXML
-    private Button historia_wyszukaj_btn;
+    private Button historia_wyszukaj_btn,historia_wyczysc_btn;
     @FXML
-    private Label historia_rachunek, historia_kwota;
+    private Label historia_rachunek,historia_rachunek2,historia_kwota,historia_opis,historia_typ;
 
     private Uzytkownik sesja;
     private int id;
@@ -40,6 +38,10 @@ public class Historia implements Initializable {
     private String query = "select * from logi where uzytkownik=4";
     private ObservableList<String> lista = FXCollections.observableArrayList();
     public ImageView img_menugl;
+
+    private  String t2="\t\t";
+    private  String t3="\t\t\t";
+    private String t4="\t\t\t\t";
 
     public void listaHistoriaAkcja(ActionEvent event) {
         wybor = (String) historia_lista.getValue();
@@ -65,16 +67,29 @@ public class Historia implements Initializable {
             String data;
             String typ;
             String rachunek;
+            String rachunek2;
             String kwota;
             String tresc;
 
             switch (wybor) { // Rozpoczęcie switch case
                 case "Wszystko":
                     historia_text.getItems().clear();
+
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
                     while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
                         rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
                         kwota = result.getString("kwota");
                         tresc = result.getString("tresc");
 
@@ -84,6 +99,77 @@ public class Historia implements Initializable {
                     break;
                 case "Logowanie":
                     historia_text.getItems().clear();
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Logowanie'");
+
+                    historia_rachunek.setVisible(false);
+                    historia_rachunek2.setVisible(false);
+                    historia_kwota.setVisible(false);
+
+                    historia_typ.setLayoutX(200);
+
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        tresc = result.getString("tresc");
+
+                        historia_opis.setLayoutX(385);
+                        historia_opis.setLayoutY(20);
+                        historia_rachunek.setVisible(false);
+                        historia_kwota.setVisible(false);
+
+                        historia_text.getItems().add(data + "\t\t\t" + typ + "\t\t\t\t\t\t" + tresc);
+                    }
+                    break;
+                case "Przelewy przychodzace":
+                    historia_text.getItems().clear();
+
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(714);
+                    historia_opis.setLayoutX(774);
+                    historia_typ.setLayoutX(162);
+
+                    result= DBManager.select("select * from logi where uzytkownik=5 and typ='Przelew przychodzacy'");
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        if (kwota.length()>=5)
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + t2 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                    + t2 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t2 + kwota + t3 + tresc);
+                        }
+                        else
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                    + t2 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t2 + kwota + t4 + tresc);
+                        }
+
+                    }
+                    break;
+                case "Przelewy wychodzace":
+                    historia_text.getItems().clear();
+
+                    historia_rachunek.setVisible(false);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek2.setLayoutX(278);
+                    historia_rachunek2.setLayoutY(20);
+                    historia_kwota.setLayoutX(540);
+                    historia_kwota.setLayoutY(20);
+                    historia_opis.setLayoutX(640);
+                    historia_opis.setLayoutY(20);
+
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Przelew wychodzacy'");
                     while (result.next()) {
                         data = result.getString("data");
                         typ = result.getString("typ");
@@ -91,17 +177,75 @@ public class Historia implements Initializable {
                         kwota = result.getString("kwota");
                         tresc = result.getString("tresc");
 
-                        historia_text.getItems().add(data + "\t\t\t" + typ + "\t\t\t\t\t\t" + tresc);
-                        System.out.println(data + "\t\t\t" + typ + "\t\t\t" + rachunek + "\t\t" + kwota + "\t\t" + tresc);
+                        if (kwota.length()>=5)
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + t2 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                    +t4 + kwota + t4 + tresc);
+                        }
+                        else
+                        {
+                            historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                     +t4 + kwota + t3+t2 + tresc);
+                        }
                     }
                     break;
-                case "Przelewy przychodzace":
+
+                case "Transfer srodkow":
                     historia_text.getItems().clear();
-                    //kod
+
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Transfer srodkow'");
+
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                + t3 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t3 + kwota + t4 + tresc);
+                    }
                     break;
-                case "Przelwy wychodzace":
+
+                case "Przewalutowanie":
                     historia_text.getItems().clear();
-                    //kod
+                    historia_rachunek.setVisible(true);
+                    historia_rachunek2.setVisible(true);
+                    historia_kwota.setVisible(true);
+
+                    historia_rachunek.setLayoutX(278);
+                    historia_rachunek2.setLayoutX(501);
+                    historia_kwota.setLayoutX(734);
+                    historia_opis.setLayoutX(854);
+                    historia_typ.setLayoutX(162);
+
+                    result= DBManager.select("select * from logi where uzytkownik=4 and typ='Przewalutowanie'");
+
+                    while (result.next()) {
+                        data = result.getString("data");
+                        typ = result.getString("typ");
+                        rachunek = result.getString("rachunek");
+                        rachunek2 = result.getString("rachunek2");
+                        kwota = result.getString("kwota");
+                        tresc = result.getString("tresc");
+
+                        historia_text.getItems().add(data + "\t" + typ + "\t\t" + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek)).getNumer()
+                                + t3 + Rachunek.wczytajRachunek_id(Integer.parseInt(rachunek2)).getNumer() +t3 + kwota + t4 + tresc);
+                    }
+                    break;
+
+                default:
                     break;
             }
 
