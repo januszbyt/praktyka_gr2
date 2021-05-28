@@ -59,6 +59,16 @@ public class Przelew implements Initializable {
 
     }
 
+    public void listarachunekAkcja2() {
+        rachunek1 = Rachunek.wczytajRachunek_numer(String.valueOf(przelew_listarachunek.getValue()));
+        waluta1 = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
+        przelew_numerrachunku.setText(rachunek1.getNumer());
+        przelew_danenazwa1.setText(rachunek1.getNazwa());
+        przelew_danewaluta1.setText(waluta1.getSkrot());
+        przelew_danesaldo1.setText(String.valueOf(rachunek1.getSaldo()));
+
+    }
+
     public void potwierdzButton() {
 
         rachunek2 = Rachunek.wczytajRachunek_numer(przelew_numer.getText());
@@ -70,9 +80,11 @@ public class Przelew implements Initializable {
                 if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
                     przelejSamaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
                     wyczyscButton();
+                    listarachunekAkcja2();
                 } else {
                     przelejInnaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
                     wyczyscButton();
+                    listarachunekAkcja2();
 
                 }
             }
@@ -186,6 +198,8 @@ public class Przelew implements Initializable {
             e.printStackTrace();
         }
     }
+
+
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
         ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);

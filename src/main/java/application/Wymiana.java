@@ -62,10 +62,13 @@ public class Wymiana implements Initializable {
                 if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
                     wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
                     wyczyscButton();
+                    listarachunek1Akcja2();
+                    listarachunek2Akcja2();
                 } else {
                     wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
                     wyczyscButton();
-
+                    listarachunek1Akcja2();
+                    listarachunek2Akcja2();
                 }
             }
 
@@ -99,7 +102,29 @@ public class Wymiana implements Initializable {
 
     }
 
+    public void listarachunek1Akcja2() {
+        rachunek1 = Rachunek.wczytajRachunek_numer(String.valueOf(wymiana_listarachunek1.getValue()));
+        waluta1 = Waluta.wczytajWaluta_id(rachunek1.getWaluta());
+        wymiana_numerrachunku.setText(rachunek1.getNumer());
+        wymiana_danenazwa.setText(rachunek1.getNazwa());
+        wymiana_danewaluta.setText(waluta1.getSkrot());
+        wymiana_danesaldo.setText(String.valueOf(rachunek1.getSaldo()));
+        aktualizujPodglad();
+
+    }
+
     public void listarachunek2Akcja(ActionEvent event) {
+        rachunek2 = Rachunek.wczytajRachunek_numer(String.valueOf(wymiana_listarachunek2.getValue()));
+        waluta2 = Waluta.wczytajWaluta_id(rachunek2.getWaluta());
+        wymiana_numerrachunku2.setText(rachunek2.getNumer());
+        wymiana_danenazwa2.setText(rachunek2.getNazwa());
+        wymiana_danewaluta2.setText(waluta2.getSkrot());
+        wymiana_danesaldo2.setText(String.valueOf(rachunek2.getSaldo()));
+        aktualizujPodglad();
+
+    }
+
+    public void listarachunek2Akcja2() {
         rachunek2 = Rachunek.wczytajRachunek_numer(String.valueOf(wymiana_listarachunek2.getValue()));
         waluta2 = Waluta.wczytajWaluta_id(rachunek2.getWaluta());
         wymiana_numerrachunku2.setText(rachunek2.getNumer());

@@ -3,12 +3,16 @@ package application;
 import classes.Rachunek;
 import classes.Uzytkownik;
 import classes.Waluta;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -40,26 +44,25 @@ public class Rachunki_wyplac implements Initializable {
     }
 
 
-
-
-    public void wyplacButton() {
+    public void wyplacButton(ActionEvent actionEvent) {
         rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
         if (rachunek.getNumer().isEmpty()) {
             Powiadomienia.alertWymianaWybierzRachunek();
         } else if (rachunkiwyplac_kwota.getText().isEmpty()) {
             Powiadomienia.alertWymianaKwota();
 
-        } else if(jestLiczba(rachunkiwyplac_kwota.getText())) {
+        } else if (jestLiczba(rachunkiwyplac_kwota.getText())) {
             kwota = Float.parseFloat(rachunkiwyplac_kwota.getText());
-            if(Rachunek.weryfikacjaSaldo(rachunek, kwota))
-            {
+            if (Rachunek.weryfikacjaSaldo(rachunek, kwota)) {
                 DecimalFormat df = new DecimalFormat("###.##");
                 Rachunek.usunSaldo(rachunek, kwota);
                 Powiadomienia.alertWyplacSukces(rachunek.getNumer(), Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot(), df.format(kwota));
+                Node node = (Node) actionEvent.getSource();
+                Stage thisStage = (Stage) node.getScene().getWindow();
+                thisStage.hide();
             }
         }
     }
-
 
 
     public void wypelnijListaRachunek(int uzytkownik, ComboBox listarachunek) {
@@ -87,7 +90,6 @@ public class Rachunki_wyplac implements Initializable {
 
     }
 
-
-
 }
+
 

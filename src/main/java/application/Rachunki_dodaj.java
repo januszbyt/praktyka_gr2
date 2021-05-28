@@ -4,11 +4,14 @@ import classes.DBManager;
 import classes.Rachunek;
 import classes.Uzytkownik;
 import classes.Waluta;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -41,7 +44,7 @@ public class Rachunki_dodaj implements Initializable {
 
 
 
-    public void dodajButton(){
+    public void dodajButton(ActionEvent action){
 
         if(listawalut.getSelectionModel().isEmpty())
         {
@@ -61,6 +64,9 @@ public class Rachunki_dodaj implements Initializable {
                     dodajRachunek(query);
                     znaleziono = true;
                     Powiadomienia.alertDodajSukces(rachunek.getNumer(), rachunek.getNazwa(), listawalut.getSelectionModel().getSelectedItem().toString());
+                    Node node = (Node) action.getSource();
+                    Stage thisStage = (Stage) node.getScene().getWindow();
+                    thisStage.hide();
                 }
             }
         }
