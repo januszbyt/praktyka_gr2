@@ -39,10 +39,11 @@ public class Menugl implements Initializable {
     public void btn_rachunki_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("rachunki.fxml", 750, 483, btn_przelew);
+            ZmienOkno.zmienScene("rachunki.fxml", 750, 483, btn_rachunki);
         }
         catch (Exception e){
-            System.out.println("Błąd w wczytaniu okna");
+            //System.out.println("Błąd w wczytaniu okna");
+            System.out.println(e);
         }
     }
 

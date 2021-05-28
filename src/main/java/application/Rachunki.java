@@ -15,8 +15,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -37,6 +41,7 @@ public class Rachunki implements Initializable {
     private ComboBox rachunki_listarachunek;
     @FXML
     private Label rachunki_numerrachunku, rachunki_danenazwa, rachunki_danewaluta, rachunki_danesaldo;
+    public ImageView img_menugl;
 
     public static Uzytkownik sesja;
     public Rachunek rachunek;
@@ -51,7 +56,9 @@ public class Rachunki implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId(), rachunki_listarachunek);
-
+        File plik = new File("src/images/domek.png");
+        Image zdjecie = new Image(plik.toURI().toString());
+        img_menugl.setImage(zdjecie);
     }
 
 
@@ -217,13 +224,10 @@ public class Rachunki implements Initializable {
         {
             e.printStackTrace();
         }
+
     }
 
-
-
-
-
-
-
-
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception{
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+    }
 }
