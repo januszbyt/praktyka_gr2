@@ -42,7 +42,7 @@ public class Wymiana implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sesja = Uzytkownik.zaloguj("pkazako");
+        sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek1);
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek2);
         //wczytanie obrazu

@@ -35,6 +35,7 @@ public class Logowanie implements Initializable {
     public Button btn_zamknij;
     public Label logowanie_haslo_alert;
     public Label logowanie_alert;
+    public static Uzytkownik zalogowany;
 
     @FXML
     private ImageView logowanie_logo;
@@ -70,6 +71,7 @@ public class Logowanie implements Initializable {
                 Powiadomienia.alertLogowanie(blad_logowanie);
                 System.out.println(blad_logowanie);
                 zmien_okno();
+                zalogowany = sesja;
             } else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
                 Powiadomienia.alertLogowanie(blad_logowanie);

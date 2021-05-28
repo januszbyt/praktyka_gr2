@@ -41,7 +41,7 @@ public class Przelew implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sesja = Uzytkownik.zaloguj("pkazako");
+        sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId());
         //wczytanie obrazu
         File plik = new File("src/images/domek.png");

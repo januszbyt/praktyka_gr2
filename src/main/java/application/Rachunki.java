@@ -49,7 +49,7 @@ public class Rachunki implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        sesja = Uzytkownik.zaloguj("pkazako");
+        sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId(), rachunki_listarachunek);
 
     }
