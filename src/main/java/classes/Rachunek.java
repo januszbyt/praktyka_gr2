@@ -108,6 +108,7 @@ public class Rachunek {
 
     }
 
+
     public static boolean weryfikacjaSaldo(Rachunek rachunek, float kwota) {
         if (kwota <= 0) {
             Powiadomienia.alertPrzelewWeryfikacjaSaldo2();
