@@ -177,4 +177,66 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
+    public static void alertRachunkiNazwa() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nieodpowiednia dlugosc nazwy rachunku!");
+        porazka.showAndWait();
+    }
+
+    public static void alertRachunkiListaWalut() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz odpowiednia walute!");
+        porazka.showAndWait();
+    }
+
+    public static void alertRachunkiSaldo() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nie jest mozliwe usuniecie rachunku z saldem na koncie! Oproznij konto przed usunieciem go.");
+        porazka.showAndWait();
+    }
+
+    public static void alertRachunkiNumer() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz rachunek!");
+        porazka.showAndWait();
+    }
+
+    public static void alertDodajSukces(String rachunek, String nazwa, String waluta) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie dodano rachunek!\nRachunek: " + rachunek + "\nNazwa: " + nazwa + "\nWaluta: "+waluta);
+        sukces.showAndWait();
+
+
+    }
+
+    public static void alertEdytujSukces(String rachunek, String nazwa) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie zedytowano rachunek!\nRachunek: " + rachunek + "\nNowa nazwa: " + nazwa);
+        sukces.showAndWait();
+
+
+    }
+
+
+
+    public static void alertUsunSukces(String rachunek) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie usunieto rachunek!\nRachunek: " + rachunek);
+        sukces.showAndWait();
+    }
+
 }

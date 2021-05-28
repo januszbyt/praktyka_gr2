@@ -171,6 +171,7 @@ public class Historia implements Initializable {
 
                     result= DBManager.select("select * from logi where uzytkownik=4 and typ='Przelew wychodzacy'");
                     while (result.next()) {
+
                         data = result.getString("data");
                         typ = result.getString("typ");
                         rachunek = result.getString("rachunek");

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +25,7 @@ import java.util.ResourceBundle;
 
 import static classes.DBManager.select;
 
-public class Rachunki_wplac implements Initializable {
+public class Rachunki_wplac implements Initializable{
 
     @FXML
     private Button rachunkiwplac_wplac;
@@ -49,7 +50,7 @@ public class Rachunki_wplac implements Initializable {
 
 
 
-    public void wplacButton() {
+    public void wplacButton(ActionEvent event) {
         rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
         if (rachunek.getNumer().isEmpty()) {
             Powiadomienia.alertWymianaWybierzRachunek();
@@ -63,10 +64,14 @@ public class Rachunki_wplac implements Initializable {
                 DecimalFormat df = new DecimalFormat("###.##");
                 Rachunek.dodajSaldo(rachunek, kwota);
                 Powiadomienia.alertWplacSukces(rachunek.getNumer(), Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot(), df.format(kwota));
+                Node node = (Node) event.getSource();
+                Stage thisStage = (Stage) node.getScene().getWindow();
+                thisStage.hide();
             }
             else Powiadomienia.alertRachunkiKwota();
         }
     }
+
 
 
 
