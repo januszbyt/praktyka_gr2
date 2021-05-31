@@ -1,8 +1,6 @@
 package application;
 
-import classes.Rachunek;
-import classes.Uzytkownik;
-import classes.Waluta;
+import classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -64,6 +62,10 @@ public class Rachunki_wplac implements Initializable{
                 DecimalFormat df = new DecimalFormat("###.##");
                 Rachunek.dodajSaldo(rachunek, kwota);
                 Powiadomienia.alertWplacSukces(rachunek.getNumer(), Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot(), df.format(kwota));
+
+                DBManager.update(Logi.logWplata(Integer.toString(sesja.getId()),Integer.toString(rachunek.getId()),Float.toString(kwota),
+                        Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot()));
+
                 Node node = (Node) event.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();
                 thisStage.hide();
@@ -100,7 +102,4 @@ public class Rachunki_wplac implements Initializable{
 
     }
 
-
-
 }
-

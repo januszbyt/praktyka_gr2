@@ -1,8 +1,6 @@
 package application;
 
-import classes.Rachunek;
-import classes.Uzytkownik;
-import classes.Waluta;
+import classes.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -56,6 +54,10 @@ public class Rachunki_wyplac implements Initializable {
             if (Rachunek.weryfikacjaSaldo(rachunek, kwota)) {
                 DecimalFormat df = new DecimalFormat("###.##");
                 Rachunek.usunSaldo(rachunek, kwota);
+
+                DBManager.update(Logi.logWyplata(Integer.toString(sesja.getId()),Integer.toString(rachunek.getId()),Float.toString(kwota),
+                        Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot()));
+
                 Powiadomienia.alertWyplacSukces(rachunek.getNumer(), Waluta.wczytajWaluta_id(rachunek.getWaluta()).getSkrot(), df.format(kwota));
                 Node node = (Node) actionEvent.getSource();
                 Stage thisStage = (Stage) node.getScene().getWindow();

@@ -85,10 +85,17 @@ public static String przewalutowanieLog(String rachunekSprzedazId, String rachun
         return sql;
     }
 
-
     public static String logLogowanie(String id) {
         String sql = "INSERT INTO logi (typ,tresc,uzytkownik,kwota) VALUES ('Logowanie','Udane logowanie','" + id + "','0.0')";
         return sql;
     }
 
+    public static String logWplata(String id, String rachunek_id, String kwota, String waluta) {
+        String sql = "INSERT INTO logi (typ,rachunek,tresc,uzytkownik,kwota) VALUES ('Wplata','"+rachunek_id+"','Wplata "+kwota+" "+waluta+"','" + id + "','"+kwota+"')";
+        return sql;
+    }
+    public static String logWyplata(String id, String rachunek_id, String kwota, String waluta) {
+        String sql = "INSERT INTO logi (typ,rachunek,tresc,uzytkownik,kwota) VALUES ('Wyplata','"+rachunek_id+"','Wyplata "+kwota+" "+waluta+"','" + id + "','"+kwota+"')";
+        return sql;
+    }
 }
