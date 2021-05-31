@@ -26,14 +26,11 @@ public class Menugl implements Initializable {
     }
 
 
-    public void btn_przelew_M(ActionEvent actionEvent)  {
-        try
-        {
+    public void btn_przelew_M(ActionEvent actionEvent) throws Exception  {
+
             ZmienOkno.zmienScene("przelew.fxml", 750, 483, btn_przelew);
-        }
-        catch (Exception e){
-            System.out.println("Błąd w wczytaniu okna");
-        }
+
+
     }
 
     public void btn_rachunki_M(ActionEvent actionEvent) {

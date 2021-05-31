@@ -200,4 +200,7 @@ public class Przelew implements Initializable {
     }
 
 
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception{
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+    }
 }
