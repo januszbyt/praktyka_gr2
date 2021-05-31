@@ -33,6 +33,9 @@ import java.util.logging.Logger;
 import static classes.DBManager.select;
 
 public class Rachunki implements Initializable {
+    public ImageView img_domek;
+
+    public ImageView img_menugl;
 
 
     @FXML
@@ -41,7 +44,7 @@ public class Rachunki implements Initializable {
     private ComboBox rachunki_listarachunek;
     @FXML
     private Label rachunki_numerrachunku, rachunki_danenazwa, rachunki_danewaluta, rachunki_danesaldo;
-    public ImageView img_menugl;
+
 
     public static Uzytkownik sesja;
     public Rachunek rachunek;
@@ -56,9 +59,14 @@ public class Rachunki implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId(), rachunki_listarachunek);
-        File plik = new File("src/images/domek.png");
+        //wczytanie obrazu
+        File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
-        img_menugl.setImage(zdjecie);
+        img_domek.setImage(zdjecie);
+
+        File plik2 = new File("src/images/logobiale.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        img_menugl.setImage(zdjecie2);
     }
 
 
@@ -228,6 +236,6 @@ public class Rachunki implements Initializable {
     }
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception{
-        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_domek);
     }
 }

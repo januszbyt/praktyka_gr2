@@ -10,64 +10,73 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
+<AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Wymiana">
     <children>
-        <Label layoutX="161.0" layoutY="64.0" text="Sprzedaż">
+        <Label layoutX="358.0" layoutY="73.0" text="Sprzedaż">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <Label layoutX="516.0" layoutY="64.0" text="Kupno">
+        <Label layoutX="878.0" layoutY="73.0" text="Kupno">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <ComboBox fx:id="wymiana_listarachunek1" layoutX="101.0" layoutY="100.0" onAction="#listarachunek1Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
-        <ComboBox fx:id="wymiana_listarachunek2" layoutX="450.0" layoutY="100.0" onAction="#listarachunek2Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
-        <TextField id="tf" fx:id="wymiana_kwota" layoutX="301.0" layoutY="292.0" onAction="#aktualizujPodglad" onKeyTyped="#aktualizujPodglad" stylesheets="@style.css" />
-        <Label layoutX="357.0" layoutY="265.0" text="Kwota">
+        <ComboBox fx:id="wymiana_listarachunek1" layoutX="284.0" layoutY="109.0" onAction="#listarachunek1Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
+        <ComboBox fx:id="wymiana_listarachunek2" layoutX="797.0" layoutY="109.0" onAction="#listarachunek2Akcja" prefHeight="25.0" prefWidth="200.0" promptText="Rachunek" stylesheets="@style.css" />
+        <TextField id="tf" fx:id="wymiana_kwota" layoutX="540.0" layoutY="324.0" onAction="#aktualizujPodglad" onKeyTyped="#aktualizujPodglad" stylesheets="@style.css" />
+        <Label layoutX="596.0" layoutY="297.0" text="Kwota">
             <font>
                 <Font size="13.0" />
             </font>
         </Label>
-        <Button fx:id="btn_wyczysc" layoutX="66.0" layoutY="400.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+        <Button fx:id="btn_wyczysc" layoutX="309.0" layoutY="434.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-        <Button fx:id="btn_potwierdz" layoutX="535.0" layoutY="400.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
+        <Button fx:id="btn_potwierdz" layoutX="822.0" layoutY="434.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Button>
-      <Label layoutX="102.0" layoutY="183.0" text="Nazwa:" />
-      <Label layoutX="101.0" layoutY="139.0" text="Aktualnie wybrany rachunek:" />
-      <Label layoutX="102.0" layoutY="204.0" text="Waluta:" />
-      <Label layoutX="101.0" layoutY="225.0" text="Saldo:" />
-      <Label fx:id="wymiana_danenazwa" layoutX="150.0" layoutY="183.0" />
-      <Label fx:id="wymiana_danewaluta" layoutX="150.0" layoutY="204.0" />
-      <Label fx:id="wymiana_danesaldo" layoutX="149.0" layoutY="225.0" />
-      <Label fx:id="wymiana_numerrachunku" layoutX="101.0" layoutY="160.0" />
-      <Label layoutX="451.0" layoutY="184.0" text="Nazwa:" />
-      <Label layoutX="450.0" layoutY="139.0" text="Aktualnie wybrany rachunek:" />
-      <Label layoutX="451.0" layoutY="205.0" text="Waluta:" />
-      <Label layoutX="450.0" layoutY="226.0" text="Saldo:" />
-      <Label fx:id="wymiana_danenazwa2" layoutX="499.0" layoutY="184.0" />
-      <Label fx:id="wymiana_danewaluta2" layoutX="499.0" layoutY="205.0" />
-      <Label fx:id="wymiana_danesaldo2" layoutX="498.0" layoutY="226.0" />
-      <Label fx:id="wymiana_numerrachunku2" layoutX="450.0" layoutY="161.0" />
-      <Label fx:id="wymiana_podglad" layoutX="301.0" layoutY="333.0">
+      <Label layoutX="285.0" layoutY="192.0" text="Nazwa:" />
+      <Label layoutX="284.0" layoutY="148.0" text="Aktualnie wybrany rachunek:" />
+      <Label layoutX="285.0" layoutY="213.0" text="Waluta:" />
+      <Label layoutX="284.0" layoutY="234.0" text="Saldo:" />
+      <Label fx:id="wymiana_danenazwa" layoutX="333.0" layoutY="192.0" />
+      <Label fx:id="wymiana_danewaluta" layoutX="333.0" layoutY="213.0" />
+      <Label fx:id="wymiana_danesaldo" layoutX="332.0" layoutY="234.0" />
+      <Label fx:id="wymiana_numerrachunku" layoutX="284.0" layoutY="169.0" />
+      <Label layoutX="797.0" layoutY="196.0" text="Nazwa:" />
+      <Label layoutX="796.0" layoutY="151.0" text="Aktualnie wybrany rachunek:" />
+      <Label layoutX="797.0" layoutY="217.0" text="Waluta:" />
+      <Label layoutX="796.0" layoutY="238.0" text="Saldo:" />
+      <Label fx:id="wymiana_danenazwa2" layoutX="845.0" layoutY="196.0" />
+      <Label fx:id="wymiana_danewaluta2" layoutX="845.0" layoutY="217.0" />
+      <Label fx:id="wymiana_danesaldo2" layoutX="844.0" layoutY="238.0" />
+      <Label fx:id="wymiana_numerrachunku2" layoutX="796.0" layoutY="173.0" />
+      <Label fx:id="wymiana_podglad" layoutX="540.0" layoutY="365.0">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/domek.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
+      <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
+         <children>
+            <ImageView fx:id="menugl_logo" fitHeight="75.0" fitWidth="200.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logobiale.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_domek" fitHeight="105.0" fitWidth="125.0" layoutX="50.0" layoutY="240.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/domekbialy.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

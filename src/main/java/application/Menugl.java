@@ -30,20 +30,15 @@ public class Menugl implements Initializable {
 
     public void btn_przelew_M(ActionEvent actionEvent) throws Exception  {
 
-            ZmienOkno.zmienScene("przelew.fxml", 750, 483, btn_przelew);
+            ZmienOkno.zmienScene("przelew.fxml", 1080, 540, btn_przelew);
 
 
     }
 
-    public void btn_rachunki_M(ActionEvent actionEvent) {
-        try
-        {
-            ZmienOkno.zmienScene("rachunki.fxml", 750, 483, btn_rachunki);
-        }
-        catch (Exception e){
-            //System.out.println("Błąd w wczytaniu okna");
-            System.out.println(e);
-        }
+    public void btn_rachunki_M(ActionEvent actionEvent) throws Exception {
+
+            ZmienOkno.zmienScene("rachunki.fxml", 1080, 540, btn_rachunki);
+
     }
 
     public void btn_historia_M(ActionEvent actionEvent) {
@@ -59,7 +54,7 @@ public class Menugl implements Initializable {
     public void btn_wymiana_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("wymiana.fxml", 750, 483, btn_przelew);
+            ZmienOkno.zmienScene("wymiana.fxml", 1080, 540, btn_przelew);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
