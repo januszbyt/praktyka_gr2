@@ -16,6 +16,7 @@ public class Adm_Menugl implements Initializable {
     public Button btn_adm_zarzadzaj_wal;
     public Button btn_adm_zgloszenia;
     public Button btn_adm_historia;
+    public Button btn_wyloguj;
 
 
     @Override
@@ -63,6 +64,14 @@ public class Adm_Menugl implements Initializable {
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
+        }
+    }
+
+    public void btn_wyloguj_M(ActionEvent actionEvent) {
+        try {
+            ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_wyloguj);
+        }catch (Exception e){
+            System.out.println("Błąd poczas wylogowania");
         }
     }
 }
