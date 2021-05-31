@@ -1,5 +1,6 @@
 package application;
 
+import classes.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,6 +18,7 @@ public class Menugl implements Initializable {
     public Button btn_historia;
     public Button btn_wymiana;
     public Button btn_zgloszenia;
+    public Button btn_wyloguj;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -72,5 +74,15 @@ public class Menugl implements Initializable {
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
         }
+    }
+
+    public void btn_wyloguj_M(ActionEvent actionEvent) {
+        try {
+            Logowanie.zalogowany = null;
+            ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_wyloguj);
+        }catch (Exception e){
+            System.out.println("Błąd w wczytaniu okna");
+        }
+
     }
 }

@@ -31,7 +31,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="438.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wyloguj" textFill="#ff8b35">
+            <Button fx:id="btn_wyloguj" layoutX="28.0" layoutY="438.0" mnemonicParsing="false" onAction="#btn_wyloguj_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wyloguj" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
