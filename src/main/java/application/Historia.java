@@ -82,8 +82,8 @@ public class Historia implements Initializable {
         switch (wybor) {
             case "Przelewy przychodzace":
 
-                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek odbiorcy'," +
-                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek nadawcy',kwota," +
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy',kwota," +
                         "tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew przychodzacy'",table_view);
                 break;
             case "Przelewy wychodzace":
@@ -109,8 +109,8 @@ public class Historia implements Initializable {
                 break;
             case "Transfer srodkow":
 
-                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek odbiorcy'," +
-                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek nadawcy'," +
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
                         "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Transfer srodkow'", table_view);
                 break;
             case "Logowanie":
