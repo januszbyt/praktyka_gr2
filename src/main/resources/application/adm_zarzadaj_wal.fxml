@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -7,13 +8,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane onMouseClicked="#img_menugl_M" prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_zarzadzaj_wal">
    <children>
       <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/domek.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <Label layoutX="110.0" layoutY="101.0" text="Dodaj walutę" />
       <TextField id="tf" alignment="CENTER" layoutX="70.0" layoutY="132.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="70.0" AnchorPane.rightAnchor="531.0" />
