@@ -24,7 +24,6 @@ import java.util.ResourceBundle;
 
 public class Historia implements Initializable {
     public TextField historia_wyszukaj_text;
-    public TableView dupa;
     public TableView table_view;
     public ComboBox historia_lista;
     public Uzytkownik sesja = Logowanie.zalogowany;
@@ -32,7 +31,6 @@ public class Historia implements Initializable {
     private ObservableList<ObservableList> lista = FXCollections.observableArrayList();
     //ObservableList<String> row = FXCollections.observableArrayList();
     String wybor;
-    ResultSet result;
     public void listaHistoriaAkcja(ActionEvent actionEvent) throws Exception{
         odswiezTableView();
 
@@ -56,7 +54,7 @@ public class Historia implements Initializable {
             });
 
             tabelka.getColumns().addAll(col);
-            System.out.println("Column [" + i + "] ");
+
         }
 
 
@@ -67,7 +65,6 @@ public class Historia implements Initializable {
                 //Iterate Column
 
                 row.add(result.getString(i));
-                System.out.println("Row [1] added " + row);
 
             }
 
@@ -85,24 +82,42 @@ public class Historia implements Initializable {
         switch (wybor) {
             case "Przelewy przychodzace":
 
-                xyz("select data,typ,rachunek,rachunek2,kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew przychodzacy'",table_view);
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek odbiorcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek nadawcy',kwota," +
+                        "tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew przychodzacy'",table_view);
                 break;
             case "Przelewy wychodzace":
 
-                xyz("select data,typ,rachunek,kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew wychodzacy'",table_view);
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek docelowy'" +
+                        ",kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew wychodzacy'",table_view);
+                break;
+            case "Wplaty":
+
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'" +
+                        ",tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wplata'",table_view);
+                break;
+            case "Wyplaty":
+
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'," +
+                        "tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wyplata'",table_view);
                 break;
             case "Przewalutowanie":
 
-                xyz("select data,typ,rachunek,rachunek2,kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przewalutowanie'",table_view);
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) " +
+                        "AS 'Rachunek nadawcy',(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
+                        "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Przewalutowanie'",table_view);
                 break;
             case "Transfer srodkow":
 
-                xyz("select data,typ,rachunek,rachunek2,kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Transfer srodkow'", table_view);
+                xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek odbiorcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek nadawcy'," +
+                        "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Transfer srodkow'", table_view);
                 break;
             case "Logowanie":
 
-                xyz("select data,typ,tresc from logi where uzytkownik=8",table_view);
+                xyz("select data,typ,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Logowanie'",table_view);
                 break;
+
         }
     }
     public void wypelnijListe(){
