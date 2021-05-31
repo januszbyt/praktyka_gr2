@@ -38,7 +38,8 @@ public class Wymiana implements Initializable {
     public Uzytkownik sesja;
     public Rachunek rachunek1, rachunek2;
     public Waluta waluta1, waluta2;
-    public ImageView img_menugl;
+    public ImageView img_domek;
+    public ImageView menugl_logo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -46,9 +47,13 @@ public class Wymiana implements Initializable {
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek1);
         wypelnijListaRachunek(sesja.getId(), wymiana_listarachunek2);
         //wczytanie obrazu
-        File plik = new File("src/images/domek.png");
+        File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
-        img_menugl.setImage(zdjecie);
+        img_domek.setImage(zdjecie);
+
+        File plik2 = new File("src/images/logobiale.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        menugl_logo.setImage(zdjecie2);
     }
 
     public void potwierdzButton() {
@@ -251,6 +256,6 @@ public class Wymiana implements Initializable {
         return 0;
     }
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
-        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, menugl_logo);
     }
 }

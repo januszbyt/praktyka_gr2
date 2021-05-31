@@ -22,7 +22,8 @@ import java.util.ResourceBundle;
 import static classes.DBManager.select;
 
 public class Przelew implements Initializable {
-    public ImageView img_menugl;
+    public ImageView img_domek;
+    public ImageView menugl_logo;
 
     //deklaracja zmiennych z Scen Buildera
 
@@ -44,9 +45,13 @@ public class Przelew implements Initializable {
         sesja = Logowanie.zalogowany;
         wypelnijListaRachunek(sesja.getId());
         //wczytanie obrazu
-        File plik = new File("src/images/domek.png");
+        File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
-        img_menugl.setImage(zdjecie);
+        img_domek.setImage(zdjecie);
+
+        File plik2 = new File("src/images/logobiale.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        menugl_logo.setImage(zdjecie2);
     }
 
     public void listarachunekAkcja(ActionEvent event) {
@@ -201,6 +206,6 @@ public class Przelew implements Initializable {
 
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception{
-        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_domek);
     }
 }
