@@ -24,7 +24,7 @@ public class Logowanie implements Initializable {
 
     // Zmienne ----------------
 
-    public String login, haslo, login_field, haslo_field, blad_logowanie;
+    public String login, haslo, rola,login_field, haslo_field, blad_logowanie;
 
     //--------------------------
     public TextField logowanie_login;
@@ -69,9 +69,13 @@ public class Logowanie implements Initializable {
                 id = result.getString(1);
                 DBManager.update(Logi.logLogowanie(id));
                 Powiadomienia.alertLogowanie(blad_logowanie);
-                System.out.println(blad_logowanie);
-                zmien_okno();
-                zalogowany = sesja;
+                if (rola.equals("U")){
+                    zmien_okno_uzytkownik();
+                    zalogowany = sesja;
+                }else {
+                    zmien_okno_administrator();
+                }
+
             } else {
                 blad_logowanie = "\nNie zostales zweryfikowany przez Administratora!";
                 Powiadomienia.alertLogowanie(blad_logowanie);
@@ -89,12 +93,13 @@ public class Logowanie implements Initializable {
         haslo_field = logowanie_haslo.getText();
         try {
 
-            String query = "SELECT login,haslo FROM uzytkownik WHERE login='" + login_field + "'";
+            String query = "SELECT login,haslo,rola FROM uzytkownik WHERE login='" + login_field + "'";
             ResultSet result = DBManager.select(query);
             result.next();
 
             login = result.getString(1);
             haslo = result.getString(2);
+            rola = result.getString(3);
 
         } catch (Exception e) {
             // e.printStackTrace();
@@ -120,8 +125,11 @@ public class Logowanie implements Initializable {
         }
     }
 
-    public void zmien_okno() throws Exception {
+    public void zmien_okno_uzytkownik() throws Exception {
         ZmienOkno.zmienScene("menugl.fxml", 1077, 534, btn_zaloguj);
+    }
+    public void zmien_okno_administrator() throws Exception{
+        ZmienOkno.zmienScene("adm_menugl.fxml", 1077, 534, btn_zaloguj);
     }
 
     public void wyczysc_btn_M(ActionEvent actionEvent) {
