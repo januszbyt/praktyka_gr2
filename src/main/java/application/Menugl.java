@@ -3,6 +3,7 @@ package application;
 import classes.DBManager;
 import classes.Uzytkownik;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class Menugl implements Initializable {
@@ -24,28 +26,24 @@ public class Menugl implements Initializable {
     public Button btn_zgloszenia;
     public Button btn_wyloguj;
     public Button btn_kurs;
+    @FXML
     public Label zalogowany_jako, ostatnio_zalogowany;
     //public TableView tabela_rachunki;
     public Label kurs_eur,kurs_usd,kurs_gbp,kurs_uah;
+    Uzytkownik sesja=Logowanie.zalogowany;
+    ResultSet result;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
+    try{
 
-        Uzytkownik sesja= Logowanie.zalogowany;
-
-        ResultSet result;
-        try {
-            result = DBManager.select("SELECT imie,nazwisko from uzytkownik where id=" + sesja.getId());
-
-            zalogowany_jako.setText("Zalogowany jako: " + result.getString("imie") + " " + result.getString("nazwisko"));
-
-            System.out.println(result.getString("imie")+result.getString("nazwisko"));
-        }
-        catch(Exception e)
-        {}
+        odswiez_Dane();}
+    catch (SQLException e)
+    {}
     }
 
 
@@ -99,6 +97,22 @@ public class Menugl implements Initializable {
         }catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
         }
+
+    }
+
+    public void odswiez_Dane () throws SQLException {
+
+            result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id=12 and typ ='Logowanie' order by data desc"); //sesja.getId()
+            result.next();
+            result.next();
+            zalogowany_jako.setText("Zalogowany jako: " + result.getString(1) + " " + result.getString(2));
+            ostatnio_zalogowany.setText("Ostatnia data logowania: "+result.getString(3));
+            System.out.println(result.getString(3)+"  "+result.getString(3));
+
+    }
+
+    public void odswiez_Kurs() throws SQLException
+    {
 
     }
 }
