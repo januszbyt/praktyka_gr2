@@ -70,8 +70,8 @@ public class Logowanie implements Initializable {
                 DBManager.update(Logi.logLogowanie(id));
                 Powiadomienia.alertLogowanie(blad_logowanie);
                 if (rola.equals("U")){
-                    zmien_okno_uzytkownik();
                     zalogowany = sesja;
+                    zmien_okno_uzytkownik();
                 }else {
                     zmien_okno_administrator();
                 }
