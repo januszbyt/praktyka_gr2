@@ -10,8 +10,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
+import classes.Kurs;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,10 +40,11 @@ public class Menugl implements Initializable {
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
-    try{
 
-        odswiez_Dane();}
-    catch (SQLException e)
+    try{
+        odswiez_Dane();
+        }
+    catch (SQLException | IOException | InterruptedException e)
     {}
     }
 
@@ -100,19 +102,23 @@ public class Menugl implements Initializable {
 
     }
 
-    public void odswiez_Dane () throws SQLException {
+    public void odswiez_Dane () throws SQLException, IOException, InterruptedException {
 
             result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id=12 and typ ='Logowanie' order by data desc"); //sesja.getId()
             result.next();
             result.next();
             zalogowany_jako.setText("Zalogowany jako: " + result.getString(1) + " " + result.getString(2));
             ostatnio_zalogowany.setText("Ostatnia data logowania: "+result.getString(3));
-            System.out.println(result.getString(3)+"  "+result.getString(3));
 
+            odswiez_Kurs();
     }
 
-    public void odswiez_Kurs() throws SQLException
-    {
+    public void odswiez_Kurs() throws IOException, InterruptedException {
+
+        kurs_eur.setText(Double.toString(Kurs.getKurs("EUR")));
+        kurs_usd.setText(Double.toString(Kurs.getKurs("USD")));
+        kurs_gbp.setText(Double.toString(Kurs.getKurs("GBP")));
+        kurs_uah.setText(Double.toString(Kurs.getKurs("UAH")));
 
     }
 }

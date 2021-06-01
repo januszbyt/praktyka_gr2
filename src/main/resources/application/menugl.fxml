@@ -75,7 +75,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="kurs_eur" alignment="CENTER" layoutX="20.0" layoutY="35.0" prefHeight="67.0" prefWidth="104.0" text="4.53">
+            <Label fx:id="kurs_eur" alignment="CENTER" layoutY="35.0" prefHeight="67.0" prefWidth="144.0" text="4.53">
                <font>
                   <Font size="40.0" />
                </font>
@@ -89,7 +89,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="kurs_usd" alignment="CENTER" layoutX="23.0" layoutY="35.0" prefHeight="67.0" prefWidth="104.0" text="3.74">
+            <Label fx:id="kurs_usd" alignment="CENTER" layoutY="35.0" prefHeight="67.0" prefWidth="150.0" text="3.74">
                <font>
                   <Font size="40.0" />
                </font>
@@ -103,7 +103,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="kurs_gbp" alignment="CENTER" layoutX="20.0" layoutY="35.0" prefHeight="67.0" prefWidth="104.0" text="5.26">
+            <Label fx:id="kurs_gbp" alignment="CENTER" layoutX="-2.0" layoutY="35.0" prefHeight="67.0" prefWidth="144.0" text="5.26">
                <font>
                   <Font size="40.0" />
                </font>
@@ -117,13 +117,13 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label fx:id="kurs_uah" alignment="CENTER" layoutX="20.0" layoutY="35.0" prefHeight="67.0" prefWidth="104.0" text="0.14">
+            <Label fx:id="kurs_uah" alignment="CENTER" layoutX="-2.0" layoutY="35.0" prefHeight="67.0" prefWidth="144.0" text="0.14">
                <font>
                   <Font size="40.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="btn_kurs" layoutX="931.0" layoutY="385.0" mnemonicParsing="false" onAction="#odswiez_Dane" prefHeight="58.0" prefWidth="112.0" text="Odśwież" />
+      <Button fx:id="btn_kurs" layoutX="931.0" layoutY="385.0" mnemonicParsing="false" onAction="#odswiez_Kurs" prefHeight="58.0" prefWidth="112.0" text="Odśwież" />
    </children>
 </AnchorPane>
