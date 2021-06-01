@@ -1,14 +1,18 @@
 package application;
 
+import classes.DBManager;
 import classes.Uzytkownik;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class Menugl implements Initializable {
@@ -19,12 +23,29 @@ public class Menugl implements Initializable {
     public Button btn_wymiana;
     public Button btn_zgloszenia;
     public Button btn_wyloguj;
+    public Button btn_kurs;
+    public Label zalogowany_jako, ostatnio_zalogowany;
+    //public TableView tabela_rachunki;
+    public Label kurs_eur,kurs_usd,kurs_gbp,kurs_uah;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
+
+        Uzytkownik sesja= Logowanie.zalogowany;
+
+        ResultSet result;
+        try {
+            result = DBManager.select("SELECT imie,nazwisko from uzytkownik where id=" + sesja.getId());
+
+            zalogowany_jako.setText("Zalogowany jako: " + result.getString("imie") + " " + result.getString("nazwisko"));
+
+            System.out.println(result.getString("imie")+result.getString("nazwisko"));
+        }
+        catch(Exception e)
+        {}
     }
 
 
