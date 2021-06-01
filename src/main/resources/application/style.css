@@ -3,7 +3,10 @@
     -fx-text-fill: -fx-text-base-color;
 
 }
-
+.table-view
+{
+-fx-font-size:15px;
+}
 .button
 {
     -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 7,0,0,1 );

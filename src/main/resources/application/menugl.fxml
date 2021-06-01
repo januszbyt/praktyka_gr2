@@ -58,7 +58,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tabela_rachunki" layoutX="210.0" layoutY="82.0" prefHeight="274.0" prefWidth="870.0" />
+      <TableView fx:id="tabela_rachunki" layoutX="210.0" layoutY="82.0" prefHeight="274.0" prefWidth="528.0" stylesheets="@style.css" />
       <AnchorPane layoutX="210.0" layoutY="490.0" prefHeight="50.0" prefWidth="870.0">
          <children>
             <Label fx:id="ostatnio_zalogowany" alignment="CENTER_RIGHT" layoutX="392.0" layoutY="5.0" prefHeight="40.0" prefWidth="471.0" text="Ostatnio zalogowany: ">
@@ -68,7 +68,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="232.0" layoutY="356.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+      <AnchorPane layoutX="750.0" layoutY="82.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
          <children>
             <Label alignment="CENTER" layoutX="-1.0" layoutY="-2.0" prefHeight="33.0" prefWidth="144.0" text="EUR">
                <font>
@@ -82,7 +82,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="402.0" layoutY="356.0" prefHeight="116.0" prefWidth="150.0" style="-fx-background-color: #dbdbdb;">
+      <AnchorPane layoutX="912.0" layoutY="82.0" prefHeight="116.0" prefWidth="150.0" style="-fx-background-color: #dbdbdb;">
          <children>
             <Label alignment="CENTER" layoutX="3.0" layoutY="-2.0" prefHeight="33.0" prefWidth="144.0" text="USD">
                <font>
@@ -96,7 +96,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="573.0" layoutY="356.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+      <AnchorPane layoutX="750.0" layoutY="240.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
          <children>
             <Label alignment="CENTER" prefHeight="33.0" prefWidth="144.0" text="GBP">
                <font>
@@ -110,7 +110,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="742.0" layoutY="356.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+      <AnchorPane layoutX="915.0" layoutY="240.0" prefHeight="116.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
          <children>
             <Label alignment="CENTER" layoutY="-2.0" prefHeight="33.0" prefWidth="144.0" text="UAH">
                <font>
@@ -124,6 +124,6 @@
             </Label>
          </children>
       </AnchorPane>
-      <Button fx:id="btn_kurs" layoutX="931.0" layoutY="385.0" mnemonicParsing="false" onAction="#odswiez_Kurs" prefHeight="58.0" prefWidth="112.0" text="Odśwież" />
+      <Button fx:id="btn_kurs" layoutX="856.0" layoutY="367.0" mnemonicParsing="false" onAction="#odswiez_Kurs" prefHeight="58.0" prefWidth="112.0" stylesheets="@style.css" text="Odśwież" />
    </children>
 </AnchorPane>

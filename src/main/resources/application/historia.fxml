@@ -32,6 +32,6 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <TableView fx:id="table_view" layoutX="384.0" layoutY="225.0" prefHeight="353.0" prefWidth="1023.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <TableView fx:id="table_view" layoutX="384.0" layoutY="225.0" prefHeight="353.0" prefWidth="1023.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
    </children>
 </AnchorPane>
