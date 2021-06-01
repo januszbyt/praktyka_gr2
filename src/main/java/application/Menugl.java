@@ -17,7 +17,9 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
-
+import application.Logowanie;
+import application.Menugl;
+import classes.Uzytkownik;
 public class Menugl implements Initializable {
     public ImageView menugl_logo;
     public Button btn_przelew;
@@ -31,21 +33,24 @@ public class Menugl implements Initializable {
     public Label zalogowany_jako, ostatnio_zalogowany;
     public TableView tabela_rachunki;
     public Label kurs_eur,kurs_usd,kurs_gbp,kurs_uah;
-    Uzytkownik sesja=Logowanie.zalogowany;
+
+    public static Uzytkownik sesja;
     ResultSet result;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+         sesja=Logowanie.zalogowany;
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
-
     try{
         odswiez_Dane();
         }
     catch (SQLException | IOException | InterruptedException e)
-    {}
+    {
+        System.out.println("Coś poszło nie tak!");
+    }
     }
 
 
@@ -104,7 +109,7 @@ public class Menugl implements Initializable {
 
     public void odswiez_Dane () throws SQLException, IOException, InterruptedException {
 
-            result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id=12 and typ ='Logowanie' order by data desc"); //sesja.getId()
+            result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id="+sesja.getId()+" and typ ='Logowanie' order by data desc");
             result.next();
             result.next();
             zalogowany_jako.setText("Zalogowany jako: " + result.getString(1) + " " + result.getString(2));
@@ -112,7 +117,7 @@ public class Menugl implements Initializable {
 
             odswiez_Kurs();
             Historia.xyz("select rachunek.nazwa,numer,saldo,(Select skrot from waluta where waluta.id=rachunek.waluta) as waluta " +
-                    "from rachunek WHERE uzytkownik=4 ORDER by waluta ",tabela_rachunki);  //sesja.getId()
+                    "from rachunek WHERE uzytkownik="+sesja.getId()+" ORDER by waluta ",tabela_rachunki);
     }
 
     public void odswiez_Kurs() throws IOException, InterruptedException {
