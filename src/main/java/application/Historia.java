@@ -29,7 +29,7 @@ public class Historia implements Initializable {
     public Uzytkownik sesja = Logowanie.zalogowany;
 
     private ObservableList<ObservableList> lista = FXCollections.observableArrayList();
-    //ObservableList<String> row = FXCollections.observableArrayList();
+
     String wybor;
     public void listaHistoriaAkcja(ActionEvent actionEvent) throws Exception{
         odswiezTableView();
@@ -44,7 +44,7 @@ public class Historia implements Initializable {
         tabelka.getItems().clear();
 
         for (int i = 0; i < result.getMetaData().getColumnCount(); i++) {
-            //We are using non property style for making dynamic table
+
             final int j = i;
             TableColumn col = new TableColumn(result.getMetaData().getColumnName(i + 1));
             col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
@@ -57,22 +57,16 @@ public class Historia implements Initializable {
 
         }
 
-
         while (result.next()) {
-            //Iterate Row
+
             ObservableList<String> row = FXCollections.observableArrayList();
+
             for (int i = 1; i <= result.getMetaData().getColumnCount(); i++) {
-                //Iterate Column
-
                 row.add(result.getString(i));
-
             }
 
-            System.out.println("Nowa linia");
-            System.out.println();
             lista.add(row);
             tabelka.setItems(lista);
-
 
         }
     }

@@ -29,7 +29,7 @@ public class Menugl implements Initializable {
     public Button btn_kurs;
     @FXML
     public Label zalogowany_jako, ostatnio_zalogowany;
-    //public TableView tabela_rachunki;
+    public TableView tabela_rachunki;
     public Label kurs_eur,kurs_usd,kurs_gbp,kurs_uah;
     Uzytkownik sesja=Logowanie.zalogowany;
     ResultSet result;
@@ -111,6 +111,8 @@ public class Menugl implements Initializable {
             ostatnio_zalogowany.setText("Ostatnia data logowania: "+result.getString(3));
 
             odswiez_Kurs();
+            Historia.xyz("select rachunek.nazwa,numer,saldo,(Select skrot from waluta where waluta.id=rachunek.waluta) as waluta " +
+                    "from rachunek WHERE uzytkownik=4 ORDER by waluta ",tabela_rachunki);  //sesja.getId()
     }
 
     public void odswiez_Kurs() throws IOException, InterruptedException {
