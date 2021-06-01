@@ -37,7 +37,6 @@ public class Menugl implements Initializable {
     public static Uzytkownik sesja;
     ResultSet result;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
          sesja=Logowanie.zalogowany;
@@ -57,7 +56,6 @@ public class Menugl implements Initializable {
     public void btn_przelew_M(ActionEvent actionEvent) throws Exception  {
 
             ZmienOkno.zmienScene("przelew.fxml", 1080, 540, btn_przelew);
-
 
     }
 
@@ -112,7 +110,7 @@ public class Menugl implements Initializable {
             result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id="+sesja.getId()+" and typ ='Logowanie' order by data desc");
             result.next();
             result.next();
-            zalogowany_jako.setText("Zalogowany jako: " + result.getString(1) + " " + result.getString(2));
+            zalogowany_jako.setText("Zalogowano jako: " + result.getString(1) + " " + result.getString(2));
             ostatnio_zalogowany.setText("Ostatnia data logowania: "+result.getString(3));
 
             odswiez_Kurs();
