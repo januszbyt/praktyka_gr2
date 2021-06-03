@@ -12,11 +12,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import application.Logowanie;
 
 import javax.xml.transform.Result;
+import java.io.File;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,6 +30,7 @@ public class Historia implements Initializable {
     public TableView table_view;
     public ComboBox historia_lista;
     public Uzytkownik sesja = Logowanie.zalogowany;
+    public ImageView img_menugl;
 
     private ObservableList<ObservableList> lista = FXCollections.observableArrayList();
 
@@ -125,12 +129,17 @@ public class Historia implements Initializable {
     }
 
 
-    public void img_menugl_M(MouseEvent mouseEvent) {
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_menugl);
     }
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijListe();
+        //wczytanie obrazu
+        File plik = new File("src/images/domek.png");
+        Image zdjecie = new Image(plik.toURI().toString());
+        img_menugl.setImage(zdjecie);
     }
 }

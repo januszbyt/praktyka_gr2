@@ -1,5 +1,6 @@
 package application;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -27,5 +28,8 @@ public class Adm_Zarzadzanie_uzytkownikami implements Initializable {
         ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1077, 534, img_menugl);
     }
 
+    public void btn_zarejestruj_M(ActionEvent actionEvent)throws Exception {
+        ZmienOkno.zmienScene("adm_dodaj_uzytkownika.fxml", 650, 776, btn_zarejestruj);
+    }
 
 }
