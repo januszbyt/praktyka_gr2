@@ -14,7 +14,7 @@
    <children>
       <ComboBox fx:id="historia_lista" layoutX="110.0" layoutY="24.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
       <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="290.0" layoutY="24.0" prefHeight="39.0" prefWidth="158.0" stylesheets="@style.css" />
-      <Button fx:id="historia_wyszukaj_btn" layoutX="471.0" layoutY="24.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
+      <Button fx:id="historia_wyszukaj_btn" layoutX="471.0" layoutY="24.0" mnemonicParsing="false" onAction="#search" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

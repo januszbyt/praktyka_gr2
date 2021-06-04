@@ -6,12 +6,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import application.Logowanie;
@@ -27,18 +29,20 @@ public class Historia implements Initializable {
     public TableView table_view;
     public ComboBox historia_lista;
     public Uzytkownik sesja = Logowanie.zalogowany;
+    public static ResultSet result,result_wyszukiwanie;
 
-    private ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+    public static ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+//    public static ObservableList<String> row = FXCollections.observableArrayList();
 
     String wybor;
     public void listaHistoriaAkcja(ActionEvent actionEvent) throws Exception{
         odswiezTableView();
-
     }
     public static void xyz(String zapytanko,TableView tabelka) throws SQLException {
-        ResultSet result;
-        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+
+//        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
         result = DBManager.select(zapytanko);
+        result_wyszukiwanie = DBManager.select(zapytanko);
 
         tabelka.getColumns().clear();
         tabelka.getItems().clear();
@@ -124,6 +128,34 @@ public class Historia implements Initializable {
         historia_lista.getItems().add("Logowanie");
     }
 
+    public void wyszukaj(TableView tabelka) throws Exception{
+        String text = historia_wyszukaj_text.getText();
+//        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+
+        tabelka.getItems().clear();
+
+        ObservableList<String> row = FXCollections.observableArrayList();
+        while (result_wyszukiwanie.next()) {
+
+
+            if (result_wyszukiwanie.getString("tresc").contains(text)){
+                for (int i = 1; i <= result_wyszukiwanie.getMetaData().getColumnCount(); i++) {
+                    row.add(result.getString(i));
+                }
+                System.out.println("Udalo sie");
+                }else {
+                    System.out.println("Nie udalo sie");
+                }
+
+            lista.add(row);
+            tabelka.setItems(lista);
+
+            }
+
+
+
+        }
+
 
     public void img_menugl_M(MouseEvent mouseEvent) {
     }
@@ -132,5 +164,9 @@ public class Historia implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijListe();
+    }
+
+    public void search(ActionEvent actionEvent) throws Exception{
+        wyszukaj(table_view);
     }
 }
