@@ -107,7 +107,7 @@ public class Menugl implements Initializable {
 
     public void odswiez_Dane () throws SQLException, IOException, InterruptedException {
 
-            result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id="+sesja.getId()+" and typ ='Logowanie' order by data desc");
+            result=DBManager.select("select imie,nazwisko,data from logi,uzytkownik where uzytkownik.id="+sesja.getId()+" and typ ='Logowanie' order by data desc limit 2");
             result.next();
             result.next();
             zalogowany_jako.setText("Zalogowano jako: " + result.getString(1) + " " + result.getString(2));
