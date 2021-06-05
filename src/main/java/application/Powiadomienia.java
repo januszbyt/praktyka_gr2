@@ -77,6 +77,22 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
+    public static void alertPrzelewDlugoscPola(String tekst) {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Niepoprawna dlugosc pola "+tekst+"!");
+        porazka.showAndWait();
+    }
+
+    public static void alertPrzelewZnakiSpecjalne(String pole) {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Pole "+pole+" zawiera niedozwolone znaki!");
+        porazka.showAndWait();
+    }
+
     public static void alertPrzelewWeryfikacjaRachunek() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
@@ -92,6 +108,15 @@ public class Powiadomienia {
         porazka.setContentText("Wybierz rachunek!");
         porazka.showAndWait();
     }
+
+    public static void alertPrzelewJestPuste(String nazwa) {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Pole "+nazwa+" jest puste!");
+        porazka.showAndWait();
+    }
+
 
     public static void alertPrzelewWeryfikacjaSaldo() {
         Alert porazka = new Alert(Alert.AlertType.ERROR);

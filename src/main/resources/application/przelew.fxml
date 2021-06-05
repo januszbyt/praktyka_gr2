@@ -10,54 +10,54 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Przelew">
+<AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Przelew">
    <children>
-      <Label fx:id="przelew_danenazwa" layoutX="606.0" layoutY="151.0" text="Nazwa:">
+      <Label fx:id="przelew_danenazwa" layoutX="725.0" layoutY="214.0" text="Nazwa:">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <TextField id="tf" fx:id="przelew_dane" layoutX="231.0" layoutY="139.0" prefHeight="25.0" prefWidth="206.0" promptText="Nazwa/Imię i nazwisko" stylesheets="@style.css" />
-      <TextField id="tf" fx:id="przelew_numer" layoutX="231.0" layoutY="186.0" prefHeight="25.0" prefWidth="206.0" promptText="Numer rachunku" styleClass="text-field" stylesheets="@style.css" />
-      <TextField id="tf" fx:id="przelew_kwota" layoutX="231.0" layoutY="236.0" prefHeight="25.0" prefWidth="206.0" promptText="Kwota" styleClass="text-field" stylesheets="@style.css" />
-      <TextField id="tf" fx:id="przelew_tytul" layoutX="231.0" layoutY="289.0" prefHeight="25.0" prefWidth="206.0" promptText="Tytuł" stylesheets="@style.css" />
-      <ComboBox fx:id="przelew_listarachunek" layoutX="231.0" layoutY="89.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="206.0" promptText="Rachunek" stylesheets="@style.css" />
-      <Button fx:id="btn_wyczysc" layoutX="362.0" layoutY="411.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
+      <TextField id="tf" fx:id="przelew_dane" layoutX="362.0" layoutY="166.0" prefHeight="25.0" prefWidth="206.0" promptText="Nazwa/Imię i nazwisko" stylesheets="@style.css" />
+      <TextField id="tf" fx:id="przelew_numer" layoutX="362.0" layoutY="213.0" prefHeight="25.0" prefWidth="206.0" promptText="Numer rachunku" styleClass="text-field" stylesheets="@style.css" />
+      <TextField id="tf" fx:id="przelew_kwota" layoutX="362.0" layoutY="263.0" prefHeight="25.0" prefWidth="206.0" promptText="Kwota" styleClass="text-field" stylesheets="@style.css" />
+      <TextField id="tf" fx:id="przelew_tytul" layoutX="362.0" layoutY="316.0" prefHeight="25.0" prefWidth="206.0" promptText="Tytuł" stylesheets="@style.css" />
+      <ComboBox fx:id="przelew_listarachunek" layoutX="362.0" layoutY="116.0" onAction="#listarachunekAkcja" prefHeight="25.0" prefWidth="206.0" promptText="Rachunek" stylesheets="@style.css" />
+      <Button fx:id="btn_wyczysc" layoutX="390.0" layoutY="391.0" mnemonicParsing="false" onAction="#wyczyscButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść dane" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="btn_potwierdz" layoutX="577.0" layoutY="411.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
+      <Button fx:id="btn_potwierdz" layoutX="753.0" layoutY="391.0" mnemonicParsing="false" onAction="#potwierdzButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Potwierdź" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Label layoutX="742.0" layoutY="72.0" text="Aktualnie wybrany rachunek:">
+      <Label layoutX="724.0" layoutY="99.0" text="Aktualnie wybrany rachunek:">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="przelew_danewaluta" layoutX="724.0" layoutY="261.0" text="Waluta:">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="przelew_danewaluta" layoutX="605.0" layoutY="198.0" text="Waluta:">
+      <Label fx:id="przelew_danesaldo" layoutX="724.0" layoutY="311.0" prefHeight="30.0" prefWidth="67.0" text="Saldo:">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="przelew_danesaldo" layoutX="605.0" layoutY="248.0" prefHeight="30.0" prefWidth="67.0" text="Saldo:">
+      <Label fx:id="przelew_danenazwa1" layoutX="801.0" layoutY="215.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="przelew_danenazwa1" layoutX="672.0" layoutY="151.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+      <Label fx:id="przelew_danewaluta1" layoutX="801.0" layoutY="262.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="przelew_danewaluta1" layoutX="672.0" layoutY="198.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+      <Label fx:id="przelew_danesaldo1" layoutX="801.0" layoutY="311.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Label fx:id="przelew_danesaldo1" layoutX="663.0" layoutY="248.0" prefHeight="30.0" prefWidth="206.0" stylesheets="@style.css">
+      <Label fx:id="przelew_numerrachunku" layoutX="724.0" layoutY="153.0" prefHeight="40.0" prefWidth="284.0" style="-fx-alignment: center;">
          <font>
             <Font size="20.0" />
-         </font></Label>
-      <Label fx:id="przelew_numerrachunku" layoutX="727.0" layoutY="100.0" prefHeight="40.0" prefWidth="284.0" style="-fx-alignment: center;">
-         <font>
-            <Font size="15.0" />
          </font></Label>
       <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
          <children>

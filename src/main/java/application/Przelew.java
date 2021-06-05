@@ -18,6 +18,8 @@ import java.net.URL;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static classes.DBManager.select;
 
@@ -76,24 +78,21 @@ public class Przelew implements Initializable {
 
     public void potwierdzButton() {
 
-        rachunek2 = Rachunek.wczytajRachunek_numer(przelew_numer.getText());
-        if (czyistniejeRachunek(przelew_numer.getText()) == false) {
-            Powiadomienia.alertPrzelewWeryfikacjaRachunek();
-
-        } else if (weryfikacjaRachunkow(rachunek1, rachunek2) == true) {
-            if (Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(przelew_kwota.getText()))) {
-                if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
-                    przelejSamaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
-                    wyczyscButton();
-                    listarachunekAkcja2();
-                } else {
-                    przelejInnaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
-                    wyczyscButton();
-                    listarachunekAkcja2();
-
+        if(sprawdzCzyPuste()) {
+            rachunek2 = Rachunek.wczytajRachunek_numer(przelew_numer.getText());
+            if(sprawdzCzyPoprawne())
+            {
+                if (Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(przelew_kwota.getText()))) {
+                    if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
+                        przelejSamaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
+                        wyczyscButton();
+                    } else {
+                        przelejInnaWaluta(rachunek1, rachunek2, Float.parseFloat(przelew_kwota.getText()));
+                        wyczyscButton();
+                    }
                 }
-            }
 
+            }
         }
 
     }
@@ -117,6 +116,7 @@ public class Przelew implements Initializable {
 
         System.out.println(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Integer.toString(rachunek2.getId()),Float.toString(kwota),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
         Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
+        listarachunekAkcja2();
     }
 
     public void przelejInnaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota) {
@@ -145,6 +145,7 @@ public class Przelew implements Initializable {
         DBManager.update(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Integer.toString(rachunek2.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
         System.out.println(Logi.przelewPrzyjmujacyLog(Integer.toString(rachunek1.getId()),Integer.toString(rachunek2.getId()),Float.toString(kwota2),przelew_tytul.getText(),Integer.toString(rachunek2.getUzytkownik())));
         Powiadomienia.alertPrzelewSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
+        listarachunekAkcja2();
     }
 
     public double sprawdzWaluta(Waluta waluta) {
@@ -158,17 +159,118 @@ public class Przelew implements Initializable {
         return 0;
     }
 
-    public boolean weryfikacjaRachunkow(Rachunek rachunek1, Rachunek rachunek2) {
 
-        if (rachunek1 == null) {
-            Powiadomienia.alertPrzelewWybierzRachunek();
+    public boolean sprawdzSymbol(String tekst){
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(tekst);
+        boolean b = m.find();
+        if (!b) return true;
+        else {
+            return false;
         }
-        if (rachunek1.getId() == rachunek2.getId()) {
+    }
+
+    public boolean sprawdzKwota(String tekst){
+        try {
+            float wartosc = Float.parseFloat(tekst);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
+    public boolean sprawdzCzyPoprawne(){
+        if(!sprawdzSymbol(przelew_dane.getText()))
+        {
+            Powiadomienia.alertPrzelewZnakiSpecjalne("z danymi");
+            return false;
+        }
+        if(!sprawdzSymbol(przelew_tytul.getText()))
+        {
+            Powiadomienia.alertPrzelewZnakiSpecjalne("z tytulem");
+            return false;
+        }
+        if(!sprawdzSymbol(przelew_numer.getText()))
+        {
+            Powiadomienia.alertPrzelewZnakiSpecjalne("z numerem rachunku");
+            return false;
+        }
+        if (przelew_numer.getText().length() > 26)
+        {
+            Powiadomienia.alertPrzelewDlugoscPola("z numerem rachunku");
+            return false;
+        }
+        if (przelew_dane.getText().length() > 30)
+        {
+            Powiadomienia.alertPrzelewDlugoscPola("z danymi");
+            return false;
+        }
+        if (przelew_tytul.getText().length() > 20)
+        {
+            Powiadomienia.alertPrzelewDlugoscPola("z tytulem");
+            return false;
+        }
+        if (przelew_kwota.getText().length() > 10)
+        {
+            Powiadomienia.alertPrzelewDlugoscPola("z kwota");
+            return false;
+        }
+        if (czyistniejeRachunek(przelew_numer.getText()) == false) {
+            Powiadomienia.alertPrzelewWeryfikacjaRachunek();
+            return false;
+        }
+        if (rachunek1.getId() == rachunek2.getId())
+        {
             Powiadomienia.alertPrzelewWeryfikacjaRachunkow();
             return false;
-        } else return true;
-
+        }
+        return true;
     }
+
+    public boolean sprawdzCzyPuste(){
+        if(przelew_listarachunek.getSelectionModel().isEmpty())
+        {
+            Powiadomienia.alertPrzelewWybierzRachunek();
+            return false;
+        }
+        if(przelew_dane.getText().isEmpty())
+        {
+            Powiadomienia.alertPrzelewJestPuste("z danymi");
+            return false;
+        }
+        if(przelew_tytul.getText().isEmpty())
+        {
+            Powiadomienia.alertPrzelewJestPuste("z tytulem");
+            return false;
+        }
+        if(przelew_numer.getText().isEmpty())
+        {
+            Powiadomienia.alertPrzelewJestPuste("z numerem rachunku");
+            return false;
+        }
+        if(przelew_kwota.getText().isEmpty())
+        {
+            Powiadomienia.alertPrzelewJestPuste("z kwota");
+            return false;
+        }
+        if (przelew_numer.getText() == przelew_numerrachunku.getText()) {
+            Powiadomienia.alertPrzelewWeryfikacjaRachunkow();
+            return false;
+        }
+        if(!sprawdzKwota(przelew_kwota.getText())) {
+            Powiadomienia.alertPrzelewZnakiSpecjalne("z kwota");
+            return false;
+        } else {
+            float kwota = Float.parseFloat(przelew_kwota.getText());
+            if (kwota <= 0) {
+                Powiadomienia.alertPrzelewWeryfikacjaSaldo2();
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
     public static boolean czyistniejeRachunek(String numer) {
 
@@ -209,3 +311,4 @@ public class Przelew implements Initializable {
         ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, img_domek);
     }
 }
+
