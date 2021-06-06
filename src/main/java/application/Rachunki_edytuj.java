@@ -18,6 +18,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static classes.DBManager.select;
 
@@ -44,7 +46,7 @@ public class Rachunki_edytuj implements Initializable {
 
     public void edytujButton(ActionEvent action){
 
-        if(rachunkiedytuj_nazwa.getText().length() > 0 && rachunkiedytuj_nazwa.getText().length() <= 20)
+        if(rachunkiedytuj_nazwa.getText().length() > 0 && rachunkiedytuj_nazwa.getText().length() <= 20 && sprawdzSymbol(rachunkiedytuj_nazwa.getText()) )
         {
             String query = "UPDATE rachunek set nazwa = '" + rachunkiedytuj_nazwa.getText() + "' WHERE id = " + rachunek.getId();
             edytujRachunek(query);
@@ -56,6 +58,16 @@ public class Rachunki_edytuj implements Initializable {
         else Powiadomienia.alertRachunkiNazwa();
 
 
+    }
+
+    public boolean sprawdzSymbol(String tekst){
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(tekst);
+        boolean b = m.find();
+        if (!b) return true;
+        else {
+            return false;
+        }
     }
 
 

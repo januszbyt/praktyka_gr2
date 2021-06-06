@@ -49,13 +49,12 @@ public class Rachunki_wplac implements Initializable{
 
 
     public void wplacButton(ActionEvent event) {
-        rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
-        if (rachunek.getNumer().isEmpty()) {
+        if (listarachunek.getSelectionModel().isEmpty()) {
             Powiadomienia.alertWymianaWybierzRachunek();
         } else if (rachunkiwplac_kwota.getText().isEmpty()) {
             Powiadomienia.alertWymianaKwota();
-
-        } else if(jestLiczba(rachunkiwplac_kwota.getText())) {
+        } else if (jestLiczba(rachunkiwplac_kwota.getText())) {
+            rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
             kwota = Float.parseFloat(rachunkiwplac_kwota.getText());
             if(kwota > 0)
             {
@@ -97,6 +96,7 @@ public class Rachunki_wplac implements Initializable{
             Float wartosc = Float.parseFloat(tekst);
             return true;
         } catch (NumberFormatException e) {
+            Powiadomienia.alertRachunkiKwota();
             return false;
         }
 

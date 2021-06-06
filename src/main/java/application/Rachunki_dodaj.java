@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static classes.DBManager.select;
 
@@ -50,7 +52,7 @@ public class Rachunki_dodaj implements Initializable {
         {
             Powiadomienia.alertRachunkiListaWalut();
         }
-        else if(rachunkidodaj_nazwa.getText().length() > 0 && rachunkidodaj_nazwa.getText().length() <= 20)
+        else if(rachunkidodaj_nazwa.getText().length() > 0 && rachunkidodaj_nazwa.getText().length() <= 20 && sprawdzSymbol(rachunkidodaj_nazwa.getText()))
         {
             boolean znaleziono = false;
             while(znaleziono == false)
@@ -75,6 +77,16 @@ public class Rachunki_dodaj implements Initializable {
 
     }
 
+
+    public boolean sprawdzSymbol(String tekst){
+        Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
+        Matcher m = p.matcher(tekst);
+        boolean b = m.find();
+        if (!b) return true;
+        else {
+            return false;
+        }
+    }
 
     public void dodajRachunek(String query)
     {

@@ -67,16 +67,11 @@ public class Wymiana implements Initializable {
                 if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
                     wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
                     wyczyscButton();
-                    listarachunek1Akcja2();
-                    listarachunek2Akcja2();
                 } else {
                     wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
                     wyczyscButton();
-                    listarachunek1Akcja2();
-                    listarachunek2Akcja2();
                 }
             }
-
         }
 
     }
@@ -195,6 +190,8 @@ public class Wymiana implements Initializable {
                 waluta.getSkrot(),Integer.toString(sesja.getId())));
 
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota), waluta.getSkrot(), waluta.getSkrot());
+        listarachunek1Akcja2();
+        listarachunek2Akcja2();
     }
 
     public void wymienInnaWaluta(Rachunek rachunek1, Rachunek rachunek2, float kwota) {
@@ -222,6 +219,8 @@ public class Wymiana implements Initializable {
                 waluta1.getSkrot(),waluta2.getSkrot(),Integer.toString(sesja.getId())));
 
         Powiadomienia.alertWymianaSukces(rachunek1.getNumer(), rachunek2.getNumer(), df.format(kwota), df.format(kwota2), waluta1.getSkrot(), waluta2.getSkrot());
+        listarachunek1Akcja2();
+        listarachunek2Akcja2();
     }
 
     public boolean jestLiczba(String tekst) {

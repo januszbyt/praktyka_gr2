@@ -43,13 +43,13 @@ public class Rachunki_wyplac implements Initializable {
 
 
     public void wyplacButton(ActionEvent actionEvent) {
-        rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
-        if (rachunek.getNumer().isEmpty()) {
+
+        if (listarachunek.getSelectionModel().isEmpty()) {
             Powiadomienia.alertWymianaWybierzRachunek();
         } else if (rachunkiwyplac_kwota.getText().isEmpty()) {
             Powiadomienia.alertWymianaKwota();
-
         } else if (jestLiczba(rachunkiwyplac_kwota.getText())) {
+            rachunek = Rachunek.wczytajRachunek_numer(String.valueOf(listarachunek.getValue()));
             kwota = Float.parseFloat(rachunkiwyplac_kwota.getText());
             if (Rachunek.weryfikacjaSaldo(rachunek, kwota)) {
                 DecimalFormat df = new DecimalFormat("###.##");
@@ -87,6 +87,7 @@ public class Rachunki_wyplac implements Initializable {
             Float wartosc = Float.parseFloat(tekst);
             return true;
         } catch (NumberFormatException e) {
+            Powiadomienia.alertRachunkiKwota();
             return false;
         }
 

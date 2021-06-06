@@ -214,7 +214,7 @@ public class Powiadomienia {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");
         porazka.setHeaderText(null);
-        porazka.setContentText("Nieodpowiednia dlugosc nazwy rachunku!");
+        porazka.setContentText("Nieodpowiednia nazwa rachunku!");
         porazka.showAndWait();
     }
 
