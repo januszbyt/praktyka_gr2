@@ -77,6 +77,14 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
+    public static void alertPrzelewWeryfikacjaRachunkow2() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podaj rachunek innego uzytkownika!");
+        porazka.showAndWait();
+    }
+
     public static void alertPrzelewDlugoscPola(String tekst) {
         Alert porazka = new Alert(Alert.AlertType.ERROR);
         porazka.setTitle("Powiadomienie");

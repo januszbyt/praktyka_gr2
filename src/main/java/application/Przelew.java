@@ -224,6 +224,11 @@ public class Przelew implements Initializable {
             Powiadomienia.alertPrzelewWeryfikacjaRachunkow();
             return false;
         }
+        if (rachunek1.getUzytkownik() == rachunek2.getUzytkownik())
+        {
+            Powiadomienia.alertPrzelewWeryfikacjaRachunkow2();
+            return false;
+        }
         return true;
     }
 
