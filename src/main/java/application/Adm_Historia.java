@@ -1,5 +1,7 @@
 package application;
 
+import classes.Uzytkownik;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -22,6 +24,7 @@ public ComboBox adm_listaHistoriaUzytkownik,adm_listaHistoriaAkcja;
 public Button adm_historia_wyszukaj_btn,adm_historia_wyczysc_btn;
 public TableView table_view;
 
+private String wybor1,wybor2;
 
     public void wypelnijLista1()
     {
@@ -52,6 +55,66 @@ public TableView table_view;
         adm_listaHistoriaAkcja.getItems().add("Logowanie");
     }
 
+    public void odswiezTableView(String wyborUzytkownika, String wyborHistorii, TableView tabelka) throws SQLException {
+
+    int id= Uzytkownik.wczytajUzytkownik_login(wyborUzytkownika).getId();
+        switch (wyborHistorii) {
+            case "Przelewy przychodzace":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy',kwota," +
+                        "tresc from logi where uzytkownik="+id+" and typ ='Przelew przychodzacy'",tabelka);
+                break;
+            case "Przelewy wychodzace":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek docelowy'" +
+                        ",kwota,tresc from logi where uzytkownik="+id+" and typ ='Przelew wychodzacy'",tabelka);
+                break;
+            case "Wplaty":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'" +
+                        ",tresc from logi where uzytkownik="+id+" and typ='Wplata'",tabelka);
+                break;
+            case "Wyplaty":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'," +
+                        "tresc from logi where uzytkownik="+id+" and typ='Wyplata'",tabelka);
+                break;
+            case "Przewalutowanie":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) " +
+                        "AS 'Rachunek nadawcy',(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
+                        "kwota,tresc from logi where uzytkownik="+id+" and typ='Przewalutowanie'",tabelka);
+                break;
+            case "Transfer srodkow":
+
+                Historia.xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
+                        "kwota,tresc from logi where uzytkownik="+id+" and typ ='Transfer srodkow'", tabelka);
+                break;
+            case "Logowanie":
+
+                Historia.xyz("select data,typ,tresc from logi where uzytkownik="+id+" and typ='Logowanie'",tabelka);
+                break;
+
+        }
+    }
+
+
+    public void wyszukaj(ActionEvent event) throws Exception {
+
+            wybor1 = (String) adm_listaHistoriaUzytkownik.getValue();
+            wybor2 = (String) adm_listaHistoriaAkcja.getValue();
+
+
+            if (wybor1==null||wybor1.length()==0||wybor2==null||wybor2.length()==0)
+            {System.out.println("pusto");}
+            else {
+                odswiezTableView(wybor1,wybor2,table_view);
+            }
+
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
