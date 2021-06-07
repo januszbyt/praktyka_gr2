@@ -17,4 +17,6 @@ public class DBManager {
        new BetterDBConnection().delete(query);
    }
 
+   public static void close(){ new BetterDBConnection().close();}
+
 }

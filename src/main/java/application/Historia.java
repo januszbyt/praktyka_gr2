@@ -31,7 +31,7 @@ public class Historia implements Initializable {
     public Uzytkownik sesja = Logowanie.zalogowany;
     public static ResultSet result,result_wyszukiwanie;
 
-    public static ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+//    public static ObservableList<ObservableList> lista = FXCollections.observableArrayList();
 //    public static ObservableList<String> row = FXCollections.observableArrayList();
 
     String wybor;
@@ -40,9 +40,8 @@ public class Historia implements Initializable {
     }
     public static void xyz(String zapytanko,TableView tabelka) throws SQLException {
 
-//        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
         result = DBManager.select(zapytanko);
-        result_wyszukiwanie = DBManager.select(zapytanko);
 
         tabelka.getColumns().clear();
         tabelka.getItems().clear();
@@ -74,44 +73,67 @@ public class Historia implements Initializable {
 
         }
     }
+
+
     public void odswiezTableView() throws SQLException {
         wybor = (String) historia_lista.getValue();
 
         switch (wybor) {
             case "Przelewy przychodzace":
 
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy',kwota," +
+                        "tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew przychodzacy' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
+
+
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
                         "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy',kwota," +
                         "tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew przychodzacy'",table_view);
+
                 break;
             case "Przelewy wychodzace":
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek docelowy'" +
+                        ",kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew wychodzacy' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
 
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek docelowy'" +
                         ",kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Przelew wychodzacy'",table_view);
                 break;
             case "Wplaty":
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'" +
+                        ",tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wplata' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
 
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'" +
                         ",tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wplata'",table_view);
                 break;
             case "Wyplaty":
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'," +
+                        "tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wyplata' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
 
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek'," +
                         "tresc from logi where uzytkownik="+sesja.getId()+" and typ='Wyplata'",table_view);
                 break;
             case "Przewalutowanie":
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) " +
+                        "AS 'Rachunek nadawcy',(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
+                        "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Przewalutowanie' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
 
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) " +
                         "AS 'Rachunek nadawcy',(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
                         "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Przewalutowanie'",table_view);
                 break;
             case "Transfer srodkow":
+                result_wyszukiwanie = DBManager.select("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
+                        "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
+                        "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Transfer srodkow' and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
 
                 xyz("select data,typ,(SELECT numer from rachunek where id=rachunek) AS 'Rachunek nadawcy'," +
                         "(SELECT numer from rachunek where id=rachunek2) AS 'Rachunek odbiorcy'," +
                         "kwota,tresc from logi where uzytkownik="+sesja.getId()+" and typ ='Transfer srodkow'", table_view);
                 break;
             case "Logowanie":
+                result_wyszukiwanie = DBManager.select("select data,typ,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Logowanie' " +
+                        "and tresc LIKE '%"+historia_wyszukaj_text.getText()+"%'");
+                DBManager.close();
 
                 xyz("select data,typ,tresc from logi where uzytkownik="+sesja.getId()+" and typ='Logowanie'",table_view);
                 break;
@@ -129,33 +151,38 @@ public class Historia implements Initializable {
     }
 
     public void wyszukaj(TableView tabelka) throws Exception{
-        String text = historia_wyszukaj_text.getText();
-//        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
 
+        tabelka.getColumns().clear();
         tabelka.getItems().clear();
 
-        ObservableList<String> row = FXCollections.observableArrayList();
+        for (int i = 0; i < result_wyszukiwanie.getMetaData().getColumnCount(); i++) {
+
+            final int j = i;
+            TableColumn col = new TableColumn(result_wyszukiwanie.getMetaData().getColumnName(i + 1));
+            col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                    return new SimpleStringProperty(param.getValue().get(j).toString());
+                }
+            });
+
+            tabelka.getColumns().addAll(col);
+
+        }
+
         while (result_wyszukiwanie.next()) {
 
+            ObservableList<String> row = FXCollections.observableArrayList();
 
-            if (result_wyszukiwanie.getString("tresc").contains(text)){
-                for (int i = 1; i <= result_wyszukiwanie.getMetaData().getColumnCount(); i++) {
-                    row.add(result.getString(i));
-                }
-                System.out.println("Udalo sie");
-                }else {
-                    System.out.println("Nie udalo sie");
-                }
+            for (int i = 1; i <= result_wyszukiwanie.getMetaData().getColumnCount(); i++) {
+                row.add(result_wyszukiwanie.getString(i));
+            }
 
             lista.add(row);
             tabelka.setItems(lista);
 
-            }
-
-
-
         }
-
+    }
 
     public void img_menugl_M(MouseEvent mouseEvent) {
     }
@@ -168,5 +195,6 @@ public class Historia implements Initializable {
 
     public void search(ActionEvent actionEvent) throws Exception{
         wyszukaj(table_view);
+
     }
 }
