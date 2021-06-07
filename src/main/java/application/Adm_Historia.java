@@ -8,6 +8,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.net.URL;
@@ -108,14 +109,23 @@ private String wybor1,wybor2;
 
 
             if (wybor1==null||wybor1.length()==0||wybor2==null||wybor2.length()==0)
-            {System.out.println("pusto");}
+            {
+               Powiadomienia.adm_historia();
+            }
             else {
                 odswiezTableView(wybor1,wybor2,table_view);
             }
 
 
     }
+    public void adm_wyczysc_historia(ActionEvent event) {
 
+        adm_listaHistoriaUzytkownik.getSelectionModel().clearSelection();
+        adm_listaHistoriaAkcja.getSelectionModel().clearSelection();
+
+        table_view.getColumns().clear();
+        table_view.getItems().clear();
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -127,5 +137,9 @@ private String wybor1,wybor2;
         wypelnijLista2();
 
 
+    }
+
+    public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
+        ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1077, 534, img_menugl);
     }
 }

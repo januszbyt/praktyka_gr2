@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableView?>
@@ -10,15 +11,18 @@
 
 <AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Historia">
    <children>
-      <ImageView fx:id="img_menugl" fitHeight="64.0" fitWidth="86.0" layoutX="27.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img_menugl" fitHeight="64.0" fitWidth="86.0" layoutX="27.0" layoutY="17.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/domek.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
       <ComboBox fx:id="adm_listaHistoriaUzytkownik" layoutX="141.0" layoutY="27.0" prefHeight="44.0" prefWidth="202.0" promptText="Wybierz użytkownika" />
       <ComboBox fx:id="adm_listaHistoriaAkcja" layoutX="371.0" layoutY="27.0" prefHeight="44.0" prefWidth="202.0" promptText="Wybierz aktywność" />
       <Button fx:id="adm_historia_wyszukaj_btn" layoutX="633.0" layoutY="23.0" mnemonicParsing="false" onAction="#wyszukaj" prefHeight="51.0" prefWidth="174.0" stylesheets="@style.css" text="Wyszukaj" />
-      <Button fx:id="adm_historia_wyczysc_btn" layoutX="843.0" layoutY="23.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="174.0" stylesheets="@style.css" text="Wyczyść" />
+      <Button fx:id="adm_historia_wyczysc_btn" layoutX="843.0" layoutY="23.0" mnemonicParsing="false" onAction="#adm_wyczysc_historia" prefHeight="51.0" prefWidth="174.0" stylesheets="@style.css" text="Wyczyść" />
       <TableView fx:id="table_view" layoutX="1.0" layoutY="144.0" prefHeight="393.0" prefWidth="1080.0" />
    </children>
 </AnchorPane>
