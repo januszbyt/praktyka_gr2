@@ -2,6 +2,7 @@ package application;
 
 import classes.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,9 +29,13 @@ import static classes.DBManager.select;
 import static classes.Kurs.getKurs;
 
 public class Adm_Zarzadzanie_waluta implements Initializable {
+    @FXML
     public ImageView img_menugl;
+    @FXML
     public ComboBox lista_waluta;
+    @FXML
     public Label admin_daneskrot, admin_nazwawaluty, admin_danewartosc;
+    @FXML
     public TextField waluta_skrot, waluta_nazwa;
 
     public static Waluta waluta;
@@ -83,7 +88,7 @@ public class Adm_Zarzadzanie_waluta implements Initializable {
                 anotherStage.setScene(anotherScene);
                 anotherStage.setTitle("Edycja waluty");
                 anotherStage.showAndWait();
-                listaWalutaAkcja2();
+                listaWalutaAkcja();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -96,32 +101,55 @@ public class Adm_Zarzadzanie_waluta implements Initializable {
     public void usunButton() {
         if (lista_waluta.getSelectionModel().isEmpty()) {
             Powiadomienia.alertAdminWalutaWybor();
+            System.out.println(1);
         }
         else{
-                waluta = Waluta.wczytajWaluta_nazwa(String.valueOf(lista_waluta.getValue()));
+                waluta = Waluta.wczytajWaluta_skrot(String.valueOf(lista_waluta.getValue()));
+                System.out.println(waluta.getSkrot());
+
                 if (sprawdzRachunki(waluta.getId())) {
-                    DBManager.delete("DELETE FROM waluta WHERE id = " + waluta.getId());
+                    DBManager.delete("DELETE FROM waluta WHERE skrot = '" + waluta.getSkrot() +"';");
                     Powiadomienia.alertAdminWalutaUsuwanie(waluta.getNazwa());
+                    lista_waluta.getItems().clear();
+                    wypelnijLista();
+                    admin_danewartosc.setText("");
+                    admin_daneskrot.setText("");
+                    admin_nazwawaluty.setText("");
                 }
             }
-        lista_waluta.getItems().clear();
-        wypelnijLista();
     }
 
 
 
 
 
-    public void listaWalutaAkcja(ActionEvent event)
-    {
+    public void listaWalutaAkcja(ActionEvent event) {
+        if (!lista_waluta.getSelectionModel().isEmpty()) {
+            waluta = Waluta.wczytajWaluta_skrot(String.valueOf(lista_waluta.getValue()));
+            admin_daneskrot.setText(waluta.getSkrot());
+            admin_nazwawaluty.setText(waluta.getNazwa());
+            if (admin_daneskrot.getText().equals("PLN")) {
+                admin_danewartosc.setText("1.0000");
+            } else {
+                try {
+                    admin_danewartosc.setText(String.valueOf(getKurs(waluta.getSkrot())));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public void listaWalutaAkcja(){
+    if (!lista_waluta.getSelectionModel().isEmpty()) {
         waluta = Waluta.wczytajWaluta_skrot(String.valueOf(lista_waluta.getValue()));
         admin_daneskrot.setText(waluta.getSkrot());
         admin_nazwawaluty.setText(waluta.getNazwa());
-        if(admin_daneskrot.getText().equals("PLN"))
-        {
+        if (admin_daneskrot.getText().equals("PLN")) {
             admin_danewartosc.setText("1.0000");
-        }
-        else {
+        } else {
             try {
                 admin_danewartosc.setText(String.valueOf(getKurs(waluta.getSkrot())));
             } catch (IOException e) {
@@ -131,26 +159,7 @@ public class Adm_Zarzadzanie_waluta implements Initializable {
             }
         }
     }
-
-    public void listaWalutaAkcja2()
-    {
-        waluta = Waluta.wczytajWaluta_skrot(String.valueOf(lista_waluta.getValue()));
-        admin_daneskrot.setText(waluta.getSkrot());
-        admin_nazwawaluty.setText(waluta.getNazwa());
-        if(admin_daneskrot.getText().equals("PLN"))
-        {
-            admin_danewartosc.setText("1.0000");
-        }
-        else {
-            try {
-                admin_danewartosc.setText(String.valueOf(getKurs(waluta.getSkrot())));
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+}
 
     public boolean sprawdzRachunki(int id){
         ResultSet result = select("SELECT * FROM rachunek where waluta = "+id);

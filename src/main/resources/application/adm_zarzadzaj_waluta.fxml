@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#img_menugl_M" prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_waluta">
+<AnchorPane onMouseClicked="#img_menugl_M" prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_waluta">
    <children>
       <TextField id="tf" fx:id="waluta_nazwa" alignment="CENTER" layoutX="386.0" layoutY="188.0" prefHeight="25.0" prefWidth="150.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="544.0" />
       <TextField id="tf" fx:id="waluta_skrot" alignment="CENTER" layoutX="387.0" layoutY="227.0" promptText="Skrót" stylesheets="@style.css" />
@@ -45,7 +45,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="lista_waluta" layoutX="793.0" layoutY="109.0" onAction="#listaWalutaAkcja" prefHeight="25.0" prefWidth="231.0" promptText="Waluta" />
+      <ComboBox fx:id="lista_waluta" layoutX="784.0" layoutY="109.0" onAction="#listaWalutaAkcja" prefHeight="25.0" prefWidth="231.0" promptText="Waluta" />
       <Label layoutX="401.0" layoutY="134.0" text="Dodaj walute:">
          <font>
             <Font size="20.0" />
