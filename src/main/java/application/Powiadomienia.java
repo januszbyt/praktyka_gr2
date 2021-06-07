@@ -329,7 +329,85 @@ public class Powiadomienia {
         porazka.showAndWait();
     }
 
+    // Panel zarzadzania uzytkownikami
 
+    public static void alertAdminWalutaWybor() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz walute!");
+        porazka.showAndWait();
+    }
 
+    public static void alertAdminWalutaUsuwanie(String waluta) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie usunieto walute!\nWaluta: " + waluta);
+        sukces.showAndWait();
+    }
 
+    public static void alertAdminWalutaUsuwaniePorazka() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nie mozna usunac waluty!\nPrzed operacja upewnij sie ze zaden rachunek nie korzysta z tej waluty.");
+        porazka.showAndWait();
+    }
+
+    public static void alertWalutaDodajSukces(String nazwa, String skrot) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie dodano walute!\nWaluta: " + nazwa + "\nSkrot: " + skrot);
+        sukces.showAndWait();
+    }
+
+    public static void alertWalutaEdytujSukces(String nazwa) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie zedytowano waluta!\nNowa nazwa: " + nazwa);
+        sukces.showAndWait();
+    }
+
+    public static void alertWalutaNazwa() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nieodpowiednia nazwa waluty!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWalutaJestPuste(String nazwa) {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Pole "+nazwa+" jest puste!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWalutaZnakiSpecjalne(String pole) {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Pole "+pole+" zawiera niedozwolone znaki!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWalutaIstnieje() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Waluta juz istnieje w systemie!");
+        porazka.showAndWait();
+    }
+
+    public static void alertWalutaNieIstnieje() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Podana waluta nie istnieje badz nie jest obslugiwana!");
+        porazka.showAndWait();
+    }
 }

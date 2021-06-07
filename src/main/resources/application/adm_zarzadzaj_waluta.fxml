@@ -20,9 +20,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <TextField id="tf" alignment="CENTER" layoutX="119.0" layoutY="152.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="482.0" />
-      <TextField id="tf" alignment="CENTER" layoutX="120.0" layoutY="212.0" promptText="Skrót" stylesheets="@style.css" />
-      <Button layoutX="155.0" layoutY="269.0" mnemonicParsing="false" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Dodaj" />
+      <TextField id="tf" fx:id="waluta_nazwa" alignment="CENTER" layoutX="119.0" layoutY="187.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="482.0" />
+      <TextField id="tf" fx:id="waluta_skrot" alignment="CENTER" layoutX="119.0" layoutY="224.0" promptText="Skrót" stylesheets="@style.css" />
+      <Button layoutX="118.0" layoutY="295.0" mnemonicParsing="false" onAction="#dodajButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Dodaj" />
       <Label layoutX="410.0" layoutY="239.0" text="Skrót:">
          <font>
             <Font size="20.0" />
@@ -54,10 +54,20 @@
          </font>
       </Label>
       <ComboBox fx:id="lista_waluta" layoutX="408.0" layoutY="97.0" onAction="#listaWalutaAkcja" prefHeight="25.0" prefWidth="231.0" promptText="Waluta" />
-      <Label layoutX="133.0" layoutY="95.0" text="Dodaj walute:">
+      <Label layoutX="133.0" layoutY="134.0" text="Dodaj walute:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
+      <Button fx:id="admin_usun" layoutX="551.0" layoutY="342.0" mnemonicParsing="false" onAction="#usunButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Usuń Walutę" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="admin_edytuj" layoutX="346.0" layoutY="342.0" mnemonicParsing="false" onAction="#edytujButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Edytuj Walutę" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
