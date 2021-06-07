@@ -263,7 +263,6 @@ public class Powiadomienia {
     }
 
 
-
     public static void alertUsunSukces(String rachunek) {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Powiadomienie");
@@ -271,5 +270,66 @@ public class Powiadomienia {
         sukces.setContentText("Pomyslnie usunieto rachunek!\nRachunek: " + rachunek);
         sukces.showAndWait();
     }
+
+    // Panel zarzadzania uzytkownikami
+
+    public static void alertAdminWeryfikacja(String uzytkownik) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie zweryfikowano uzytkownika!\nUzytkownik: " + uzytkownik);
+        sukces.showAndWait();
+    }
+
+    public static void alertAdminBlokowanie(String uzytkownik) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie zablokowano uzytkownika!\nUzytkownik: " + uzytkownik);
+        sukces.showAndWait();
+    }
+
+    public static void alertAdminUsuwanie(String uzytkownik) {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Pomyslnie usunieto uzytkownika!\nUzytkownik: " + uzytkownik);
+        sukces.showAndWait();
+    }
+
+    public static void alertAdminWeryfikacjaPorazka() {
+        Alert sukces = new Alert(Alert.AlertType.ERROR);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Ten uzytkownik jest juz zweryfikowany!");
+        sukces.showAndWait();
+    }
+
+    public static void alertAdminBlokowaniePorazka() {
+        Alert sukces = new Alert(Alert.AlertType.ERROR);
+        sukces.setTitle("Powiadomienie");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Ten uzytkownik jest juz zablokowany!");
+        sukces.showAndWait();
+    }
+
+    public static void alertAdminUsuwaniePorazka() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nie mozna usunac uzytkownika!\nPrzed operacja upewnij sie ze uzytkownik nie posiada zadnych rachunkow.");
+        porazka.showAndWait();
+    }
+
+    public static void alertAdminWybor() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Wybierz uzytkownika!");
+        porazka.showAndWait();
+    }
+
+
+
 
 }

@@ -40,7 +40,7 @@ public class Adm_Menugl implements Initializable {
     public void btn_adm_zarzadzaj_wal_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("adm_zarzadaj_wal.fxml", 750, 483, btn_adm_zarzadzaj_wal);
+            ZmienOkno.zmienScene("adm_zarzadzaj_waluta.fxml", 750, 483, btn_adm_zarzadzaj_wal);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
