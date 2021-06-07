@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="534.0" prefWidth="1077.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Menugl">
+<AnchorPane prefHeight="540.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Menugl">
    <children>
-      <AnchorPane layoutX="-5.0" prefHeight="534.0" prefWidth="206.0" style="-fx-background-color: #ff8b35;">
+      <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
          <children>
-            <ImageView fx:id="menugl_logo" fitHeight="74.0" fitWidth="199.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="menugl_logo" fitHeight="75.0" fitWidth="200.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logobiale.png" />
                </image>

@@ -38,7 +38,7 @@ public class Adm_Zarzadzanie_uzytkownikami implements Initializable {
 
     public void initialize(URL location, ResourceBundle resources) {
         //wczytanie obrazu
-        File plik = new File("src/images/domek.png");
+        File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
         img_menugl.setImage(zdjecie);
         wypelnijLista1();

@@ -10,64 +10,73 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMouseClicked="#img_menugl_M" prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_waluta">
+<AnchorPane onMouseClicked="#img_menugl_M" prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_waluta">
    <children>
-      <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/domek.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <TextField id="tf" fx:id="waluta_nazwa" alignment="CENTER" layoutX="119.0" layoutY="187.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="482.0" />
-      <TextField id="tf" fx:id="waluta_skrot" alignment="CENTER" layoutX="119.0" layoutY="224.0" promptText="Skrót" stylesheets="@style.css" />
-      <Button layoutX="118.0" layoutY="295.0" mnemonicParsing="false" onAction="#dodajButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Dodaj" />
-      <Label layoutX="410.0" layoutY="239.0" text="Skrót:">
+      <TextField id="tf" fx:id="waluta_nazwa" alignment="CENTER" layoutX="386.0" layoutY="188.0" prefHeight="25.0" prefWidth="150.0" promptText="Nazwa" stylesheets="@style.css" AnchorPane.leftAnchor="386.0" AnchorPane.rightAnchor="544.0" />
+      <TextField id="tf" fx:id="waluta_skrot" alignment="CENTER" layoutX="387.0" layoutY="227.0" promptText="Skrót" stylesheets="@style.css" />
+      <Button layoutX="386.0" layoutY="299.0" mnemonicParsing="false" onAction="#dodajButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Dodaj" />
+      <Label layoutX="795.0" layoutY="240.0" text="Skrót:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="276.0" text="Wartość:">
+      <Label layoutX="793.0" layoutY="277.0" text="Wartość:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="admin_daneskrot" layoutX="490.0" layoutY="239.0" prefHeight="30.0" prefWidth="149.0" stylesheets="@style.css">
+      <Label fx:id="admin_daneskrot" layoutX="875.0" layoutY="240.0" prefHeight="30.0" prefWidth="149.0" stylesheets="@style.css">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="admin_danewartosc" layoutX="490.0" layoutY="276.0" prefHeight="30.0" prefWidth="149.0" stylesheets="@style.css">
+      <Label fx:id="admin_danewartosc" layoutX="875.0" layoutY="277.0" prefHeight="30.0" prefWidth="149.0" stylesheets="@style.css">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="admin_nazwawaluty" layoutX="408.0" layoutY="184.0" prefHeight="40.0" prefWidth="231.0" style="-fx-alignment: center;">
+      <Label fx:id="admin_nazwawaluty" layoutX="793.0" layoutY="180.0" prefHeight="40.0" prefWidth="231.0" style="-fx-alignment: center;">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="134.0" text="Aktualnie wybrana waluta:">
+      <Label layoutX="793.0" layoutY="143.0" text="Aktualnie wybrana waluta:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <ComboBox fx:id="lista_waluta" layoutX="408.0" layoutY="97.0" onAction="#listaWalutaAkcja" prefHeight="25.0" prefWidth="231.0" promptText="Waluta" />
-      <Label layoutX="133.0" layoutY="134.0" text="Dodaj walute:">
+      <ComboBox fx:id="lista_waluta" layoutX="793.0" layoutY="109.0" onAction="#listaWalutaAkcja" prefHeight="25.0" prefWidth="231.0" promptText="Waluta" />
+      <Label layoutX="401.0" layoutY="134.0" text="Dodaj walute:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="admin_usun" layoutX="551.0" layoutY="342.0" mnemonicParsing="false" onAction="#usunButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Usuń Walutę" textFill="WHITE">
+      <Button fx:id="admin_usun" layoutX="875.0" layoutY="382.0" mnemonicParsing="false" onAction="#usunButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Usuń Walutę" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <Button fx:id="admin_edytuj" layoutX="346.0" layoutY="342.0" mnemonicParsing="false" onAction="#edytujButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Edytuj Walutę" textFill="WHITE">
+      <Button fx:id="admin_edytuj" layoutX="671.0" layoutY="382.0" mnemonicParsing="false" onAction="#edytujButton" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Edytuj Walutę" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
+      <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="200.0" layoutX="7.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logobiale.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_menugl" fitHeight="105.0" fitWidth="125.0" layoutX="50.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/domekbialy.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

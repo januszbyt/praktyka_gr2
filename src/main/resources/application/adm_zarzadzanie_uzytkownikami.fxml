@@ -8,29 +8,38 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="483.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_uzytkownikami">
+<AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Zarzadzanie_uzytkownikami">
    <children>
-      <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/domek.png" />
-         </image>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ImageView>
-      <Label layoutX="74.0" layoutY="216.0" text="Dodaj użytkownika:" />
-      <Button fx:id="adm_zarejestruj" layoutX="70.0" layoutY="249.0" mnemonicParsing="false" onAction="#rejestracjaButton" stylesheets="@style.css" text="Zarejestruj" textFill="WHITE" />
-      <Label layoutX="520.0" layoutY="31.0" stylesheets="@style.css" text="Weryfikacja" />
-      <ComboBox fx:id="lista_uzytkownik1" layoutX="475.0" layoutY="53.0" prefWidth="150.0" />
-      <Label layoutX="351.0" layoutY="58.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
-      <Button fx:id="adm_zweryfikuj" layoutX="634.0" layoutY="46.0" mnemonicParsing="false" onAction="#zweryfikujButton" stylesheets="@style.css" text="Zweryfikuj" />
-      <Label layoutX="520.0" layoutY="181.0" stylesheets="@style.css" text="Blokowanie" />
-      <ComboBox fx:id="lista_uzytkownik2" layoutX="475.0" layoutY="204.0" prefWidth="150.0" />
-      <Label layoutX="351.0" layoutY="208.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
-      <Button fx:id="adm_zablokuj" layoutX="634.0" layoutY="197.0" mnemonicParsing="false" onAction="#zablokujButton" stylesheets="@style.css" text="Zablokuj" />
-      <Label layoutX="520.0" layoutY="336.0" stylesheets="@style.css" text="Usuwanie" />
-      <ComboBox fx:id="lista_uzytkownik3" layoutX="476.0" layoutY="359.0" prefWidth="150.0" />
-      <Label layoutX="351.0" layoutY="363.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
-      <Button fx:id="adm_usun" layoutX="652.0" layoutY="352.0" mnemonicParsing="false" onAction="#usunButton" stylesheets="@style.css" text="Usuń" />
+      <Label layoutX="341.0" layoutY="208.0" text="Dodaj użytkownika:" />
+      <Button fx:id="adm_zarejestruj" layoutX="337.0" layoutY="250.0" mnemonicParsing="false" onAction="#rejestracjaButton" stylesheets="@style.css" text="Zarejestruj" textFill="WHITE" />
+      <Label layoutX="777.0" layoutY="31.0" stylesheets="@style.css" text="Weryfikacja" />
+      <ComboBox fx:id="lista_uzytkownik1" layoutX="732.0" layoutY="54.0" prefWidth="150.0" />
+      <Label layoutX="595.0" layoutY="57.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
+      <Button fx:id="adm_zweryfikuj" layoutX="913.0" layoutY="46.0" mnemonicParsing="false" onAction="#zweryfikujButton" stylesheets="@style.css" text="Zweryfikuj" />
+      <Label layoutX="778.0" layoutY="180.0" stylesheets="@style.css" text="Blokowanie" />
+      <ComboBox fx:id="lista_uzytkownik2" layoutX="733.0" layoutY="205.0" prefWidth="150.0" />
+      <Label layoutX="595.0" layoutY="208.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
+      <Button fx:id="adm_zablokuj" layoutX="919.0" layoutY="197.0" mnemonicParsing="false" onAction="#zablokujButton" stylesheets="@style.css" text="Zablokuj" />
+      <Label layoutX="783.0" layoutY="335.0" stylesheets="@style.css" text="Usuwanie" />
+      <ComboBox fx:id="lista_uzytkownik3" layoutX="732.0" layoutY="360.0" prefWidth="150.0" />
+      <Label layoutX="595.0" layoutY="364.0" stylesheets="@style.css" text="Wybierz użytkownika:" />
+      <Button fx:id="adm_usun" layoutX="931.0" layoutY="352.0" mnemonicParsing="false" onAction="#usunButton" stylesheets="@style.css" text="Usuń" />
+      <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
+         <children>
+            <ImageView fitHeight="75.0" fitWidth="200.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/logobiale.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_menugl" fitHeight="105.0" fitWidth="125.0" layoutX="50.0" layoutY="240.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/domekbialy.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

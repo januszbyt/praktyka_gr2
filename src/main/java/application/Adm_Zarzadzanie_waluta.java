@@ -38,13 +38,13 @@ public class Adm_Zarzadzanie_waluta implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         wypelnijLista();
         //wczytanie obrazu
-        File plik = new File("src/images/domek.png");
+        File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
         img_menugl.setImage(zdjecie);
     }
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
-        ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1077, 534, img_menugl);
+        ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1080, 540, img_menugl);
     }
 
 
