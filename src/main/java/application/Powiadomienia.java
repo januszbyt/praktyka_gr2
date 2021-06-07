@@ -410,4 +410,11 @@ public class Powiadomienia {
         porazka.setContentText("Podana waluta nie istnieje badz nie jest obslugiwana!");
         porazka.showAndWait();
     }
+    public static void adm_historia() {
+        Alert porazka = new Alert(Alert.AlertType.ERROR);
+        porazka.setTitle("Powiadomienie");
+        porazka.setHeaderText(null);
+        porazka.setContentText("Nie wybrales uzytkownika lub aktywnosci!");
+        porazka.showAndWait();
+    }
 }
