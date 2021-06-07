@@ -110,9 +110,7 @@ public class Menugl implements Initializable {
             result=DBManager.select("select imie,nazwisko,data from logi inner join uzytkownik on uzytkownik.id=logi.uzytkownik where logi.uzytkownik="+sesja.getId()+
                     " and typ='Logowanie' order by data desc limit 2");
             result.next();
-        System.out.println(result.getString("imie"));
             result.next();
-        System.out.println(result.getString("imie"));
             zalogowany_jako.setText("Zalogowano jako: " + result.getString(1) + " " + result.getString(2));
             ostatnio_zalogowany.setText("Ostatnia data logowania: "+result.getString(3));
 
