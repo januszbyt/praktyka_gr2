@@ -78,7 +78,7 @@ public class Adm_Menugl implements Initializable {
     public void btn_adm_zgloszenia_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("adm_zgloszenia.fxml", 791, 522, btn_adm_zgloszenia);
+            ZmienOkno.zmienScene("adm_zgloszenia.fxml", 1080, 540, btn_adm_zgloszenia);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");

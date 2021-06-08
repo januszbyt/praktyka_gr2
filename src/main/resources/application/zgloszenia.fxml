@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="530.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Zgloszenia">
+<AnchorPane prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Zgloszenia">
    <children>
       <Button fx:id="NoweZgloszenie_btn" layoutX="859.0" layoutY="332.0" mnemonicParsing="false" onAction="#NoweZgloszenie_click" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: ff8b35;" stylesheets="@style.css" text="Nowe zgłoszenie" />
       <VBox layoutY="70.0" prefHeight="171.0" prefWidth="1080.0">

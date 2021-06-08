@@ -88,7 +88,7 @@ public class Menugl implements Initializable {
     public void btn_zgloszenia_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("zgloszenia.fxml", 1080, 530, btn_przelew);
+            ZmienOkno.zmienScene("zgloszenia.fxml", 1080, 540, btn_przelew);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
