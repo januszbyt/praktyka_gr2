@@ -74,7 +74,8 @@ public class Historia implements Initializable {
 
         }
     }
-    public static void xyz(String zapytanie,TableView tabela,Integer iterator) throws Exception{
+    public static void xyz(String zapytanie,TableView tabela,int iterator) throws Exception{
+        iterator = 0;
         ResultSet result;
         ObservableList<ObservableList> lista = FXCollections.observableArrayList();
         result = DBManager.select(zapytanie);
@@ -102,14 +103,13 @@ public class Historia implements Initializable {
 
             for (int i = 1; i <= result.getMetaData().getColumnCount(); i++) {
                 row.add(result.getString(i));
-
             }
 
             lista.add(row);
             tabela.setItems(lista);
 
-
         }
+
     }
     public void odswiezTableView() throws SQLException {
         wybor = (String) historia_lista.getValue();

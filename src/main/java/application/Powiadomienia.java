@@ -417,4 +417,15 @@ public class Powiadomienia {
         porazka.setContentText("Nie wybrales uzytkownika lub aktywnosci!");
         porazka.showAndWait();
     }
+
+    //Ustawienia
+    public static void zmiana_hasla(String blad) {
+        if (!blad.isBlank()) { //porazka
+            Alert porazka = new Alert(Alert.AlertType.INFORMATION);
+            porazka.setTitle("Powiadomienie");
+            porazka.setHeaderText(null);
+            porazka.setContentText(blad);
+            porazka.showAndWait();
+        }
+    }
 }

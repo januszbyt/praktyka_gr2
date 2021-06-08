@@ -34,7 +34,7 @@ public class Adm_Menugl implements Initializable {
     public Label kurs_uah;
     public TableView tabela_niepotwierdzeni;
     ResultSet result;
-    public Integer liczba_osob_niepotwierdzonych = 0;
+    public static int liczba_osob_niepotwierdzonych;
 
 
     @Override
@@ -49,7 +49,7 @@ public class Adm_Menugl implements Initializable {
         try {
             odswiez_dane();
         }catch (Exception e){
-
+            System.out.println("Cos poszło nie tak");
         }
 
     }
