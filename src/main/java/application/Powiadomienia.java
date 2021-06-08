@@ -428,4 +428,12 @@ public class Powiadomienia {
             porazka.showAndWait();
         }
     }
+
+    public static void alertZgloszenieSzczegoly() {
+        Alert sukces = new Alert(Alert.AlertType.INFORMATION);
+        sukces.setTitle("Szczegoly Zgloszenia");
+        sukces.setHeaderText(null);
+        sukces.setContentText("Identyfikator Zgloszenia: 1 \n Data: 2003 \n Tytul Zgloszenia: Siema \n Status Zgloszenia: W Trakcie");
+        sukces.showAndWait();
+    }
 }
