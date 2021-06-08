@@ -74,6 +74,43 @@ public class Historia implements Initializable {
 
         }
     }
+    public static void xyz(String zapytanie,TableView tabela,Integer iterator) throws Exception{
+        ResultSet result;
+        ObservableList<ObservableList> lista = FXCollections.observableArrayList();
+        result = DBManager.select(zapytanie);
+
+        tabela.getColumns().clear();
+        tabela.getItems().clear();
+
+        for (int i = 0; i < result.getMetaData().getColumnCount(); i++) {
+
+            final int j = i;
+            TableColumn col = new TableColumn(result.getMetaData().getColumnName(i + 1));
+            col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
+                public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
+                    return new SimpleStringProperty(param.getValue().get(j).toString());
+                }
+            });
+
+            tabela.getColumns().addAll(col);
+
+        }
+
+        while (result.next()) {
+            iterator++;
+            ObservableList<String> row = FXCollections.observableArrayList();
+
+            for (int i = 1; i <= result.getMetaData().getColumnCount(); i++) {
+                row.add(result.getString(i));
+
+            }
+
+            lista.add(row);
+            tabela.setItems(lista);
+
+
+        }
+    }
     public void odswiezTableView() throws SQLException {
         wybor = (String) historia_lista.getValue();
 

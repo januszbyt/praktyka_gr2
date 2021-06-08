@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -31,7 +32,9 @@ public class Adm_Menugl implements Initializable {
     public Label kurs_usd;
     public Label kurs_gbp;
     public Label kurs_uah;
+    public TableView tabela_niepotwierdzeni;
     ResultSet result;
+    public Integer liczba_osob_niepotwierdzonych = 0;
 
 
     @Override
@@ -46,7 +49,7 @@ public class Adm_Menugl implements Initializable {
         try {
             odswiez_dane();
         }catch (Exception e){
-            System.out.println("Coś poszło nie tak");
+
         }
 
     }
@@ -94,6 +97,7 @@ public class Adm_Menugl implements Initializable {
 
     public void btn_wyloguj_M(ActionEvent actionEvent) {
         try {
+            Logowanie.zalogowany = null;
             ZmienOkno.zmienScene("logowanie.fxml", 650, 552, btn_wyloguj);
         }catch (Exception e){
             System.out.println("Błąd poczas wylogowania");
@@ -111,6 +115,8 @@ public class Adm_Menugl implements Initializable {
         ostatnio_zalogowany.setText("Ostatnia data logowania: " + result.getString(3));
 
         odswiez_kurs();
+        Historia.xyz("SELECT imie,nazwisko,login FROM uzytkownik WHERE weryfikacja = 0",tabela_niepotwierdzeni,liczba_osob_niepotwierdzonych);
+        System.out.println(liczba_osob_niepotwierdzonych);
     }
     public void odswiez_kurs() throws Exception{
         kurs_eur.setText(Double.toString(Kurs.getKurs("EUR")));
