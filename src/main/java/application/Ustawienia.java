@@ -59,17 +59,21 @@ public class Ustawienia implements Initializable {
         sprawdz();
         Powiadomienia.zmiana_hasla(blad);
 
-//        if (nowe_haslo.equals(potwierdz_nowe) && Hash.checkHash(stare_haslo.getText(),result.getString(1))){
-//            DBManager.update("UPDATE `uzytkownik` SET `haslo` = '"+Hash.getHash(nowe_haslo.getText())+"' WHERE `uzytkownik`.`id` ="+sesja.getId());
-//        }
+        if (nowe_haslo.getText().equals(potwierdz_nowe.getText()) && Hash.checkHash(stare_haslo.getText(),result.getString(1)) && blad.isBlank()){
+            DBManager.update("UPDATE `uzytkownik` SET `haslo` = '"+Hash.getHash(nowe_haslo.getText())+"' WHERE `uzytkownik`.`id` ="+sesja.getId());
+            Powiadomienia.udana_zmiana_hasla();
+            stare_haslo.setText("");
+            nowe_haslo.setText("");
+            potwierdz_nowe.setText("");
+        }
 
 //        if (Hash.checkHash(stare_haslo.getText(),result.getString(1))){
 //            DBManager.update("UPDATE `uzytkownik` SET `haslo` = '"+Hash.getHash(nowe_haslo.getText())+"' WHERE `uzytkownik`.`id` ="+sesja.getId());
 //        }
 
     }
-    public void sprawdz(){
-
+    public void sprawdz() throws Exception{
+        blad = "";
         if (stare_haslo.getText().isBlank() && nowe_haslo.getText().isBlank() && potwierdz_nowe.getText().isBlank()){
             blad = "Pola sa puste!";
         }else if (stare_haslo.getLength() > 0 && nowe_haslo.getText().isBlank() && potwierdz_nowe.getText().isBlank()){
@@ -78,12 +82,22 @@ public class Ustawienia implements Initializable {
             blad = "Stare haslo oraz potwierdzenie nowego jest puste!";
         }else if (stare_haslo.getText().isBlank() && nowe_haslo.getText().isBlank() && potwierdz_nowe.getLength() > 0){
             blad = "Stare haslo oraz nowe haslo jest puste!";
+        }else if (stare_haslo.getLength() > 0 && nowe_haslo.getLength() > 0 && potwierdz_nowe.getText().isBlank()){
+            blad = "Potwierdzenie nowego hasla jest puste";
+        }else if (stare_haslo.getText().isBlank() && nowe_haslo.getLength() > 0 && potwierdz_nowe.getLength() > 0){
+            blad = "Stare haslo jest puste!";
+        }else if (stare_haslo.getLength() > 0 && nowe_haslo.getText().isBlank() && potwierdz_nowe.getLength() > 0){
+            blad = "Pole z nowym haslem jest puste!";
         }else if (stare_haslo.getLength() < 3 || stare_haslo.getLength() > 20){
-            blad = "Wprowadz poprawna dlugosc hasla";
+            blad = "Wprowadz poprawna dlugosc starego hasla";
         }else if (nowe_haslo.getLength() < 3 || nowe_haslo.getLength() > 20){
             blad = "Wprowadz poprawna dlugosc nowego hasla";
         }else if (potwierdz_nowe.getLength() < 3 || potwierdz_nowe.getLength() > 20){
             blad = "Wprowadz poprawna dlugosc dla potwierdzenia nowego hasla";
+        }else if (Hash.checkHash(stare_haslo.getText(),result.getString(1)) == false){
+            blad = "Stare haslo nie zgadza sie z poprzednim haslem!";
+        }else if (!nowe_haslo.getText().equals(potwierdz_nowe.getText())){
+            blad = "Nowe haslo oraz potwierdzenie nowego hasla nie zgadzaja sie!";
         }
     }
 }
