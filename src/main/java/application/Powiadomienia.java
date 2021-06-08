@@ -428,6 +428,15 @@ public class Powiadomienia {
             porazka.showAndWait();
         }
     }
+    public static void udana_zmiana_hasla() {
+
+            Alert powodzenie = new Alert(Alert.AlertType.INFORMATION);
+            powodzenie.setTitle("Powiadomienie");
+            powodzenie.setHeaderText(null);
+            powodzenie.setContentText("Zmiana hasla przebiegla pomyslnie!");
+            powodzenie.showAndWait();
+
+    }
 
     public static void alertZgloszenieSzczegoly() {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
