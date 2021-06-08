@@ -20,6 +20,8 @@ import java.util.ResourceBundle;
 import application.Logowanie;
 import application.Menugl;
 import classes.Uzytkownik;
+import javafx.scene.input.MouseEvent;
+
 public class Menugl implements Initializable {
     public ImageView menugl_logo;
     public Button btn_przelew;
@@ -35,6 +37,7 @@ public class Menugl implements Initializable {
     public Label kurs_eur,kurs_usd,kurs_gbp,kurs_uah;
 
     public static Uzytkownik sesja;
+    public ImageView opcje_zdj;
     ResultSet result;
 
     @Override
@@ -43,6 +46,10 @@ public class Menugl implements Initializable {
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
+
+        File plik2 = new File("src/images/setings.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        opcje_zdj.setImage(zdjecie2);
         try{
             odswiez_Dane();
             }
@@ -125,6 +132,18 @@ public class Menugl implements Initializable {
         kurs_usd.setText(Double.toString(Kurs.getKurs("USD")));
         kurs_gbp.setText(Double.toString(Kurs.getKurs("GBP")));
         kurs_uah.setText(Double.toString(Kurs.getKurs("UAH")));
+
+    }
+
+    public void btn_opcje(MouseEvent mouseEvent) {
+
+
+        try {
+            ZmienOkno.zmienSceneimg("ustawienia.fxml", 1080, 540, opcje_zdj);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
     }
 }
