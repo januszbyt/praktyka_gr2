@@ -26,7 +26,7 @@
       <Button fx:id="adm_usun" layoutX="931.0" layoutY="352.0" mnemonicParsing="false" onAction="#usunButton" stylesheets="@style.css" text="Usuń" />
       <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
          <children>
-            <ImageView fitHeight="75.0" fitWidth="200.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="menugl_logo" fitHeight="75.0" fitWidth="200.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../images/logobiale.png" />
                </image>

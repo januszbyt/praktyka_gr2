@@ -127,10 +127,10 @@ public class Logowanie implements Initializable {
     }
 
     public void zmien_okno_uzytkownik() throws Exception {
-        ZmienOkno.zmienScene("menugl.fxml", 1077, 534, btn_zaloguj);
+        ZmienOkno.zmienScene("menugl.fxml", 1080, 540, btn_zaloguj);
     }
     public void zmien_okno_administrator() throws Exception{
-        ZmienOkno.zmienScene("adm_menugl.fxml", 1077, 534, btn_zaloguj);
+        ZmienOkno.zmienScene("adm_menugl.fxml", 1080, 540, btn_zaloguj);
     }
 
     public void wyczysc_btn_M(ActionEvent actionEvent) {

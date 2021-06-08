@@ -29,7 +29,7 @@ import static classes.DBManager.select;
 import static classes.DBManager.update;
 
 public class Adm_Zarzadzanie_uzytkownikami implements Initializable {
-    public ImageView img_menugl;
+    public ImageView img_menugl, menugl_logo;
     public Button adm_zarejestruj, adm_zweryfikuj, adm_zablokuj, adm_usun;
     public ComboBox lista_uzytkownik1, lista_uzytkownik2, lista_uzytkownik3;
     public Uzytkownik uzytkownik;
@@ -41,6 +41,10 @@ public class Adm_Zarzadzanie_uzytkownikami implements Initializable {
         File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
         img_menugl.setImage(zdjecie);
+
+        File plik2 = new File("src/images/logobiale.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        menugl_logo.setImage(zdjecie2);
         wypelnijLista1();
         wypelnijLista2();
     }
