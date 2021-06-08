@@ -27,7 +27,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button fx:id="historia_wysczysc_btn" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść" textFill="WHITE">
+      <Button fx:id="historia_wysczysc_btn" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" onAction="#wyczysc_historia" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>

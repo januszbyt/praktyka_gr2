@@ -142,4 +142,11 @@ public class Historia implements Initializable {
         Image zdjecie = new Image(plik.toURI().toString());
         img_menugl.setImage(zdjecie);
     }
+    public void wyczysc_historia(ActionEvent event) {
+
+        historia_lista.getSelectionModel().clearSelection();
+
+        table_view.getColumns().clear();
+        table_view.getItems().clear();
+    }
 }
