@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_adm_zarzadzaj_uz" layoutX="28.0" layoutY="136.0" mnemonicParsing="false" onAction="#btn_adm_zarzadzaj_uz_M" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zarządaj &#10;użytkownikami&#10;" textAlignment="CENTER" textFill="#ff8b35">
+            <Button fx:id="btn_adm_zarzadzaj_uz" layoutX="28.0" layoutY="136.0" mnemonicParsing="false" onAction="#btn_adm_zarzadzaj_uz_M" prefHeight="59.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Zarządzaj&#10;użytkownikami&#10;" textAlignment="CENTER" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
