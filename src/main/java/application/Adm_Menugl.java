@@ -30,7 +30,7 @@ public class Adm_Menugl implements Initializable {
     public void btn_adm_zarzadzaj_uz_M(ActionEvent actionEvent)  {
         try
         {
-            ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 750, 483, btn_adm_zarzadzaj_uz);
+            ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 1080, 540, btn_adm_zarzadzaj_uz);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
@@ -40,7 +40,7 @@ public class Adm_Menugl implements Initializable {
     public void btn_adm_zarzadzaj_wal_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("adm_zarzadzaj_waluta.fxml", 750, 483, btn_adm_zarzadzaj_wal);
+            ZmienOkno.zmienScene("adm_zarzadzaj_waluta.fxml", 1080, 540, btn_adm_zarzadzaj_wal);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");
@@ -60,7 +60,7 @@ public class Adm_Menugl implements Initializable {
     public void btn_adm_historia_M(ActionEvent actionEvent) {
         try
         {
-            ZmienOkno.zmienScene("adm_historia.fxml", 1077, 534, btn_adm_historia);
+            ZmienOkno.zmienScene("adm_historia.fxml", 1080, 540, btn_adm_historia);
         }
         catch (Exception e){
             System.out.println("Błąd w wczytaniu okna");

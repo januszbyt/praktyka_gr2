@@ -140,6 +140,6 @@ private String wybor1,wybor2;
     }
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
-        ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1077, 534, img_menugl);
+        ZmienOkno.zmienSceneimg("adm_menugl.fxml", 1080, 540, img_menugl);
     }
 }

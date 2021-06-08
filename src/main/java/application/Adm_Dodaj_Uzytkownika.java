@@ -165,7 +165,7 @@ public class Adm_Dodaj_Uzytkownika implements Initializable {
                 DBManager.update(kodSql);
                 Powiadomienia.alertRejestracja(blad);
                 wyczyscButton();
-                ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 650, 552, btn_wroc);
+                ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 1080, 540, btn_wroc);
             } else {
                 Powiadomienia.alertRejestracjaZajety();
             }
@@ -182,7 +182,7 @@ public class Adm_Dodaj_Uzytkownika implements Initializable {
     }
 
     public void powrot(ActionEvent actionEvent) throws Exception {
-        ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 750, 483, btn_wroc);
+        ZmienOkno.zmienScene("adm_zarzadzanie_uzytkownikami.fxml", 1080, 540, btn_wroc);
     }
 
 }
