@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="530.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Zgloszenia">
    <children>
-      <Button layoutX="859.0" layoutY="332.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: ff8b35;" stylesheets="@style.css" text="Nowe zgłoszenie" />
+      <Button fx:id="NoweZgloszenie_btn" layoutX="859.0" layoutY="332.0" mnemonicParsing="false" onAction="#NoweZgloszenie_click" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: ff8b35;" stylesheets="@style.css" text="Nowe zgłoszenie" />
       <VBox layoutY="70.0" prefHeight="171.0" prefWidth="1080.0">
          <children>
             <TableView fx:id="zgloszeniaTabelka" prefHeight="200.0" prefWidth="200.0">
@@ -51,7 +51,7 @@
       </children>
    </AnchorPane>
 
-   <TextField layoutX="14.0" layoutY="271.0" prefHeight="201.0" prefWidth="807.0" />
+   <TextField fx:id="TrescTextFiled" layoutX="14.0" layoutY="271.0" prefHeight="201.0" prefWidth="807.0" />
    <Label layoutX="14.0" layoutY="242.0" text="Treść:">
       <font>
          <Font size="18.0" />
@@ -62,7 +62,7 @@
          <Font size="18.0" />
       </font>
    </Label>
-   <TextField layoutX="859.0" layoutY="271.0" prefHeight="25.0" prefWidth="182.0" />
+   <TextField fx:id="TytulTextFiled" layoutX="859.0" layoutY="271.0" prefHeight="25.0" prefWidth="182.0" />
 
       <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="920.0" layoutY="420.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
          <image>

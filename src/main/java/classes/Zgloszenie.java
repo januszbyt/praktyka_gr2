@@ -16,6 +16,8 @@ public class Zgloszenie {
     private String status;
     private int uzytkownik;
 
+
+
     // Lista metod związanych z klasą
     public int getId() {
         return id;
@@ -99,6 +101,15 @@ public class Zgloszenie {
     public Zgloszenie(int id, Date data, String tresc_user, String tresc_admin, String status, int uzytkownik) {
         this.id = id;
         this.data = data;
+        this.tresc_user = tresc_user;
+        this.tresc_admin = tresc_admin;
+        this.status = status;
+        this.uzytkownik = uzytkownik;
+    }
+    public Zgloszenie(int id, Date data,String tytul, String tresc_user, String tresc_admin, String status, int uzytkownik) {
+        this.id = id;
+        this.data = data;
+        this.tytul = tytul;
         this.tresc_user = tresc_user;
         this.tresc_admin = tresc_admin;
         this.status = status;
