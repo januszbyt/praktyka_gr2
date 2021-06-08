@@ -61,19 +61,19 @@ public class Wymiana implements Initializable {
             Powiadomienia.alertWymianaWybierzRachunek();
         } else if (wymiana_kwota.getText().isEmpty()) {
             Powiadomienia.alertWymianaKwota();
-
-        } else if (weryfikacjaRachunkow(rachunek1, rachunek2) == true) {
-            if (Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(wymiana_kwota.getText()))) {
-                if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
-                    wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
-                    wyczyscButton();
-                } else {
-                    wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
-                    wyczyscButton();
+        } else if (jestLiczba(wymiana_kwota.getText())) {
+            if (weryfikacjaRachunkow(rachunek1, rachunek2) == true) {
+                if (Rachunek.weryfikacjaSaldo(rachunek1, Float.parseFloat(wymiana_kwota.getText()))) {
+                    if (rachunek1.getWaluta() == rachunek2.getWaluta()) {
+                        wymienSamaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
+                        wyczyscButton();
+                    } else {
+                        wymienInnaWaluta(rachunek1, rachunek2, Float.parseFloat(wymiana_kwota.getText()));
+                        wyczyscButton();
+                    }
                 }
             }
         }
-
     }
 
     public void wyczyscButton()   // Guzik wyczyszczenia pola
@@ -228,6 +228,7 @@ public class Wymiana implements Initializable {
             Float wartosc = Float.parseFloat(tekst);
             return true;
         } catch (NumberFormatException e) {
+            Powiadomienia.alertWymianaKwota();
             return false;
         }
 
