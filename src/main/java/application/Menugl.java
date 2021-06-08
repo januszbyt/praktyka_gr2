@@ -39,17 +39,17 @@ public class Menugl implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-         sesja=Logowanie.zalogowany;
+        sesja=Logowanie.zalogowany;
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
-    try{
-        odswiez_Dane();
+        try{
+            odswiez_Dane();
+            }
+        catch (SQLException | IOException | InterruptedException e)
+        {
+            System.out.println("Coś poszło nie tak!");
         }
-    catch (SQLException | IOException | InterruptedException e)
-    {
-        System.out.println("Coś poszło nie tak!");
-    }
     }
 
 

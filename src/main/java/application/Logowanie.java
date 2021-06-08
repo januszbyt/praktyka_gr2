@@ -73,6 +73,7 @@ public class Logowanie implements Initializable {
                     zalogowany = sesja;
                     zmien_okno_uzytkownik();
                 }else {
+                    zalogowany = sesja;
                     zmien_okno_administrator();
                 }
 

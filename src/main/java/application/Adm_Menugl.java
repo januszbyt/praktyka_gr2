@@ -1,13 +1,19 @@
 package application;
 
+import classes.DBManager;
+import classes.Kurs;
+import classes.Uzytkownik;
+import com.mysql.cj.log.Log;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.util.ResourceBundle;
 
 public class Adm_Menugl implements Initializable {
@@ -18,12 +24,31 @@ public class Adm_Menugl implements Initializable {
     public Button btn_adm_historia;
     public Button btn_wyloguj;
 
+    public static Uzytkownik sesja;
+    public Label zalogowany_jako;
+    public Label ostatnio_zalogowany;
+    public Label kurs_eur;
+    public Label kurs_usd;
+    public Label kurs_gbp;
+    public Label kurs_uah;
+    ResultSet result;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sesja = Logowanie.zalogowany;
+
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
+
+        //Dodanie danych na temat logowania
+        try {
+            odswiez_dane();
+        }catch (Exception e){
+            System.out.println("Coś poszło nie tak");
+        }
+
     }
 
 
@@ -73,5 +98,25 @@ public class Adm_Menugl implements Initializable {
         }catch (Exception e){
             System.out.println("Błąd poczas wylogowania");
         }
+    }
+
+    public void odswiez_dane() throws Exception{
+        result = DBManager.select("select imie,nazwisko,data from logi inner join uzytkownik on uzytkownik.id=logi.uzytkownik where logi.uzytkownik="+sesja.getId()+
+                " and typ='Logowanie' order by data desc limit 2");
+
+        result.next();
+        result.next();
+
+        zalogowany_jako.setText("Zalogowany jako " + result.getString(1) + " " + result.getString(2));
+        ostatnio_zalogowany.setText("Ostatnia data logowania: " + result.getString(3));
+
+        odswiez_kurs();
+    }
+    public void odswiez_kurs() throws Exception{
+        kurs_eur.setText(Double.toString(Kurs.getKurs("EUR")));
+        kurs_usd.setText(Double.toString(Kurs.getKurs("USD")));
+        kurs_gbp.setText(Double.toString(Kurs.getKurs("GBP")));
+        kurs_uah.setText(Double.toString(Kurs.getKurs("UAH")));
+
     }
 }

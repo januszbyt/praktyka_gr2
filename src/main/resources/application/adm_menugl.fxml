@@ -16,11 +16,6 @@
                   <Image url="@../../../images/logobiale.png" />
                </image>
             </ImageView>
-            <Label layoutX="25.0" layoutY="86.0" prefHeight="33.0" prefWidth="156.0" stylesheets="@style.css" text="Zalogowano jako" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="13.0" />
-               </font>
-            </Label>
             <Button fx:id="btn_wyloguj" layoutX="28.0" layoutY="438.0" mnemonicParsing="false" onAction="#btn_wyloguj_M" prefHeight="31.0" prefWidth="150.0" style="-fx-background-color: white;" stylesheets="@style.css" text="Wyloguj" textFill="#ff8b35">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -46,6 +41,72 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="zalogowany_jako" layoutX="226.0" layoutY="22.0" prefHeight="33.0" prefWidth="372.0" stylesheets="@style.css" text="Zalogowano jako">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="ostatnio_zalogowany" alignment="CENTER_RIGHT" layoutX="694.0" layoutY="493.0" prefHeight="33.0" prefWidth="372.0" stylesheets="@style.css" text="Ostatnio zalogowany">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="662.0" layoutY="80.0" prefHeight="121.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="38.0" layoutY="-2.0" prefHeight="26.0" prefWidth="69.0" text="EUR">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="kurs_eur" layoutX="21.0" layoutY="46.0" prefHeight="45.0" prefWidth="113.0" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="849.0" layoutY="80.0" prefHeight="121.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+         <children>
+            <Label layoutX="50.0" layoutY="-2.0" text="USD">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="kurs_usd" layoutX="15.0" layoutY="47.0" prefHeight="45.0" prefWidth="113.0" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="662.0" layoutY="233.0" prefHeight="121.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="38.0" layoutY="-2.0" prefHeight="26.0" prefWidth="69.0" text="GPB">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="kurs_gbp" layoutX="14.0" layoutY="44.0" prefHeight="45.0" prefWidth="113.0" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="849.0" layoutY="233.0" prefHeight="121.0" prefWidth="144.0" style="-fx-background-color: #dbdbdb;">
+         <children>
+            <Label alignment="TOP_CENTER" layoutX="28.0" prefHeight="26.0" prefWidth="69.0" text="UAH">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+            <Label fx:id="kurs_uah" layoutX="16.0" layoutY="38.0" prefHeight="45.0" prefWidth="113.0" text="Label">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
