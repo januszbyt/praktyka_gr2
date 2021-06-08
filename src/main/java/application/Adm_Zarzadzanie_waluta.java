@@ -30,7 +30,7 @@ import static classes.Kurs.getKurs;
 
 public class Adm_Zarzadzanie_waluta implements Initializable {
     @FXML
-    public ImageView img_menugl;
+    public ImageView img_menugl, menugl_logo;
     @FXML
     public ComboBox lista_waluta;
     @FXML
@@ -46,6 +46,9 @@ public class Adm_Zarzadzanie_waluta implements Initializable {
         File plik = new File("src/images/domekbialy.png");
         Image zdjecie = new Image(plik.toURI().toString());
         img_menugl.setImage(zdjecie);
+        File plik2 = new File("src/images/logobiale.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        menugl_logo.setImage(zdjecie2);
     }
 
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {

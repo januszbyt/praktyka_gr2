@@ -256,6 +256,6 @@ public class Wymiana implements Initializable {
         return 0;
     }
     public void img_menugl_M(MouseEvent mouseEvent) throws Exception {
-        ZmienOkno.zmienSceneimg("menugl.fxml", 1077, 534, menugl_logo);
+        ZmienOkno.zmienSceneimg("menugl.fxml", 1080, 540, menugl_logo);
     }
 }
