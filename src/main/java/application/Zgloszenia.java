@@ -35,10 +35,10 @@ public class Zgloszenia implements Initializable {
     public TableColumn<Zgloszenie, Integer> zgloszeniaId;
     public TableColumn<Zgloszenie, Date> zgloszeniaData;
     public TableColumn<Zgloszenie, String> zgloszeniaTytul;
-    public TableColumn<Zgloszenie, String> zgloszeniaTuser;
-    public TableColumn<Zgloszenie, String> zgloszeniaTadmin;
+   // public TableColumn<Zgloszenie, String> zgloszeniaTuser;
+   // public TableColumn<Zgloszenie, String> zgloszeniaTadmin;
     public TableColumn<Zgloszenie, String> zgloszeniaStatus;
-    public TableColumn<Zgloszenie, Integer> zgloszeniaUzytkownik;
+    //public TableColumn<Zgloszenie, Integer> zgloszeniaUzytkownik;
 
     public TextField TrescTextFiled;
     public TextField TytulTextFiled;
@@ -56,10 +56,10 @@ public class Zgloszenia implements Initializable {
         zgloszeniaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         zgloszeniaData.setCellValueFactory(new PropertyValueFactory<>("data"));
         zgloszeniaTytul.setCellValueFactory(new PropertyValueFactory<>("tytul"));
-        zgloszeniaTuser.setCellValueFactory(new PropertyValueFactory<>("tresc_user"));
-        zgloszeniaTadmin.setCellValueFactory(new PropertyValueFactory<>("tresc_admin"));
+        //zgloszeniaTuser.setCellValueFactory(new PropertyValueFactory<>("tresc_user"));
+        //zgloszeniaTadmin.setCellValueFactory(new PropertyValueFactory<>("tresc_admin"));
         zgloszeniaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        zgloszeniaUzytkownik.setCellValueFactory(new PropertyValueFactory<>("uzytkownik"));
+        //zgloszeniaUzytkownik.setCellValueFactory(new PropertyValueFactory<>("uzytkownik"));
 
         try {
             showZgloszenia();
@@ -73,7 +73,7 @@ public class Zgloszenia implements Initializable {
 
     public void showZgloszenia() throws SQLException {
         zgloszeniaTabelka.getItems().clear();
-        ResultSet result = DBManager.select("SELECT * FROM `zgloszenie`");
+        ResultSet result = DBManager.select("SELECT * FROM `zgloszenie` WHERE `uzytkownik` ="+sesja.getId());
         while (result.next()) {
 
             oblist.add(new Zgloszenie(result.getInt("id"), result.getDate("data"), result.getString("tytul"), result.getString("tresc_user"), result.getString("tresc_admin"), result.getString("status"), result.getInt("uzytkownik")));
@@ -100,5 +100,22 @@ public class Zgloszenia implements Initializable {
 
         utworzZgloszenie();
         showZgloszenia();
+    }
+
+    public void Zgloszenie_click(MouseEvent mouseEvent) {
+
+        if (mouseEvent.getClickCount() == 2)
+        {
+
+            String status = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getStatus();
+            int id = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getId();
+            Date data = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getData();
+            String tytul = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTytul();
+            String zapytanie = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTresc_user();
+            String odpowiedz = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTresc_admin();
+
+            Powiadomienia.alertZgloszenieSzczegoly(status,id,data,tytul,zapytanie,odpowiedz);
+
+        }
     }
 }
