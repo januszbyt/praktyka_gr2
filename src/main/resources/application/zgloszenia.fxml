@@ -17,15 +17,12 @@
       <Button fx:id="NoweZgloszenie_btn" layoutX="859.0" layoutY="332.0" mnemonicParsing="false" onAction="#NoweZgloszenie_click" prefHeight="40.0" prefWidth="182.0" style="-fx-background-color: ff8b35;" stylesheets="@style.css" text="Nowe zgłoszenie" />
       <VBox layoutY="70.0" prefHeight="171.0" prefWidth="1080.0">
          <children>
-            <TableView fx:id="zgloszeniaTabelka" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="zgloszeniaTabelka" onMouseClicked="#Zgloszenie_click" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="zgloszeniaId" prefWidth="113.0" text="id" />
-                <TableColumn fx:id="zgloszeniaData" minWidth="0.0" prefWidth="161.0" text="data" />
-                  <TableColumn fx:id="zgloszeniaTytul" minWidth="0.0" prefWidth="161.0" text="tytul" />
-                  <TableColumn fx:id="zgloszeniaTuser" minWidth="0.0" prefWidth="161.0" text="tresc_user" />
-                  <TableColumn fx:id="zgloszeniaTadmin" minWidth="0.0" prefWidth="161.0" text="tresc_admin" />
-                  <TableColumn fx:id="zgloszeniaStatus" minWidth="0.0" prefWidth="185.0" text="status" />
-                  <TableColumn fx:id="zgloszeniaUzytkownik" minWidth="0.0" prefWidth="137.0" text="uzytkownik" />
+                <TableColumn fx:id="zgloszeniaId" prefWidth="174.0" text="Identyfikator zgłoszenia" />
+                <TableColumn fx:id="zgloszeniaData" minWidth="0.0" prefWidth="237.0" text="Data zgłoszenia" />
+                  <TableColumn fx:id="zgloszeniaTytul" minWidth="0.0" prefWidth="336.0" text="Tytuł" />
+                  <TableColumn fx:id="zgloszeniaStatus" minWidth="0.0" prefWidth="332.0" text="Status zgłoszenia" />
               </columns>
             </TableView>
          </children>

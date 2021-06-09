@@ -2,6 +2,8 @@ package application;
 
 import javafx.scene.control.Alert;
 
+import java.sql.Date;
+
 public class Powiadomienia {
 
     //BAZA DANYCH BLAD
@@ -438,11 +440,10 @@ public class Powiadomienia {
 
     }
 
-    public static void alertZgloszenieSzczegoly() {
+    public static void alertZgloszenieSzczegoly(String status, int id, Date data, String tytul, String zapytanie, String odpowiedz) {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Szczegoly Zgloszenia");
-        sukces.setHeaderText(null);
-        sukces.setContentText("Identyfikator Zgloszenia: 1 \n Data: 2003 \n Tytul Zgloszenia: Siema \n Status Zgloszenia: W Trakcie");
+        sukces.setHeaderText("STATUS ZGLOSZENIA: "+status+" \n\nIdentyfikator Zgloszenia: "+id+" \n\n Data: "+data+" \n\n Tytul Zgloszenia: "+tytul+"  \n\n Twoje zapytanie: "+zapytanie+" \n\n Odpowiedz Administratora: "+odpowiedz);
         sukces.showAndWait();
     }
 }
