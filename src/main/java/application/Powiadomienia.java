@@ -443,8 +443,7 @@ public class Powiadomienia {
     public static void alertZgloszenieSzczegoly(String status, int id, Date data, String tytul, String zapytanie, String odpowiedz) {
         Alert sukces = new Alert(Alert.AlertType.INFORMATION);
         sukces.setTitle("Szczegoly Zgloszenia");
-        sukces.setHeaderText("STATUS ZGLOSZENIA: "+status);
-        sukces.setContentText("Identyfikator Zgloszenia: "+id+" \n\n Data: "+data+" \n\n Tytul Zgloszenia: "+tytul+"  \n\n Twoje zapytanie: "+zapytanie+" \n\n Odpowiedz Administratora: "+odpowiedz);
+        sukces.setHeaderText("STATUS ZGLOSZENIA: "+status+" \n\nIdentyfikator Zgloszenia: "+id+" \n\n Data: "+data+" \n\n Tytul Zgloszenia: "+tytul+"  \n\n Twoje zapytanie: "+zapytanie+" \n\n Odpowiedz Administratora: "+odpowiedz);
         sukces.showAndWait();
     }
 }
