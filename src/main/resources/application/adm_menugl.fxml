@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="540.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Menugl">
+<AnchorPane fx:id="adm_opcje_zdj" onMouseClicked="#img_settings_adm" prefHeight="540.0" prefWidth="1080.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Adm_Menugl">
    <children>
       <AnchorPane prefHeight="540.0" prefWidth="210.0" style="-fx-background-color: #ff8b35;">
          <children>
@@ -110,6 +111,19 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tabela_niepotwierdzeni" layoutX="226.0" layoutY="80.0" prefHeight="275.0" prefWidth="414.0" />
+      <TableView fx:id="tabela_niepotwierdzeni" layoutX="226.0" layoutY="141.0" prefHeight="275.0" prefWidth="414.0" />
+      <ImageView fx:id="img_seting" fitHeight="50.0" fitWidth="78.0" layoutX="1016.0" layoutY="14.0" onMouseClicked="#img_settings_adm" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/setings.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="226.0" layoutY="101.0" prefHeight="33.0" prefWidth="414.0" text="Niezweryfikowani użytkownicy:">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

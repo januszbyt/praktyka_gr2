@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 import java.io.File;
 import java.net.URL;
@@ -33,8 +34,11 @@ public class Adm_Menugl implements Initializable {
     public Label kurs_gbp;
     public Label kurs_uah;
     public TableView tabela_niepotwierdzeni;
+    public ImageView img_seting;
     ResultSet result;
     public static int liczba_osob_niepotwierdzonych;
+
+
 
 
     @Override
@@ -44,6 +48,10 @@ public class Adm_Menugl implements Initializable {
         File plik = new File("src/images/logobiale.png");
         Image zdjecie = new Image(plik.toURI().toString());
         menugl_logo.setImage(zdjecie);
+
+        File plik2 = new File("src/images/setings.png");
+        Image zdjecie2 = new Image(plik2.toURI().toString());
+        img_seting.setImage(zdjecie2);
 
         //Dodanie danych na temat logowania
         try {
@@ -124,5 +132,13 @@ public class Adm_Menugl implements Initializable {
         kurs_gbp.setText(Double.toString(Kurs.getKurs("GBP")));
         kurs_uah.setText(Double.toString(Kurs.getKurs("UAH")));
 
+    }
+
+    public void img_settings_adm(MouseEvent mouseEvent) {
+        try {
+            ZmienOkno.zmienSceneimg("ustawienia.fxml", 1080, 540, img_seting);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
