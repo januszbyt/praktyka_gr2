@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,12 +12,6 @@
 <AnchorPane fx:id="historia" prefHeight="540.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Historia">
    <children>
       <ComboBox fx:id="historia_lista" layoutX="110.0" layoutY="24.0" onAction="#listaHistoriaAkcja" prefHeight="39.0" prefWidth="158.0" promptText="Wybierz aktywność" stylesheets="@style.css" />
-      <TextField id="tf" fx:id="historia_wyszukaj_text" layoutX="290.0" layoutY="24.0" prefHeight="39.0" prefWidth="260.0" stylesheets="@style.css" />
-      <Button fx:id="historia_wyszukaj_btn" layoutX="626.0" layoutY="24.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyszukaj" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
       <ImageView fx:id="img_menugl" fitHeight="60.0" fitWidth="60.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#img_menugl_M" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/domek.png" />
@@ -27,7 +20,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Button fx:id="historia_wysczysc_btn" layoutX="774.0" layoutY="24.0" mnemonicParsing="false" onAction="#wyczysc_historia" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść" textFill="WHITE">
+      <Button fx:id="historia_wysczysc_btn" layoutX="290.0" layoutY="24.0" mnemonicParsing="false" onAction="#wyczysc_historia" prefHeight="40.0" prefWidth="135.0" style="-fx-background-color: #ff8b35;" stylesheets="@style.css" text="Wyczyść" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
