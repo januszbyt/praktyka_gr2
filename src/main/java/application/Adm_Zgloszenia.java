@@ -35,14 +35,15 @@ public class Adm_Zgloszenia implements Initializable {
     public TableColumn<Zgloszenie, Integer> zgloszeniaId;
     public TableColumn<Zgloszenie, Date> zgloszeniaData;
     public TableColumn<Zgloszenie, String> zgloszeniaTytul;
-    public TableColumn<Zgloszenie, String> zgloszeniaTuser;
-    public TableColumn<Zgloszenie, String> zgloszeniaTadmin;
+    //public TableColumn<Zgloszenie, String> zgloszeniaTuser;
+    //public TableColumn<Zgloszenie, String> zgloszeniaTadmin;
     public TableColumn<Zgloszenie, String> zgloszeniaStatus;
     public TableColumn<Zgloszenie, Integer> zgloszeniaUzytkownik;
 
     public TextField TrescTextFiled;
     public TextField TytulTextFiled;
     public Button NoweZgloszenie_btn;
+
 
     ObservableList<classes.Zgloszenie> oblist = observableArrayList();
 
@@ -56,8 +57,8 @@ public class Adm_Zgloszenia implements Initializable {
         zgloszeniaId.setCellValueFactory(new PropertyValueFactory<>("id"));
         zgloszeniaData.setCellValueFactory(new PropertyValueFactory<>("data"));
         zgloszeniaTytul.setCellValueFactory(new PropertyValueFactory<>("tytul"));
-        zgloszeniaTuser.setCellValueFactory(new PropertyValueFactory<>("tresc_user"));
-        zgloszeniaTadmin.setCellValueFactory(new PropertyValueFactory<>("tresc_admin"));
+        //zgloszeniaTuser.setCellValueFactory(new PropertyValueFactory<>("tresc_user"));
+        //zgloszeniaTadmin.setCellValueFactory(new PropertyValueFactory<>("tresc_admin"));
         zgloszeniaStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
         zgloszeniaUzytkownik.setCellValueFactory(new PropertyValueFactory<>("uzytkownik"));
 
@@ -84,10 +85,8 @@ public class Adm_Zgloszenia implements Initializable {
     }
 
     public void utworzZgloszenie(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        String Czas = dtf.format(now);
-        DBManager.update("INSERT INTO `zgloszenie` (`id`, `data`, `tytul`, `tresc_user`, `tresc_admin`, `status`, `uzytkownik`) VALUES (NULL, '"+Czas+"', '"+TytulTextFiled.getText()+"', '"+TrescTextFiled.getText()+"', '', 'W Trakcie', '"+sesja.getId()+"');");
+        int id = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getId();
+        DBManager.update("UPDATE `zgloszenie` SET `tresc_admin` = '"+TrescTextFiled.getText()+"', `status` = 'Odpowiedziano' WHERE `zgloszenie`.`id` = "+id+";");
 
     }
 
@@ -100,6 +99,23 @@ public class Adm_Zgloszenia implements Initializable {
 
         utworzZgloszenie();
         showZgloszenia();
+    }
+
+    public void Zgloszenie_click(MouseEvent mouseEvent) {
+
+        String status = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getStatus();
+        int id = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getId();
+        Date data = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getData();
+        String tytul = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTytul();
+        String zapytanie = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTresc_user();
+        String odpowiedz = zgloszeniaTabelka.getSelectionModel().getSelectedItem().getTresc_admin();
+
+        if (mouseEvent.getClickCount() == 2)
+        {
+
+            Powiadomienia.alertZgloszenieSzczegoly(status,id,data,tytul,zapytanie,odpowiedz);
+        }
+        TytulTextFiled.setText(tytul);
     }
 }
 
