@@ -90,9 +90,9 @@ public class Ustawienia implements Initializable {
             blad = "Pole z nowym haslem jest puste!";
         }else if (stare_haslo.getLength() < 3 || stare_haslo.getLength() > 20){
             blad = "Wprowadz poprawna dlugosc starego hasla";
-        }else if (nowe_haslo.getLength() < 3 || nowe_haslo.getLength() > 20){
+        }else if (nowe_haslo.getLength() <= 3 || nowe_haslo.getLength() > 20){
             blad = "Wprowadz poprawna dlugosc nowego hasla";
-        }else if (potwierdz_nowe.getLength() < 3 || potwierdz_nowe.getLength() > 20){
+        }else if (potwierdz_nowe.getLength() <= 3 || potwierdz_nowe.getLength() > 20){
             blad = "Wprowadz poprawna dlugosc dla potwierdzenia nowego hasla";
         }else if (Hash.checkHash(stare_haslo.getText(),result.getString(1)) == false){
             blad = "Stare haslo nie zgadza sie z poprzednim haslem!";
