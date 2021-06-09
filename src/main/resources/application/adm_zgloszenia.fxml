@@ -19,13 +19,11 @@
             <children>
                 <TableView fx:id="zgloszeniaTabelka" onMouseClicked="#Zgloszenie_click" prefHeight="200.0" prefWidth="200.0">
                     <columns>
-                        <TableColumn fx:id="zgloszeniaId" prefWidth="113.0" text="id" />
-                        <TableColumn fx:id="zgloszeniaData" minWidth="0.0" prefWidth="161.0" text="data" />
-                        <TableColumn fx:id="zgloszeniaTytul" minWidth="0.0" prefWidth="161.0" text="tytul" />
-                        <TableColumn fx:id="zgloszeniaTuser" minWidth="0.0" prefWidth="161.0" text="tresc_user" />
-                        <TableColumn fx:id="zgloszeniaTadmin" minWidth="0.0" prefWidth="161.0" text="tresc_admin" />
-                        <TableColumn fx:id="zgloszeniaStatus" minWidth="0.0" prefWidth="185.0" text="status" />
-                        <TableColumn fx:id="zgloszeniaUzytkownik" minWidth="0.0" prefWidth="137.0" text="uzytkownik" />
+                        <TableColumn fx:id="zgloszeniaId" prefWidth="152.0" text="Identyfikator zgłoszenia" />
+                        <TableColumn fx:id="zgloszeniaData" minWidth="0.0" prefWidth="149.0" text="Data" />
+                        <TableColumn fx:id="zgloszeniaTytul" minWidth="0.0" prefWidth="437.0" text="Tytuł" />
+                        <TableColumn fx:id="zgloszeniaStatus" minWidth="0.0" prefWidth="190.0" text="Status" />
+                        <TableColumn fx:id="zgloszeniaUzytkownik" minWidth="0.0" prefWidth="151.0" text="ID Uzytkownika" />
                     </columns>
                 </TableView>
             </children>
